@@ -1,3 +1,3 @@
-public class LIbrary {
+public class Library {
     
 }
