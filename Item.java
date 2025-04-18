@@ -39,7 +39,13 @@ public class Item {
      * @return the item's location
      */
     public Location getLocation(){
-        return this.getLocation(); 
+        if(this.inInventory== false){
+            return this.getLocation();
+        }else{
+            throw new RuntimeException("This item is in your inventory! It moves with you! It was found at "+ this.getLocation()); 
+
+        }
+
     }
 
     /**
