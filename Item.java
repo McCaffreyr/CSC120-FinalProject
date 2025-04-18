@@ -50,4 +50,12 @@ public class Item {
         return this.inInventory; 
     }
 
+    /**
+     * an mutator method for the location attribute of an item 
+     * @param l the location for the item to be at. 
+     */
+    public void setLocation(Location l){
+        this.currentLocation=l; 
+    }
+
 }
