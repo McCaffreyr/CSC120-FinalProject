@@ -1,3 +1,3 @@
-public class ChemLab {
+public class ChemLab extends {
     
 }
