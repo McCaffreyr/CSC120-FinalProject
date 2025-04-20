@@ -40,8 +40,24 @@ public class LocationMap {
         locationMap.put("Library 8", new ArrayList<>(Arrays.asList("Library 7", "Library 2")));
         locationMap.put("Cellar Stairs", new ArrayList<>(Arrays.asList("Library 2")));
     }
+
+    public static void connectingL(String place){
+        if (locationMap.keySet().contains(place)){
+            ArrayList connectingrooms = locationMap.get(place);
+            String finallist = "";
+            for (int i = 0; i < connectingrooms.size(); i++) {
+                finallist += connectingrooms.get(i) + ", ";
+            }
+            System.out.println(place + " connects to: " + finallist);
+        }else{
+            System.out.println("That place doesn't exist. Try something else.");
+        }
+    }
     
     public static void main(String[] args) {
-        System.out.println(locationMap);
+        LocationMap.connectingL("Library 3");
+        LocationMap.connectingL("Library 2");
+        LocationMap.connectingL("Hallway 3");
+
     }
 }

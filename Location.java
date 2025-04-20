@@ -17,10 +17,10 @@ public class Location {
      * @param hI T/F wether the location contains and item. 
      */
     Location(String n, String d, boolean hI){
-        this.name=n; 
-        this.description=d; 
-        this.hasItem= hI; 
-        this.locationItems= new ArrayList<Item>();
+        this.name = n; 
+        this.description = d; 
+        this.hasItem = hI; 
+        this.locationItems = new ArrayList<Item>();
     } 
 
     /**
@@ -28,7 +28,7 @@ public class Location {
      * @return a string with the name of the location
      */
     public String getName(){
-        return this.getName(); 
+        return this.name; 
     }
 
     /**
@@ -36,7 +36,7 @@ public class Location {
      * @return a string with the description of the location
      */
     public String getDescription(){
-        return this.getDescription(); 
+        return this.description; 
     }
     
     /**
@@ -69,5 +69,6 @@ public class Location {
 
     public static void main(String[] args) {
         Location school = new Location("school", "school desc", true);
+        System.out.println(school.getDescription());
     }
 }
