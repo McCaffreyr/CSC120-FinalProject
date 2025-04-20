@@ -1,3 +1,3 @@
-public class ScienceTeacher {
+public class ScienceTeacher extends Teacher{
     
 }
