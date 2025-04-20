@@ -1,4 +1,5 @@
 public class Item {
+    
     protected String name; 
     protected String description; 
     protected Location currentLocation; 
