@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map; 
 public class Location {
 
     String name; 
@@ -70,5 +68,18 @@ public class Location {
     public static void main(String[] args) {
         Location school = new Location("school", "school desc", true);
         System.out.println(school.getDescription());
+
+        Location bioLab = new Location("Bio Lab", "You enter a biology lab with shiny gray counter tops. It looks like a class was just in here. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside..."
+        , true);
+        Location chemLab = new Location("Chem Lab", "desc", 
+        true);
+        Location cafe = new Location("Cafe", "This is the school's cafeteria. Dozens of long tables sit in organized rows. Near the front of the room is a kitchen. What could be back there?"
+        , true);
+        Location englishRoom = new Location("English Room", "english room desc", true);
+        Location gym = new Location("Gym", "gym desc", true);
+        Location historyRoom = new Location("History Room", "desc", true);
+        Location mathRoom = new Location("Math Room", "desc", true);
+        Location studyRoom = new Location("Study Room", "desc", true);
+
     }
 }
