@@ -41,6 +41,10 @@ public class LocationMap {
         locationMap.put("Cellar Stairs", new ArrayList<>(Arrays.asList("Library 2")));
     }
 
+    /**
+     * Prints out the locations connected to a location
+     * @param place takes in a location
+     */
     public static void connectingL(String place){
         if (locationMap.keySet().contains(place)){
             ArrayList connectingrooms = locationMap.get(place);
