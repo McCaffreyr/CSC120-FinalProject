@@ -5,7 +5,7 @@ public class BreakableWeapon extends Weapon {
     /**
      * A constructor for a breakable weapon which is a weapon
      * @param n String name of the weapon
-     * @param d String of  description of the weapon
+     * @param d String of description of the weapon
      * @param cL the current location of the weapon
      * @param iI T/F is the weapon is currently in your inventory
      * @param hP int of how much damage the weapon does
