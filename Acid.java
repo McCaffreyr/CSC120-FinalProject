@@ -36,5 +36,13 @@ public class Acid extends Weapon{
         this.description= "A clear empty glass beaker. It smells faintly acidic."; 
     }
 
+    public static void main(String[] args) {
+        Location testingLocation= new Location("testingLocal", "n/a", false); 
+        NPC test= new NPC("test NPC", "blah blah", testingLocation, 3, true); 
+        Acid testAcid= new Acid(testingLocation, true); 
+        testAcid.use(test); 
+        System.out.println(test.getHealth());
+    }
+
     
 }
