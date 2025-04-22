@@ -11,7 +11,7 @@ public class Weapon extends Item {
      * @param hP how many points of damage, or hitPoints the item does
      */
     Weapon(String n, String d, String aL, Location cL, boolean iI, int hP){
-        super (n, d, cL,iI); 
+        super(n, d, cL,iI); 
         this.hitPower=hP; 
         this.attackDescription= aL; 
     }

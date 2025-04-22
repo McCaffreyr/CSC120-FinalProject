@@ -1,4 +1,6 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 public class Location {
 
     String name; 
@@ -13,30 +15,30 @@ public class Location {
      * @param hI T/F wether the location contains and item. 
      */
     Location(String n, String d, boolean hI){
-        this.name=n; 
-        this.description=d; 
-        this.hasItem= hI; 
-        this.locationItems= new ArrayList<Item>(); 
-    }
+        this.name = n; 
+        this.description = d; 
+        this.hasItem = hI; 
+        this.locationItems = new ArrayList<Item>();
+    } 
 
     /**
-     * An acessor for the name of the location
+     * An accessor for the name of the location
      * @return a string with the name of the location
      */
     public String getName(){
-        return this.getName(); 
+        return this.name; 
     }
 
     /**
-     * an acessor for the description of the location
+     * an accessor for the description of the location
      * @return a string with the description of the location
      */
     public String getDescription(){
-        return this.getDescription(); 
+        return this.description; 
     }
     
     /**
-     * an acessor method for wether the Location has an item in it or not
+     * an accessor method for whether the Location has an item in it or not
      * @return T/F wether the location contains at least one item. 
      */
     public Item getItem(Item i){
@@ -61,5 +63,23 @@ public class Location {
      */
     public void removeItem(Item i){
         this.locationItems.remove(i); 
+    }
+
+    public static void main(String[] args) {
+        Location school = new Location("school", "school desc", true);
+        System.out.println(school.getDescription());
+
+        Location bioLab = new Location("Bio Lab", "You enter a biology lab with shiny gray counter tops. It looks like a class was just in here. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside..."
+        , true);
+        Location chemLab = new Location("Chem Lab", "desc", 
+        true);
+        Location cafe = new Location("Cafe", "This is the school's cafeteria. Dozens of long tables sit in organized rows. Near the front of the room is a kitchen. What could be back there?"
+        , true);
+        Location englishRoom = new Location("English Room", "english room desc", true);
+        Location gym = new Location("Gym", "gym desc", true);
+        Location historyRoom = new Location("History Room", "desc", true);
+        Location mathRoom = new Location("Math Room", "desc", true);
+        Location studyRoom = new Location("Study Room", "desc", true);
+
     }
 }
