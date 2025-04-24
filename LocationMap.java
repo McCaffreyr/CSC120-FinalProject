@@ -3,9 +3,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 public class LocationMap {
 
-    public static HashMap<String, ArrayList> locationMap = new HashMap<>();
+    HashMap<String, ArrayList> locationMap = new HashMap<>();
     
-    static{
+    LocationMap(){
+        locationMap = this.locationMap;
         locationMap.put("Gym", new ArrayList<>(Arrays.asList("Hallway 1")));
         locationMap.put("Study", new ArrayList<>(Arrays.asList("Hallway 1")));
         locationMap.put("Starter Classroom", new ArrayList<>(Arrays.asList("Hallway 3")));
@@ -19,8 +20,7 @@ public class LocationMap {
 
         locationMap.put("Hallway 1", new ArrayList<>(Arrays.asList("Study", "Gym", "Hallway 2")));
         locationMap.put("Hallway 2", new ArrayList<>(Arrays.asList("Hallway 1", "Hallway 3")));
-        locationMap.put("Hallway 3", new ArrayList<>(Arrays.asList("Hallway 2", "Hallway 4", "Hallway 5", "Starter Classroom")));
-        locationMap.put("Hallway 4", new ArrayList<>(Arrays.asList("Hallway 3")));
+        locationMap.put("Hallway 3", new ArrayList<>(Arrays.asList("Hallway 2", "Hallway 5", "Starter Classroom")));
         locationMap.put("Hallway 5", new ArrayList<>(Arrays.asList("Hallway 3", "Hallway 6")));
         locationMap.put("Hallway 6", new ArrayList<>(Arrays.asList("Hallway 5", "Hallway 7", "English Room", "History Room")));
         locationMap.put("Hallway 7", new ArrayList<>(Arrays.asList("Hallway 6", "Hallway 8", "Math Room")));
@@ -45,7 +45,7 @@ public class LocationMap {
      * Prints out the locations connected to a location
      * @param place takes in a location
      */
-    public static void connectingL(String place){
+    public void connectingL(String place){
         if (locationMap.keySet().contains(place)){
             ArrayList connectingrooms = locationMap.get(place);
             String finallist = "";
@@ -59,9 +59,10 @@ public class LocationMap {
     }
     
     public static void main(String[] args) {
-        LocationMap.connectingL("Library 3");
-        LocationMap.connectingL("Library 2");
-        LocationMap.connectingL("Hallway 3");
+        LocationMap map = new LocationMap();
+        map.connectingL("Library 3");
+        map.connectingL("Library 2");
+        map.connectingL("Hallway 3");
 
     }
 }
