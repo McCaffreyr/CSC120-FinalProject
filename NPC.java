@@ -11,7 +11,7 @@ public class NPC {
      * @param d the visual description of the NPC 
      * @param cL the current location of the NPC
      * @param h the current health points of the NPC
-     * @param a T/F wether the player can attack this NPC 
+     * @param a T/F whether the player can attack this NPC 
      */
     NPC(String n, String d, Location cL, int h, Boolean a){
         this.name=n; 
