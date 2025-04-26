@@ -7,6 +7,7 @@ public class Location {
     String description; 
     boolean hasItem; 
     ArrayList<Item> locationItems; 
+    ArrayList<NPC> npcList; 
 
     /**
      * A constuctor for a Location
@@ -19,6 +20,7 @@ public class Location {
         this.description = d; 
         this.hasItem = hI; 
         this.locationItems = new ArrayList<Item>();
+        this.npcList= new ArrayList<NPC>(); 
     } 
 
     /**
@@ -63,6 +65,20 @@ public class Location {
      */
     public void removeItem(Item i){
         this.locationItems.remove(i); 
+    }
+    /**
+     * This adds an NPC to the location's NPC List.
+     * @param n the NPC to be added to the location
+     */
+    public void addNPC(NPC n){
+        this.npcList.add(n); 
+    }
+    /**
+     * This removes an NPC from the location's NPC list.
+     * @param n the NPC to be removed from the location.
+     */
+    public void removeNPC(NPC n){
+        this.npcList.remove(n); 
     }
 
     public static void main(String[] args) {
