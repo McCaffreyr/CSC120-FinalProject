@@ -4,23 +4,42 @@ public class Person {
     public ArrayList<Item> inventory;
     public int health = 100;
     public int points = 0;
-    Location starterClassroom = new Location("starter classroom","desc",true);
+    Location starterClassroom = new Location("Starter Classroom","desc",true);
     Location currentLocation = starterClassroom;
+    LocationMap map = new LocationMap();
+    ArrayList<String> responses = new ArrayList<String>();
 
+    /**
+     * Constructor for the Person class
+     * @param health the health of the person
+     * @param points the amount of points the person has
+     */
     public Person(int health, int points) {
         this.health = health;
         this.points = points;
         this.inventory = new ArrayList<>(); 
     }
 
+    /**
+     * An accessor for the person's health
+     * @return the health of the person
+     */
     public int getHealth(){
         return health;
     }
 
+    /**
+     * An accessor for the person's points
+     * @return the number of points the person has
+     */
     public int getPoints(){
         return points;
     }
 
+    /**
+     * An accessor for the person's inventory
+     * @return the items in the inventory
+     */
     public String checkInventory(){
         String inven = "";
         if (inventory.size() == 0){
@@ -31,25 +50,46 @@ public class Person {
         return inven;
         }
     
+    /**
+     * Checks if an item is in the inventory
+     * @param item the item they want to know if it's in their inventory
+     * @return T/F whether the item is in the person's inventory
+     */
     public Boolean hasItem(Item item){
         return inventory.contains(item);
     }
 
+    /**
+     * An accessor for the person's location
+     * @return the person's current location
+     */
     public Location getLocation(){
         return currentLocation;
     }
 
+    /**
+     * A method to change a person's current location
+     * @param place the place the person hopes to move to
+     */
     public void move(Location place){
-        System.out.println(locationMap.get(place));
+        if (map.get(currentLocation.name).contains(place.name)){
+            currentLocation = place;
+            System.out.println("Currect location is now: " + place.name);
+        } else{
+            System.out.println(place.name + " isn't connected to where you are.");
+            System.out.println("The following rooms are connected: " + map.get(currentLocation.name));
+        }
     }
 
+    /**
+     * An accessor for the description of the person's current location
+     * @return the description of the person's current location
+     */
     public String lookAround(){
         return currentLocation.description;
     }
 
-    //uses NPCs who are in the current location
     public void talk(NPC npc){
-        //give random response
     }
 
     //searchs bookshelves for book
@@ -74,26 +114,41 @@ public class Person {
         return desc;
     }
 
+    /**
+     * Adds an item to the person's inventory
+     * @param item item that is being added to the inventory
+     */
     public void pickUp(Item item){
         inventory.add(item);
     }
 
+    /**
+     * Removes an item from the person's inventory
+     * @param item item that is leaving the inventory
+     */
     public void drop(Item item){
         inventory.remove(item);
     }
 
-    //unlocked once stage 3 reached
     protected void save(DrainedStudent drainedstu){
     }
 
     public static void main(String[] args) {
         Person Abby = new Person(100,0);
-        Location Starterclassroom = new Location("starter classroom","desc",true);
+        Location Starterclassroom = new Location("Starter Classroom","desc",true);
+        Location Hallway3 = new Location("Hallway 3","desc",true);
+        Location Hallway7 = new Location("Hallway 7","desc",true);
+
+
         Item pencil = new Item("Pencil","sharp tool",Starterclassroom,false);
 
         System.out.println(Abby.checkInventory());
         Abby.pickUp(pencil);
         System.out.println(Abby.checkInventory());
+
+        Abby.move(Hallway3);
+        Abby.move(Starterclassroom);
+        Abby.move(Hallway7);
 
     }
 

@@ -22,7 +22,7 @@ public class NPC {
     }
 
     /**
-     * This is an acessor for the name of the NPC
+     * This is an accessor for the name of the NPC
      * @return a String which is the name of the NPC 
      */
     public String getName(){
@@ -30,7 +30,7 @@ public class NPC {
     }
 
     /**
-     * This is an acessor for the visual description of the NPC
+     * This is an accessor for the visual description of the NPC
      * @return a string with the description of the NPC
      */
     public String getDescription(){
@@ -38,7 +38,7 @@ public class NPC {
     }
 
     /**
-     * an acessor for the current location of the NPC
+     * an accessor for the current location of the NPC
      * @return the current Location of the NPC 
      */
     public Location getLocation(){
@@ -70,7 +70,7 @@ public class NPC {
     }
 
     /**
-     * A acessor for the attackable boolean of the NPC 
+     * A accessor for the attackable boolean of the NPC 
      * @return T/F wether or not the NPC is attackable
      */
     public Boolean isAttackable(){

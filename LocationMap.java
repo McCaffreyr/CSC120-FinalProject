@@ -57,12 +57,18 @@ public class LocationMap {
             System.out.println("That place doesn't exist. Try something else.");
         }
     }
+
+    public ArrayList get(String place){
+        return locationMap.get(place);
+    }
     
     public static void main(String[] args) {
         LocationMap map = new LocationMap();
         map.connectingL("Library 3");
         map.connectingL("Library 2");
         map.connectingL("Hallway 3");
+
+        System.out.println(map.get("Library 3"));
 
     }
 }

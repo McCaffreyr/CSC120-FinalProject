@@ -20,7 +20,7 @@ public class Item {
     }
 
     /**
-     * an acessor for the item's name
+     * an accessor for the item's name
      * @return a string of the item's name
      */
     public String getName(){
@@ -28,7 +28,7 @@ public class Item {
     }
 
     /**
-     * an acessor method for the item's description
+     * an accessor method for the item's description
      * @return the description for the item 
      */
     public String getDescription(){
@@ -36,7 +36,7 @@ public class Item {
     }
 
     /**
-     * an acessor for the item's location
+     * an accessor for the item's location
      * @return the item's location
      */
     public Location getLocation(){
@@ -50,7 +50,7 @@ public class Item {
     }
 
     /**
-     * an acessor for the item's boolean attribute "inInventory"
+     * an accessor for the item's boolean attribute "inInventory"
      * @return T/F wether the item is in the player's inventory 
      */
     public boolean inInventory(){
