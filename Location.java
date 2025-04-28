@@ -43,9 +43,9 @@ public class Location {
      * an accessor method for whether the Location has an item in it or not
      * @return T/F wether the location contains at least one item. 
      */
-    public Item getItem(Item i){
+    public Boolean hasItem(Item i){
        if(this.locationItems.contains(i)){
-        return i; 
+        return true; 
        }else{
         throw new RuntimeException("This Item is not present at your current location."); 
        }
