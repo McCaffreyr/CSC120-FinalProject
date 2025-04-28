@@ -33,7 +33,7 @@ public class Acid extends Weapon{
      */
     public void empty(){
         this.hasAcid= false; 
-        this.name= "empty beaker"; 
+        this.name= "empty acid beaker"; 
         this.description= "A clear empty glass beaker. It smells faintly acidic."; 
     }
 

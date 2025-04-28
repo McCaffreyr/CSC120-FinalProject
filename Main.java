@@ -1,14 +1,63 @@
 import java.util.Scanner;
-import java.util.Arrays; 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List; 
 import java.util.ArrayList; 
 public class Main {
-    Boolean phaseOneComplete= false; 
-    Boolean phaseTwoComplete= false; 
-    Boolean phaseThreeComplete= false; 
+    //booleans
+    Boolean phaseOneComplete; 
+    Boolean phaseTwoComplete;
+    Boolean phaseThreeComplete;
+    //locations
+    LocationMap map;
+    Location nullLocation;  
+    Location bioLab;
+    Location chemLab;
+    Location cafe;
+    Location englishRoom;
+    Location gym;
+    Location historyRoom;
+    Location mathRoom;
+    Location studyRoom;
+    Location homeRoom;
+    Location hallway1;
+    Location hallway2;
+    Location hallway3;
+    Location hallway5;
+    Location hallway6;
+    Location hallway7;
+    Location hallway8;
+    Location hallway9;
+    Location hallway10;
+    Location hallway11;
+    Location hallway12;
+    //items
+    Item nullItem;
+    Weapon golfClub;
+    BreakableWeapon yellowSharpenedPencil;
+    Weapon acid;
+    BreakableWeapon pinkSharpenedPencil;
+    BreakableWeapon ruler;
+    BreakableWeapon syringe;
+    Weapon scalpel;
+    Weapon knife;
+    Weapon dictionary;
+    //npcs
+    Student homeRoomStudent;
+    Student englishRoomStudent;
+    Student studyRoomStudent;
+    Student cafeRoomStudent;
 
-    public void setUp(){ 
+    //player
+    Person player;
+
+
+    Main(){ 
+        Boolean phaseOneComplete= false; 
+        Boolean phaseTwoComplete= false; 
+        Boolean phaseThreeComplete= false; 
         LocationMap map = new LocationMap();
+        Location nullLocation= new Location("null Location", "n/a", true); 
         Location bioLab = new Location("Bio Lab", "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of scalpels ready for the upcoming dissection.", true);
         Location chemLab = new Location("Chem Lab", "The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside...", true);
         Location cafe = new Location("Cafe", "This is the school's cafeteria. Dozens of long tables sit in organized rows. Two students linger at the back of the cafeteria on their phones. Near the front of the room is a kitchen. Cooking utensils lie around: spoons, tongs, spatula, and a knife...", true);
@@ -29,14 +78,15 @@ public class Main {
         Location hallway10= new Location("Hallway 10", "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false); 
         Location hallway11= new Location("Hallway 11", "In front of you is hallway twelve and behind you is hallway eleven.", false); 
         Location hallway12= new Location("Hallway 12", "In front of you is the entrance to the library and behind you is hallway eleven.", true); 
+        Item nullItem= new Item("null", "null", nullLocation, false ); 
         Weapon golfClub= new Weapon("Golf Club", "A shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", gym, false, 5 ); 
         gym.addItem(golfClub);
-        BreakableWeapon sharpenedPencil1= new BreakableWeapon("Sharpened Pencil", "An insanely sharp #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", homeRoom, false, 2, 2); 
-        homeRoom.addItem(sharpenedPencil1); 
+        BreakableWeapon yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "An insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", homeRoom, false, 2, 2); 
+        homeRoom.addItem(yellowSharpenedPencil); 
         Weapon acid= new Acid(chemLab, false); 
         chemLab.addItem(acid);
-        BreakableWeapon sharpenedPencil2= new BreakableWeapon("Sharpened Pencil", "An insanely sharp #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", historyRoom, false, 2, 2); 
-        historyRoom.addItem(sharpenedPencil2); 
+        BreakableWeapon pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "An insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", historyRoom, false, 2, 2); 
+        historyRoom.addItem(pinkSharpenedPencil); 
         BreakableWeapon ruler= new BreakableWeapon("Ruler", "A wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", mathRoom, false, 2, 4); 
         mathRoom.addItem(ruler);
         BreakableWeapon syringe= new BreakableWeapon("Syringe", "A large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", mathRoom, false, 5, 2); 
@@ -55,9 +105,8 @@ public class Main {
         studyRoom.addNPC(studyRoomStudent); 
         Student cafeRoomStudent= new Student("Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", cafe, 100, false); 
         cafe.addNPC(cafeRoomStudent); 
-        Person player= new Person(homeRoom); 
 
-        
+        Person player= new Person(homeRoom);   
     }
 
     public void help(){
@@ -70,10 +119,10 @@ public class Main {
         System.out.println("-look at: This command must be used in conjuction with an item. It gives you the description of that item."); 
         System.out.println("-grab: This command must be used in conjuction with an item. Adds the item to your players inventory.");
         System.out.println("-drop: This command must be used with an item currently in your inventory. This command will remove the item from your inventory.");
-        if(phaseOneComplete){
+        if(this.phaseOneComplete){
             System.out.println("-search: This command must be used with the name of a specific bookshelf. It allows you to search that bookshelf for the missing book.");
         }
-        if(phaseTwoComplete){
+        if(this.phaseTwoComplete){
             System.out.println("-save: This command must be used with the number of the student to save. This command allows you to save the drained students.");
         }
         System.out.println("--------------------------------");
@@ -86,48 +135,67 @@ public class Main {
     public void getUserInput(Person p){
         Scanner scanner = new Scanner(System.in);
         //creating array list of weapons to compare against
-        ArrayList<String> weaponList= new ArrayList<>(); 
-        weaponList.add("golf club"); 
-        weaponList.add("sharpened pencil"); 
-        weaponList.add("acid"); 
-        weaponList.add("ruler"); 
-        weaponList.add("knife"); 
-        weaponList.add("scalpel"); 
-        weaponList.add("empty beaker"); 
-        weaponList.add("broken ruler"); 
-        weaponList.add("broken sharpened pencil"); 
+        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary" };
+        Item [] itemList= {this.golfClub, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary}; 
+
+        //getting user input
         String userString= scanner.nextLine(); 
         scanner.close(); 
         userString= userString.toLowerCase(); 
         //lines 70-72 refrence 1
         String[] inputArray= userString.split(" "); 
         List<String> inputArrayList= Arrays.asList(inputArray); 
+
         //checking and responding to help command
         if(inputArrayList.contains("help")){
             this.help(); 
         }
         //checking and responding to grab command
         if(inputArrayList.contains("grab")){
-            boolean hasItemString= false; 
-            for(int i=0; i<weaponList.size(); i++){
-                if (inputArrayList.contains(weaponList.get(i))){
-                    hasItemString= true; 
-                    String selectedWeapon= weaponList.get(i);              
-                  }
+            boolean hasItemString= false;  
+            Item itemOfInterest= this.nullItem; 
+            //iterating through itemStringList to check if there is an item in the command from user
+            for(int i=0; i<itemStringList.length; i++){
+                if (itemStringList[i].contains(" ")){
+                    //splitting multiple word item into array
+                    String[] multipleWordItem= itemStringList[i].split(" "); 
+                    int numWordsContained=0; 
+                    for (int wordIdx=0; wordIdx<multipleWordItem.length; wordIdx++){
+                        if (inputArrayList.contains(multipleWordItem[wordIdx])){
+                            numWordsContained+=1; 
+                        }
+                    } if(numWordsContained== multipleWordItem.length-1){
+                        //checking all parts of multiple word item are contained
+                        hasItemString=true; 
+                        itemOfInterest= itemList[i]; 
+                        break; 
+                    }       
+                }else{
+                    if(inputArrayList.contains(itemStringList[i])){
+                       //if single word item is in list
+                       hasItemString=true; 
+                       itemOfInterest=itemList[i];
+                       break;
+                    }
+                }
             }
             if(hasItemString){
-                p.grab()
-                //change to hashtable
+                try{
+                    p.grab(itemOfInterest); 
+                }catch(RuntimeException e){
+                    System.out.println(e.getLocalizedMessage());
+                }
+                
             }
-        }     
+        }  
+           
      }
     
 
 
     
     public static void main(String[] args) { 
-        Main currentGame= new Main(); 
-        currentGame.setUp(); 
+        Main currentGame= new Main();  
         Location homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today, they radiate a youthful exuberance.", true); 
         Person player= new Person(homeRoom); 
         currentGame.getUserInput(player); 

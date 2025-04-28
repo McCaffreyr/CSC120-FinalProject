@@ -116,7 +116,12 @@ public class Person {
      * @param item item that is being added to the inventory
      */
     public void grab(Item item){
-        inventory.add(item);
+        if (this.currentLocation== item.getLocation()){
+            inventory.add(item);
+        }else{
+            throw new RuntimeException("This item is not in your current location. You can't grab something that is not there. duh."); 
+        }
+        
     }
 
     /**
