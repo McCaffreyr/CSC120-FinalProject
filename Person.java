@@ -1,22 +1,19 @@
 import java.util.ArrayList;
 
 public class Person {
-    public ArrayList<Item> inventory;
-    public int health = 100;
-    public int points = 0;
-    Location starterClassroom = new Location("Starter Classroom","desc",true);
-    Location currentLocation = starterClassroom;
-    LocationMap map = new LocationMap();
-    ArrayList<String> responses = new ArrayList<String>();
+    protected ArrayList<Item> inventory;
+    protected int health; 
+    protected int points; 
+    protected Location currentLocation; 
+    protected LocationMap map = new LocationMap(); 
 
     /**
      * Constructor for the Person class
-     * @param health the health of the person
-     * @param points the amount of points the person has
      */
-    public Person(int health, int points) {
-        this.health = health;
-        this.points = points;
+    public Person(Location sL) {
+        this.health = 20;
+        this.points = 0;
+        Location currentLocation= sL; 
         this.inventory = new ArrayList<>(); 
     }
 
@@ -118,7 +115,7 @@ public class Person {
      * Adds an item to the person's inventory
      * @param item item that is being added to the inventory
      */
-    public void pickUp(Item item){
+    public void grab(Item item){
         inventory.add(item);
     }
 
@@ -134,20 +131,20 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        Person Abby = new Person(100,0);
-        Location Starterclassroom = new Location("Starter Classroom","desc",true);
+        Location starterClassroom = new Location("Starter Classroom","desc",true);
+        Person Abby = new Person(starterClassroom);
         Location Hallway3 = new Location("Hallway 3","desc",true);
         Location Hallway7 = new Location("Hallway 7","desc",true);
 
 
-        Item pencil = new Item("Pencil","sharp tool",Starterclassroom,false);
+        Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);
 
         System.out.println(Abby.checkInventory());
-        Abby.pickUp(pencil);
+        Abby.grab(pencil);
         System.out.println(Abby.checkInventory());
 
         Abby.move(Hallway3);
-        Abby.move(Starterclassroom);
+        Abby.move(starterClassroom);
         Abby.move(Hallway7);
 
     }

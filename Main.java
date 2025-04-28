@@ -1,9 +1,14 @@
 import java.util.Scanner;
+import java.util.Arrays; 
+import java.util.List; 
+import java.util.ArrayList; 
 public class Main {
+    Boolean phaseOneComplete= false; 
+    Boolean phaseTwoComplete= false; 
+    Boolean phaseThreeComplete= false; 
 
     public void setUp(){ 
         LocationMap map = new LocationMap();
-
         Location bioLab = new Location("Bio Lab", "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of scalpels ready for the upcoming dissection.", true);
         Location chemLab = new Location("Chem Lab", "The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside...", true);
         Location cafe = new Location("Cafe", "This is the school's cafeteria. Dozens of long tables sit in organized rows. Two students linger at the back of the cafeteria on their phones. Near the front of the room is a kitchen. Cooking utensils lie around: spoons, tongs, spatula, and a knife...", true);
@@ -46,11 +51,85 @@ public class Main {
         homeRoom.addNPC(homeRoomStudent);
         Student englishRoomStudent= new Student("Student", "Your classmate sits in the corner of the room. He is playing a video game on his phone.", englishRoom, 100, false); 
         englishRoom.addNPC(englishRoomStudent); 
+        Student studyRoomStudent=new Student("Student", "A senior student is reading a book in the corner of the room. He seems quite focused but still approachable", studyRoom, 100, false); 
+        studyRoom.addNPC(studyRoomStudent); 
+        Student cafeRoomStudent= new Student("Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", cafe, 100, false); 
+        cafe.addNPC(cafeRoomStudent); 
+        Person player= new Person(homeRoom); 
 
-        System.out.println("Welcome to the game. Feel free to start uncovering the world whenever you are ready. If you are stuck, type 'help' at any point to pull up a list of possible commands. We recommend you wait to use this option unless after you give it a try.");
-
-        Scanner scanner = new Scanner(System.in);
+        
     }
+
+    public void help(){
+        System.out.println("--------------------------------");
+        System.out.println("-move: This command must be used with the name of an adjacent location. It moves your character to that location.");
+        System.out.println("-inventory: This command displays your character's current inventory.");
+        System.out.println("-look around: This command gives you a description of your character's current Location");
+        System.out.println("-talk: This command must used with an NPC's name (exp. student, teacher, librarian) to speak to that NPC");
+        System.out.println("-fight: This command must be used with a target NPC. If used alone you will fight the target with your fist. \n        If used with a weapon you will fight the target with your chosen weapon.");
+        System.out.println("-look at: This command must be used in conjuction with an item. It gives you the description of that item."); 
+        System.out.println("-grab: This command must be used in conjuction with an item. Adds the item to your players inventory.");
+        System.out.println("-drop: This command must be used with an item currently in your inventory. This command will remove the item from your inventory.");
+        if(phaseOneComplete){
+            System.out.println("-search: This command must be used with the name of a specific bookshelf. It allows you to search that bookshelf for the missing book.");
+        }
+        if(phaseTwoComplete){
+            System.out.println("-save: This command must be used with the number of the student to save. This command allows you to save the drained students.");
+        }
+        System.out.println("--------------------------------");
+    }
+
+    public void phaseOne(){
+        System.out.println("Welcome to the game. Feel free to start uncovering the world whenever you are ready. If you are stuck, type 'help' at any point to pull up a list of possible commands. We recommend you wait to use this option unless after you give it a try.");
+    }
+
+    public void getUserInput(Person p){
+        Scanner scanner = new Scanner(System.in);
+        //creating array list of weapons to compare against
+        ArrayList<String> weaponList= new ArrayList<>(); 
+        weaponList.add("golf club"); 
+        weaponList.add("sharpened pencil"); 
+        weaponList.add("acid"); 
+        weaponList.add("ruler"); 
+        weaponList.add("knife"); 
+        weaponList.add("scalpel"); 
+        weaponList.add("empty beaker"); 
+        weaponList.add("broken ruler"); 
+        weaponList.add("broken sharpened pencil"); 
+        String userString= scanner.nextLine(); 
+        scanner.close(); 
+        userString= userString.toLowerCase(); 
+        //lines 70-72 refrence 1
+        String[] inputArray= userString.split(" "); 
+        List<String> inputArrayList= Arrays.asList(inputArray); 
+        //checking and responding to help command
+        if(inputArrayList.contains("help")){
+            this.help(); 
+        }
+        //checking and responding to grab command
+        if(inputArrayList.contains("grab")){
+            boolean hasItemString= false; 
+            for(int i=0; i<weaponList.size(); i++){
+                if (inputArrayList.contains(weaponList.get(i))){
+                    hasItemString= true; 
+                    String selectedWeapon= weaponList.get(i);              
+                  }
+            }
+            if(hasItemString){
+                p.grab()
+                //change to hashtable
+            }
+        }     
+     }
     
+
+
     
+    public static void main(String[] args) { 
+        Main currentGame= new Main(); 
+        currentGame.setUp(); 
+        Location homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today, they radiate a youthful exuberance.", true); 
+        Person player= new Person(homeRoom); 
+        currentGame.getUserInput(player); 
+    }
 }

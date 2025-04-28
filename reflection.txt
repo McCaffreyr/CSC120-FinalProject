@@ -1,0 +1,2 @@
+refrences: 
+1. Used on lines 70-72: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  
