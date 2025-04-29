@@ -25,7 +25,7 @@ public class Person {
         return health;
     }
 
-    public int setHealth(int h){
+    public void setHealth(int h){
         this.health=h; 
     }
 
