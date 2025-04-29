@@ -18,17 +18,17 @@ public class Main {
     Location mathRoom;
     Location studyRoom;
     Location homeRoom;
-    Location hallway1;
-    Location hallway2;
-    Location hallway3;
-    Location hallway5;
-    Location hallway6;
-    Location hallway7;
-    Location hallway8;
-    Location hallway9;
-    Location hallway10;
-    Location hallway11;
-    Location hallway12;
+    Location hallwayOne;
+    Location hallwayTwo;
+    Location hallwayThree;
+    Location hallwayFive;
+    Location hallwaySix;
+    Location hallwaySeven;
+    Location hallwayEight;
+    Location hallwayNine;
+    Location hallwayTen;
+    Location hallwayEleven;
+    Location hallwayTwelve;
     //items
     Item nullItem;
     Weapon golfClub;
@@ -67,18 +67,18 @@ public class Main {
         this.historyRoom = new Location("History Room", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania. In a desk in the far back corner, there is a leftover note and a sharpened pencil lying next to it.", true);
         this.mathRoom = new Location("Math Room", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55.", true);
         this.studyRoom = new Location("Study Room", "This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago. One senior is chilling in the corner, reading a book.", true);
-        this.homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today, they radiate a youthful exuberance.", true); 
-        this.hallway1= new Location("Hallway 1", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", false); 
-        this.hallway2= new Location("Hallway 2", "There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", false); 
-        this.hallway3= new Location("Hallway 3", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", false); 
-        this.hallway5= new Location("Hallway 5", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", false); 
-        this.hallway6= new Location("Hallway 6", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven", false); 
-        this.hallway7= new Location("Hallway 7", "To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.", false); 
-        this.hallway8= new Location("Hallway 8", "To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.", false); 
-        this.hallway9=  new Location("Hallway 9", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", false); 
-        this.hallway10= new Location("Hallway 10", "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false); 
-        this.hallway11= new Location("Hallway 11", "In front of you is hallway twelve and behind you is hallway eleven.", false); 
-        this.hallway12= new Location("Hallway 12", "In front of you is the entrance to the library and behind you is hallway eleven.", true); 
+        this.homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as:  I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today. They radiate a youthful exuberance.", true); 
+        this.hallwayOne= new Location("Hallway One", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", false); 
+        this.hallwayTwo= new Location("Hallway Two", "There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", false); 
+        this.hallwayThree= new Location("Hallway Three", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", false); 
+        this.hallwayFive= new Location("Hallway Five", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", false); 
+        this.hallwaySix= new Location("Hallway Six", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven", false); 
+        this.hallwaySeven= new Location("Hallway Seven", "To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.", false); 
+        this.hallwayEight= new Location("Hallway Eight", "To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.", false); 
+        this.hallwayNine=  new Location("Hallway Nine", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", false); 
+        this.hallwayTen= new Location("Hallway Ten", "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false); 
+        this.hallwayEleven= new Location("Hallway Eleven", "In front of you is hallway twelve and behind you is hallway eleven.", false); 
+        this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library and behind you is hallway eleven.", true); 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
         this.golfClub= new Weapon("Golf Club", "A shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
@@ -145,12 +145,10 @@ public class Main {
     }
 
     public void runHelp(List<String> inputArrayList){
-       //checking and responding to help command
-       if(inputArrayList.contains("help")){
         this.help(); 
         return; 
-        } 
-    }
+    } 
+    
     
     public Item checkGrab(List<String> inputArrayList){
         String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary" };
@@ -186,6 +184,46 @@ public class Main {
         }
         return this.nullItem; 
     }
+
+    public Location checkMove(List<String> inputArrayList){
+        String [] locationStringList={"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve"}; 
+        Location [] locationList= {this.bioLab, this.chemLab, this.cafe, this.englishRoom, this.gym, this.historyRoom, this.mathRoom, this.studyRoom, this.homeRoom, this.hallwayOne, this.hallwayTwo, this.hallwayThree, this.hallwayFive, this.hallwaySix, this.hallwaySeven, this.hallwayEight, this.hallwayNine, this.hallwayTen, this.hallwayEleven, this.hallwayTwelve}; 
+        for(int i=0; i<locationStringList.length; i++){
+            if(locationStringList[i].contains(" ")){
+                String[] multipleWordLocation= locationStringList[i].split(" "); 
+                String[] foundWords= new String[multipleWordLocation.length]; 
+                for(int wordIdx=0; wordIdx<multipleWordLocation.length; wordIdx++){
+                    if(inputArrayList.contains(multipleWordLocation[wordIdx])){
+                        foundWords[wordIdx]=multipleWordLocation[wordIdx]; 
+                    }
+                }
+                boolean matchesAllWords=true; 
+                for(int testI=0; testI<multipleWordLocation.length; testI++){
+                    if(foundWords[testI]!=multipleWordLocation[testI]){
+                        matchesAllWords=false; 
+                        break; 
+                    }
+                }
+                if(matchesAllWords){
+                    return locationList[i]; 
+                }
+            }else{
+                if(inputArrayList.contains(locationStringList[i])){
+                    return locationList[i]; 
+                }
+            }
+
+        }
+        return this.nullLocation; 
+    }
+
+    public void runMove(Location locationOfInterest, Person player){
+        if (locationOfInterest== this.nullLocation){
+            System.out.println("You must include a location to move to!");
+        }else{
+            player.move(locationOfInterest);
+        }
+    }
     
     public void runGrab(Item itemOfInterest, Person p){
         if( itemOfInterest== this.nullItem){
@@ -197,7 +235,16 @@ public class Main {
                 System.out.println(e.getLocalizedMessage());
             } 
         }
-    }     
+    } 
+    
+    public void runInventory(Person player){
+       this.player.checkInventory(); 
+
+    }
+    
+    public void runLookAround(Person player){
+        System.out.println(this.player.lookAround());
+    }
    
     public void runUserInput(){
         List<String> inputArrayList= this.getUserInput(this.player); 
@@ -205,6 +252,12 @@ public class Main {
             this.runHelp(inputArrayList); 
         }else if(inputArrayList.contains("grab")){
             this.runGrab(this.checkGrab(inputArrayList), this.player);
+        }else if(inputArrayList.contains("inventory")){
+            this.runInventory(this.player); 
+        }else if(inputArrayList.contains("move")){
+            this.runMove(this.checkMove(inputArrayList), this.player); 
+        }else if(inputArrayList.contains("look")&& inputArrayList.contains("around")){
+            this.runLookAround(this.player); 
         }
     }
 
@@ -213,6 +266,8 @@ public class Main {
     public static void main(String[] args) { 
         Main testingGame= new Main(); 
         testingGame.runUserInput();
-        System.out.println(testingGame.player.hasItem(testingGame.yellowSharpenedPencil));
+        
+        // System.out.println(testingGame.player.hasItem(testingGame.yellowSharpenedPencil));
+        
     }
 }

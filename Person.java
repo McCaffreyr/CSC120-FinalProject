@@ -34,17 +34,19 @@ public class Person {
     }
 
     /**
-     * An accessor for the person's inventory
-     * @return the items in the inventory
+     * An method that print's the person's inventory
      */
-    public String checkInventory(){
-        String inven = "";
+    public void checkInventory(){
         if (inventory.size() == 0){
-            return ("No items in inventory");
-        } for (int i = 0; i < inventory.size(); i++){
-            inven += inventory.get(i).name;
+            System.out.println("You have no items in your inventory");
+        }else{
+            System.out.println("-----------------Inventory---------------");
+            for (int i = 0; i < inventory.size(); i++){
+            System.out.println("-"+inventory.get(i).getName());
+            }
+            System.out.println("-----------------------------------------");
         }
-        return inven;
+        
         }
     
     /**
@@ -75,11 +77,12 @@ public class Person {
      */
     public void move(Location place){
         if (map.get(currentLocation.name).contains(place.name)){
-            currentLocation = place;
+            this.currentLocation = place;
             System.out.println("Currect location is now: " + place.name);
         } else{
             System.out.println(place.name + " isn't connected to where you are.");
-            System.out.println("The following rooms are connected: " + map.get(currentLocation.name));
+            System.out.println("The following rooms are connected: "); 
+            System.out.println( map.get(this.currentLocation.name));
         }
     }
 
@@ -88,7 +91,7 @@ public class Person {
      * @return the description of the person's current location
      */
     public String lookAround(){
-        return currentLocation.description;
+        return this.currentLocation.description;
     }
 
     public void talk(NPC npc){
@@ -123,7 +126,7 @@ public class Person {
     public void grab(Item item){
         if (this.currentLocation== item.getLocation()){
             inventory.add(item);
-            System.out.println(item.getName()+ " grabbed");
+            System.out.println(item.getName()+ " grabbed!");
         }else{
             throw new RuntimeException("This item is not in your current location. You can't grab something that is not there. duh."); 
         }
@@ -150,9 +153,9 @@ public class Person {
 
         Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);
 
-        System.out.println(Abby.checkInventory());
+      
         Abby.grab(pencil);
-        System.out.println(Abby.checkInventory());
+        
 
         Abby.move(Hallway3);
         Abby.move(starterClassroom);

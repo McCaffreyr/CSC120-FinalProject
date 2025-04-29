@@ -7,38 +7,38 @@ public class LocationMap {
     
     LocationMap(){
         locationMap = this.locationMap;
-        locationMap.put("Gym", new ArrayList<>(Arrays.asList("Hallway 1")));
-        locationMap.put("Study", new ArrayList<>(Arrays.asList("Hallway 1")));
-        locationMap.put("Starter Classroom", new ArrayList<>(Arrays.asList("Hallway 3")));
-        locationMap.put("Chem Lab", new ArrayList<>(Arrays.asList("Hallway 8")));
-        locationMap.put("Bio Lab", new ArrayList<>(Arrays.asList("Hallway 8")));
-        locationMap.put("Math Room", new ArrayList<>(Arrays.asList("Hallway 7")));
-        locationMap.put("English Room", new ArrayList<>(Arrays.asList("Hallway 6")));
-        locationMap.put("History Room", new ArrayList<>(Arrays.asList("Hallway 6")));
-        locationMap.put("Library", new ArrayList<>(Arrays.asList("Hallway 12")));
-        locationMap.put("Cafe", new ArrayList<>(Arrays.asList("Hallway 9", "Hallway 10")));
+        locationMap.put("Gym", new ArrayList<>(Arrays.asList("Hallway One")));
+        locationMap.put("Study", new ArrayList<>(Arrays.asList("Hallway One")));
+        locationMap.put("Home Room", new ArrayList<>(Arrays.asList("Hallway Three")));
+        locationMap.put("Chem Lab", new ArrayList<>(Arrays.asList("Hallway Eight")));
+        locationMap.put("Bio Lab", new ArrayList<>(Arrays.asList("Hallway Eight")));
+        locationMap.put("Math Room", new ArrayList<>(Arrays.asList("Hallway Seven")));
+        locationMap.put("English Room", new ArrayList<>(Arrays.asList("Hallway Six")));
+        locationMap.put("History Room", new ArrayList<>(Arrays.asList("Hallway Six")));
+        locationMap.put("Library", new ArrayList<>(Arrays.asList("Hallway Twelve")));
+        locationMap.put("Cafe", new ArrayList<>(Arrays.asList("Hallway Nine", "Hallway Ten")));
 
-        locationMap.put("Hallway 1", new ArrayList<>(Arrays.asList("Study", "Gym", "Hallway 2")));
-        locationMap.put("Hallway 2", new ArrayList<>(Arrays.asList("Hallway 1", "Hallway 3")));
-        locationMap.put("Hallway 3", new ArrayList<>(Arrays.asList("Hallway 2", "Hallway 5", "Starter Classroom")));
-        locationMap.put("Hallway 5", new ArrayList<>(Arrays.asList("Hallway 3", "Hallway 6")));
-        locationMap.put("Hallway 6", new ArrayList<>(Arrays.asList("Hallway 5", "Hallway 7", "English Room", "History Room")));
-        locationMap.put("Hallway 7", new ArrayList<>(Arrays.asList("Hallway 6", "Hallway 8", "Math Room")));
-        locationMap.put("Hallway 8", new ArrayList<>(Arrays.asList("Hallway 7", "Hallway 9", "Chem Lab", "Bio Lab")));
-        locationMap.put("Hallway 9", new ArrayList<>(Arrays.asList("Hallway 8", "Hallway 10", "Cafe")));
-        locationMap.put("Hallway 10", new ArrayList<>(Arrays.asList("Hallway 9", "Hallway 11", "Cafe")));
-        locationMap.put("Hallway 11", new ArrayList<>(Arrays.asList("Hallway 10", "Hallway 12")));
-        locationMap.put("Hallway 12", new ArrayList<>(Arrays.asList("Hallway 11", "Library 1")));
+        locationMap.put("Hallway One", new ArrayList<>(Arrays.asList("Study", "Gym", "Hallway Two")));
+        locationMap.put("Hallway Two", new ArrayList<>(Arrays.asList("Hallway One", "Hallway Three")));
+        locationMap.put("Hallway Three", new ArrayList<>(Arrays.asList("Hallway Two", "Hallway Five", "Home Room")));
+        locationMap.put("Hallway Five", new ArrayList<>(Arrays.asList("Hallway Three", "Hallway Six")));
+        locationMap.put("Hallway Six", new ArrayList<>(Arrays.asList("Hallway Five", "Hallway Seven", "English Room", "History Room")));
+        locationMap.put("Hallway Seven", new ArrayList<>(Arrays.asList("Hallway Six", "Hallway Eight", "Math Room")));
+        locationMap.put("Hallway Eight", new ArrayList<>(Arrays.asList("Hallway Seven", "Hallway Nine", "Chem Lab", "Bio Lab")));
+        locationMap.put("Hallway Nine", new ArrayList<>(Arrays.asList("Hallway Eight", "Hallway Ten", "Cafe")));
+        locationMap.put("Hallway Ten", new ArrayList<>(Arrays.asList("Hallway Nine", "Hallway Eleven", "Cafe")));
+        locationMap.put("Hallway Eleven", new ArrayList<>(Arrays.asList("Hallway Ten", "Hallway Twelve")));
+        locationMap.put("Hallway Twelve", new ArrayList<>(Arrays.asList("Hallway Eleven", "Library One")));
 
-        locationMap.put("Library 1", new ArrayList<>(Arrays.asList("Hallway 12", "Library 2", "Library 3")));
-        locationMap.put("Library 2", new ArrayList<>(Arrays.asList("Library 1", "Library 8", "Cellar Stairs")));
-        locationMap.put("Library 3", new ArrayList<>(Arrays.asList("Library 1", "Library 4", "Library 6", "Library 7")));
-        locationMap.put("Library 4", new ArrayList<>(Arrays.asList("Library 3", "Library 5")));
-        locationMap.put("Library 5", new ArrayList<>(Arrays.asList("Library 4")));
-        locationMap.put("Library 6", new ArrayList<>(Arrays.asList("Library 3")));
-        locationMap.put("Library 7", new ArrayList<>(Arrays.asList("Library 3", "Library 8")));
-        locationMap.put("Library 8", new ArrayList<>(Arrays.asList("Library 7", "Library 2")));
-        locationMap.put("Cellar Stairs", new ArrayList<>(Arrays.asList("Library 2")));
+        locationMap.put("Library One", new ArrayList<>(Arrays.asList("Hallway Twelve", "Library Two", "Library Three")));
+        locationMap.put("Library Two", new ArrayList<>(Arrays.asList("Library One", "Library Eight", "Cellar Stairs")));
+        locationMap.put("Library Three", new ArrayList<>(Arrays.asList("Library One", "Library Four", "Library Six", "Library Seven")));
+        locationMap.put("Library Four", new ArrayList<>(Arrays.asList("Library Three", "Library Five")));
+        locationMap.put("Library Five", new ArrayList<>(Arrays.asList("Library Four")));
+        locationMap.put("Library Six", new ArrayList<>(Arrays.asList("Library Three")));
+        locationMap.put("Library Seven", new ArrayList<>(Arrays.asList("Library Three", "Library Eight")));
+        locationMap.put("Library Eight", new ArrayList<>(Arrays.asList("Library Seven", "Library Two")));
+        locationMap.put("Cellar Stairs", new ArrayList<>(Arrays.asList("Library Two")));
     }
 
     /**
