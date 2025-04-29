@@ -89,5 +89,9 @@ public class NPC {
         System.out.println("Error this message should not appear in game"); 
     }
 
+    public String toString(){
+        return this.getName(); 
+    }
+
     
 }

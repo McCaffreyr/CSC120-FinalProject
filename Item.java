@@ -70,4 +70,8 @@ public class Item {
         System.out.println("Error message this should never appear in game!");
     }
 
+    public String toString(){
+        return this.getName(); 
+    }
+
 }

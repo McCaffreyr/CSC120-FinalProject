@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.Arrays; 
+
 public class Location {
 
     String name; 
     String description; 
+    String descriptionWithKeyItems; 
     boolean hasItem; 
-    ArrayList<Item> locationItems; 
-    ArrayList<NPC> npcList; 
+    ArrayList<Object> locationItemsAndNPCs; 
+    Object [] keyItems; 
 
     /**
      * A constuctor for a Location
@@ -13,12 +16,13 @@ public class Location {
      * @param d the description of the location
      * @param hI T/F wether the location contains and item. 
      */
-    Location(String n, String d, boolean hI){
+    Location(String n, String d, String dWKI, boolean hI, Object[] kI){
         this.name = n; 
         this.description = d; 
+        this.descriptionWithKeyItems= dWKI; 
         this.hasItem = hI; 
-        this.locationItems = new ArrayList<Item>();
-        this.npcList= new ArrayList<NPC>(); 
+        this.locationItemsAndNPCs= new ArrayList<Object>(); 
+        this.keyItems=kI; 
     } 
 
     /**
@@ -29,12 +33,40 @@ public class Location {
         return this.name; 
     }
 
+    public boolean checkHasOnlyKeyItems(){
+        boolean hasOnlyKeyItems= true; 
+        for (int i=0; i<this.keyItems.length; i++){
+            if(locationItemsAndNPCs.contains(keyItems[i])==false){
+                hasOnlyKeyItems=false; 
+                break; 
+            }
+        }
+        ArrayList<Object>keyItemsAsList= new ArrayList<Object>(Arrays.asList(keyItems)); 
+        for(int i=0; i<this.locationItemsAndNPCs.size(); i++){
+            if(keyItemsAsList.contains(locationItemsAndNPCs.get(i))==false){
+                hasOnlyKeyItems=false; 
+                break; 
+            }
+        }
+        return hasOnlyKeyItems; 
+    }
+
     /**
      * an accessor for the description of the location
      * @return a string with the description of the location
      */
     public String getDescription(){
-        return this.description; 
+        if(checkHasOnlyKeyItems()){
+            return this.descriptionWithKeyItems; 
+        }
+        else{
+            String description= this.description + "\n This room contains the following items: \n"; 
+            for(int i=0; i<this.locationItemsAndNPCs.size(); i++){
+                description= description+ "-"+ this.locationItemsAndNPCs.get(i).toString()+"\n"; 
+            }
+            return description; 
+        }
+        
     }
     
     /**
@@ -42,7 +74,7 @@ public class Location {
      * @return T/F wether the location contains at least one item. 
      */
     public Boolean hasItem(Item i){
-       if(this.locationItems.contains(i)){
+       if(this.locationItemsAndNPCs.contains(i)){
         return true; 
        }else{
         throw new RuntimeException("This Item is not present at your current location."); 
@@ -54,7 +86,7 @@ public class Location {
      * @param i the item to be added to the location
      */
     public void addItem(Item i){
-        this.locationItems.add(i); 
+        this.locationItemsAndNPCs.add(i); 
     }
 
     /**
@@ -62,26 +94,26 @@ public class Location {
      * @param i the item to be removed from the array list of items
      */
     public void removeItem(Item i){
-        this.locationItems.remove(i); 
+        this.locationItemsAndNPCs.remove(i); 
     }
     /**
      * This adds an NPC to the location's NPC List.
      * @param n the NPC to be added to the location
      */
     public void addNPC(NPC n){
-        this.npcList.add(n); 
+        this.locationItemsAndNPCs.add(n); 
     }
     /**
      * This removes an NPC from the location's NPC list.
      * @param n the NPC to be removed from the location.
      */
     public void removeNPC(NPC n){
-        this.npcList.remove(n); 
+        this.locationItemsAndNPCs.remove(n); 
     }
 
     public static void main(String[] args) {
-        Location school = new Location("school", "school desc", true);
-        System.out.println(school.getDescription());
+        // Location school = new Location("school", "school desc", true);
+        // System.out.println(school.getDescription());
 
         // Location bioLab = new Location("Bio Lab", "You enter a biology lab with shiny gray counter tops. It looks like a class was just in here. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside..."
         // , true);

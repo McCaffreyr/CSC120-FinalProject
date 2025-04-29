@@ -83,6 +83,7 @@ public class Person {
         if (map.get(currentLocation.name).contains(place.name)){
             this.currentLocation = place;
             System.out.println("Currect location is now: " + place.name);
+            this.points= this.getPoints()+1; 
         } else{
             System.out.println(place.name + " isn't connected to where you are.");
             System.out.println("The following rooms are connected: "); 
@@ -101,6 +102,7 @@ public class Person {
     public void talk(NPC npc){
         if(npc.getLocation()==this.getLocation()){
             npc.talk(); 
+            this.points= this.getPoints()+1; 
         }else{
             System.out.println("This person is not in"+ this.getLocation()+ " . You look silly talking to a wall.");
         }
@@ -127,6 +129,7 @@ public class Person {
         }else{
             try{
                 item.use(npc, this); 
+                this.points= this.getPoints()+3; 
             }catch (RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             }
@@ -143,6 +146,7 @@ public class Person {
         }else if(this.getLocation()== npc.getLocation()){
             System.out.println("You punch the "+ npc.getName());
             npc.beAttacked(2, this); 
+            this.points=this.getPoints()+3;
 
         }else{
             throw new RuntimeException("You cannot fight someone who is not in the same room as you. You look quite silly swinging your fists at no one."); 
@@ -173,6 +177,7 @@ public class Person {
             this.inventory.add(item);
             item.setLocation(nullL);
             System.out.println(item.getName()+ " grabbed!");
+            this.points= this.getPoints()+2; 
         }else{
             throw new RuntimeException("This item is not in your current location. You can't grab something that is not there. duh."); 
         }
@@ -194,14 +199,23 @@ public class Person {
         
     }
 
+    public Boolean isdead(){
+        if (this.health<=0){
+            System.out.println("You died! Whoops! You had "+ this.getPoints());
+            return true; 
+        }else{
+            return false; 
+        }
+    }
+
     protected void save(DrainedStudent drainedstu){
     }
 
     public static void main(String[] args) {
-        Location starterClassroom = new Location("Starter Classroom","desc",true);
-        Person Abby = new Person(starterClassroom);
-        Location Hallway3 = new Location("Hallway 3","desc",true);
-        Location Hallway7 = new Location("Hallway 7","desc",true);
+        // Location starterClassroom = new Location("Starter Classroom","desc",true);
+        // Person Abby = new Person(starterClassroom);
+        // Location Hallway3 = new Location("Hallway 3","desc",true);
+        // Location Hallway7 = new Location("Hallway 7","desc",true);
 
 
         // Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);
@@ -210,9 +224,9 @@ public class Person {
         
         
 
-        Abby.move(Hallway3);
-        Abby.move(starterClassroom);
-        Abby.move(Hallway7);
+        // Abby.move(Hallway3);
+        // Abby.move(starterClassroom);
+        // Abby.move(Hallway7);
 
     }
 

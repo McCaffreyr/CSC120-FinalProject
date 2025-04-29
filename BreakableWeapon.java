@@ -50,16 +50,16 @@ public class BreakableWeapon extends Weapon {
     }
     
     public static void main(String[] args) {
-        Location testingLocation= new Location("testingLocal", "n/a", false); 
-        NPC test= new NPC("test NPC", "blah blah", testingLocation, 3, true); 
-        BreakableWeapon testWeapon= new BreakableWeapon("testing weapon", "n/a", "you attack", testingLocation, true, 1, 3); 
+        //Location testingLocation= new Location("testingLocal", "n/a", false); 
+        //NPC test= new NPC("test NPC", "blah blah", testingLocation, 3, true); 
+        //BreakableWeapon testWeapon= new BreakableWeapon("testing weapon", "n/a", "you attack", testingLocation, true, 1, 3); 
         // testWeapon.use(test); 
-        System.out.println(test.getHealth()); 
+        //System.out.println(test.getHealth()); 
         // testWeapon.use(test);
-        System.out.println(test.getHealth()); 
+        //System.out.println(test.getHealth()); 
         // testWeapon.use(test); 
-        System.out.println(test.getHealth()); 
-        System.out.println(testWeapon.isItemBroken()); 
+        //System.out.println(test.getHealth()); 
+        //System.out.println(testWeapon.isItemBroken()); 
         // try{
             // testWeapon.use(test); 
         // }catch( RuntimeException e){
