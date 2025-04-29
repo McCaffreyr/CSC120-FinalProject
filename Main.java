@@ -45,6 +45,7 @@ public class Main {
     Student englishRoomStudent;
     Student studyRoomStudent;
     Student cafeRoomStudent;
+    Teacher homeRoomTeacher; 
 
     //player
     Person player;
@@ -106,6 +107,7 @@ public class Main {
         this.studyRoom.addNPC(this.studyRoomStudent); 
         this.cafeRoomStudent= new Student("Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
         this.cafe.addNPC(this.cafeRoomStudent); 
+        this.homeRoomTeacher= new Teacher("Home Room Teacher", "Your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10, true); 
         this.player= new Person(this.homeRoom);   
         this.scanner = new Scanner(System.in);
     }

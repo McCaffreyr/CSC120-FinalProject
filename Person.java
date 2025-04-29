@@ -25,6 +25,10 @@ public class Person {
         return health;
     }
 
+    public int setHealth(int h){
+        this.health=h; 
+    }
+
     /**
      * An accessor for the person's points
      * @return the number of points the person has
@@ -95,6 +99,9 @@ public class Person {
     }
 
     public void talk(NPC npc){
+        if(npc.getLocation()==this.getLocation()){
+            npc.talk(); 
+        }
     }
 
     //searchs bookshelves for book

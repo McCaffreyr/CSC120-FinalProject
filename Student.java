@@ -1,3 +1,4 @@
+import java.util.random.*;
 public class Student extends NPC{
 
     /**
@@ -13,5 +14,20 @@ public class Student extends NPC{
         h = 100;
         a = false;
     }
-    
+
+    public void talk(){
+        double randomNum= Math.random(); 
+        if (randomNum <0.25){
+            System.out.println("random student response 1");
+        }else if(randomNum>=0.25 && randomNum<0.50){
+            System.out.println("random student response #2");
+        }else if(randomNum>= 0.50 && randomNum<0.75){
+            System.out.println("random student response #3");
+        }else{
+            System.out.println("random student resopnse #4");
+        }
+
+    }
 }
+    
+
