@@ -13,7 +13,7 @@ public class Person {
     public Person(Location sL) {
         this.health = 20;
         this.points = 0;
-        Location currentLocation= sL; 
+        this.currentLocation= sL; 
         this.inventory = new ArrayList<>(); 
     }
 
@@ -62,6 +62,11 @@ public class Person {
      */
     public Location getLocation(){
         return currentLocation;
+    }
+
+    //just for testing
+    public void setLocation(Location l){
+        this.currentLocation= l; 
     }
 
     /**
@@ -118,6 +123,7 @@ public class Person {
     public void grab(Item item){
         if (this.currentLocation== item.getLocation()){
             inventory.add(item);
+            System.out.println(item.getName()+ " grabbed");
         }else{
             throw new RuntimeException("This item is not in your current location. You can't grab something that is not there. duh."); 
         }

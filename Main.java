@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List; 
-import java.util.ArrayList; 
+import java.util.List;
 public class Main {
     //booleans
     Boolean phaseOneComplete; 
@@ -51,62 +49,65 @@ public class Main {
     //player
     Person player;
 
+    //scanner
+    Scanner scanner; 
+
 
     Main(){ 
-        Boolean phaseOneComplete= false; 
-        Boolean phaseTwoComplete= false; 
-        Boolean phaseThreeComplete= false; 
-        LocationMap map = new LocationMap();
-        Location nullLocation= new Location("null Location", "n/a", true); 
-        Location bioLab = new Location("Bio Lab", "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of scalpels ready for the upcoming dissection.", true);
-        Location chemLab = new Location("Chem Lab", "The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside...", true);
-        Location cafe = new Location("Cafe", "This is the school's cafeteria. Dozens of long tables sit in organized rows. Two students linger at the back of the cafeteria on their phones. Near the front of the room is a kitchen. Cooking utensils lie around: spoons, tongs, spatula, and a knife...", true);
-        Location englishRoom = new Location("English Room", "Your English teacher decorated her room based on her favorite gothic novel, Dracula. The whole room has a red and black theme and is always dimly lit. In the corner, you can just barely make out another student. Their phone light brightens up the underside of their face, giving them a flashlight under face campfire scary story effect.", true);
-        Location gym = new Location("Gym", "The gym walls are covered in banners won by different students over the years. The golf team was known across the country, they had won nationals ten years in a row. However, the team this year was known to be pranksters and particularly rebellious. Come to think of it, you haven’t seen any of the team in a while… strange. However, one of their golf clubs is resting against the far gym wall.", true);
-        Location historyRoom = new Location("History Room", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania. In a desk in the far back corner, there is a leftover note and a sharpened pencil lying next to it.", true);
-        Location mathRoom = new Location("Math Room", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55.", true);
-        Location studyRoom = new Location("Study Room", "This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago. One senior is chilling in the corner, reading a book.", true);
-        Location homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today, they radiate a youthful exuberance.", true); 
-        Location hallway1= new Location("Hallway 1", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", false); 
-        Location hallway2= new Location("Hallway 2", "There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", false); 
-        Location hallway3= new Location("Hallway 3", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", false); 
-        Location hallway5= new Location("Hallway 5", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", false); 
-        Location hallway6= new Location("Hallway 6", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven", false); 
-        Location hallway7= new Location("Hallway 7", "To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.", false); 
-        Location hallway8= new Location("Hallway 8", "To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.", false); 
-        Location hallway9=  new Location("Hallway 9", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", false); 
-        Location hallway10= new Location("Hallway 10", "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false); 
-        Location hallway11= new Location("Hallway 11", "In front of you is hallway twelve and behind you is hallway eleven.", false); 
-        Location hallway12= new Location("Hallway 12", "In front of you is the entrance to the library and behind you is hallway eleven.", true); 
-        Item nullItem= new Item("null", "null", nullLocation, false ); 
-        Weapon golfClub= new Weapon("Golf Club", "A shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", gym, false, 5 ); 
-        gym.addItem(golfClub);
-        BreakableWeapon yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "An insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", homeRoom, false, 2, 2); 
-        homeRoom.addItem(yellowSharpenedPencil); 
-        Weapon acid= new Acid(chemLab, false); 
-        chemLab.addItem(acid);
-        BreakableWeapon pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "An insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", historyRoom, false, 2, 2); 
-        historyRoom.addItem(pinkSharpenedPencil); 
-        BreakableWeapon ruler= new BreakableWeapon("Ruler", "A wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", mathRoom, false, 2, 4); 
-        mathRoom.addItem(ruler);
-        BreakableWeapon syringe= new BreakableWeapon("Syringe", "A large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", mathRoom, false, 5, 2); 
-        bioLab.addItem(syringe);
-        Weapon scalpel= new Weapon("Scalpel", "A super sharp scalpel. Originally intended for dissections, but could be useful in some sticky situations.", "You slice your opponent with your scalpel. That one is gonna leave a nasty mark.", bioLab, false, 5); 
-        bioLab.addItem(scalpel);
-        Weapon knife= new Weapon("Knife", "A shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", cafe, false, 6 ); 
-        cafe.addItem(knife);
-        Weapon dictionary = new Weapon("Dictionary","You find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",englishRoom,false,2);
-        englishRoom.addItem(dictionary);
-        Student homeRoomStudent= new Student("Student","Your fellow classmate who is locked in on some homework.", homeRoom, 100, false); 
-        homeRoom.addNPC(homeRoomStudent);
-        Student englishRoomStudent= new Student("Student", "Your classmate sits in the corner of the room. He is playing a video game on his phone.", englishRoom, 100, false); 
-        englishRoom.addNPC(englishRoomStudent); 
-        Student studyRoomStudent=new Student("Student", "A senior student is reading a book in the corner of the room. He seems quite focused but still approachable", studyRoom, 100, false); 
-        studyRoom.addNPC(studyRoomStudent); 
-        Student cafeRoomStudent= new Student("Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", cafe, 100, false); 
-        cafe.addNPC(cafeRoomStudent); 
-
-        Person player= new Person(homeRoom);   
+        this.phaseOneComplete= false; 
+        this.phaseTwoComplete= false; 
+        this.phaseThreeComplete= false; 
+        this.map = new LocationMap();
+        this.nullLocation= new Location("null Location", "n/a", true); 
+        this.bioLab = new Location("Bio Lab", "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of scalpels ready for the upcoming dissection.", true);
+        this.chemLab = new Location("Chem Lab", "The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside...", true);
+        this.cafe = new Location("Cafe", "This is the school's cafeteria. Dozens of long tables sit in organized rows. Two students linger at the back of the cafeteria on their phones. Near the front of the room is a kitchen. Cooking utensils lie around: spoons, tongs, spatula, and a knife...", true);
+        this.englishRoom = new Location("English Room", "Your English teacher decorated her room based on her favorite gothic novel, Dracula. The whole room has a red and black theme and is always dimly lit. In the corner, you can just barely make out another student. Their phone light brightens up the underside of their face, giving them a flashlight under face campfire scary story effect.", true);
+        this.gym = new Location("Gym", "The gym walls are covered in banners won by different students over the years. The golf team was known across the country, they had won nationals ten years in a row. However, the team this year was known to be pranksters and particularly rebellious. Come to think of it, you haven’t seen any of the team in a while… strange. However, one of their golf clubs is resting against the far gym wall.", true);
+        this.historyRoom = new Location("History Room", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania. In a desk in the far back corner, there is a leftover note and a sharpened pencil lying next to it.", true);
+        this.mathRoom = new Location("Math Room", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55.", true);
+        this.studyRoom = new Location("Study Room", "This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago. One senior is chilling in the corner, reading a book.", true);
+        this.homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today, they radiate a youthful exuberance.", true); 
+        this.hallway1= new Location("Hallway 1", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", false); 
+        this.hallway2= new Location("Hallway 2", "There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", false); 
+        this.hallway3= new Location("Hallway 3", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", false); 
+        this.hallway5= new Location("Hallway 5", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", false); 
+        this.hallway6= new Location("Hallway 6", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven", false); 
+        this.hallway7= new Location("Hallway 7", "To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.", false); 
+        this.hallway8= new Location("Hallway 8", "To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.", false); 
+        this.hallway9=  new Location("Hallway 9", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", false); 
+        this.hallway10= new Location("Hallway 10", "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false); 
+        this.hallway11= new Location("Hallway 11", "In front of you is hallway twelve and behind you is hallway eleven.", false); 
+        this.hallway12= new Location("Hallway 12", "In front of you is the entrance to the library and behind you is hallway eleven.", true); 
+        this.nullItem= new Item("null", "null", this.nullLocation, false ); 
+        this.golfClub= new Weapon("Golf Club", "A shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
+        this.gym.addItem(this.golfClub);
+        this.yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "An insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", this.homeRoom, false, 2, 2); 
+        this.homeRoom.addItem(this.yellowSharpenedPencil); 
+        this.acid= new Acid(this.chemLab, false); 
+        this.chemLab.addItem(this.acid);
+        this.pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "An insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", this.historyRoom, false, 2, 2); 
+        this.historyRoom.addItem(this.pinkSharpenedPencil); 
+        this.ruler= new BreakableWeapon("Ruler", "A wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", this.mathRoom, false, 2, 4); 
+        this.mathRoom.addItem(this.ruler);
+        this.syringe= new BreakableWeapon("Syringe", "A large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", this.mathRoom, false, 5, 2); 
+        this.bioLab.addItem(this.syringe);
+        this.scalpel= new Weapon("Scalpel", "A super sharp scalpel. Originally intended for dissections, but could be useful in some sticky situations.", "You slice your opponent with your scalpel. That one is gonna leave a nasty mark.", this.bioLab, false, 5); 
+        this.bioLab.addItem(this.scalpel);
+        this.knife= new Weapon("Knife", "A shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", this.cafe, false, 6 ); 
+        this.cafe.addItem(this.knife);
+        this.dictionary = new Weapon("Dictionary","You find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",this.englishRoom,false,2);
+        this.englishRoom.addItem(this.dictionary);
+        this.homeRoomStudent= new Student("Student","Your fellow classmate who is locked in on some homework.", this.homeRoom, 100, false); 
+        this.homeRoom.addNPC(this.homeRoomStudent);
+        this.englishRoomStudent= new Student("Student", "Your classmate sits in the corner of the room. He is playing a video game on his phone.", this.englishRoom, 100, false); 
+        this.englishRoom.addNPC(this.englishRoomStudent); 
+        this.studyRoomStudent=new Student("Student", "A senior student is reading a book in the corner of the room. He seems quite focused but still approachable", this.studyRoom, 100, false); 
+        this.studyRoom.addNPC(this.studyRoomStudent); 
+        this.cafeRoomStudent= new Student("Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
+        this.cafe.addNPC(this.cafeRoomStudent); 
+        this.player= new Person(this.homeRoom);   
+        this.scanner = new Scanner(System.in);
     }
 
     public void help(){
@@ -132,72 +133,86 @@ public class Main {
         System.out.println("Welcome to the game. Feel free to start uncovering the world whenever you are ready. If you are stuck, type 'help' at any point to pull up a list of possible commands. We recommend you wait to use this option unless after you give it a try.");
     }
 
-    public void getUserInput(Person p){
-        Scanner scanner = new Scanner(System.in);
-        //creating array list of weapons to compare against
-        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary" };
-        Item [] itemList= {this.golfClub, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary}; 
-
+    public List<String> getUserInput(Person p){
         //getting user input
-        String userString= scanner.nextLine(); 
-        scanner.close(); 
+        String userString= scanner.nextLine();  
         userString= userString.toLowerCase(); 
+        userString= userString.trim(); 
         //lines 70-72 refrence 1
         String[] inputArray= userString.split(" "); 
         List<String> inputArrayList= Arrays.asList(inputArray); 
+        return inputArrayList; 
+    }
 
-        //checking and responding to help command
-        if(inputArrayList.contains("help")){
-            this.help(); 
-        }
-        //checking and responding to grab command
-        if(inputArrayList.contains("grab")){
-            boolean hasItemString= false;  
-            Item itemOfInterest= this.nullItem; 
-            //iterating through itemStringList to check if there is an item in the command from user
-            for(int i=0; i<itemStringList.length; i++){
-                if (itemStringList[i].contains(" ")){
-                    //splitting multiple word item into array
-                    String[] multipleWordItem= itemStringList[i].split(" "); 
-                    int numWordsContained=0; 
-                    for (int wordIdx=0; wordIdx<multipleWordItem.length; wordIdx++){
-                        if (inputArrayList.contains(multipleWordItem[wordIdx])){
-                            numWordsContained+=1; 
-                        }
-                    } if(numWordsContained== multipleWordItem.length-1){
-                        //checking all parts of multiple word item are contained
-                        hasItemString=true; 
-                        itemOfInterest= itemList[i]; 
-                        break; 
-                    }       
-                }else{
-                    if(inputArrayList.contains(itemStringList[i])){
-                       //if single word item is in list
-                       hasItemString=true; 
-                       itemOfInterest=itemList[i];
-                       break;
+    public void runHelp(List<String> inputArrayList){
+       //checking and responding to help command
+       if(inputArrayList.contains("help")){
+        this.help(); 
+        return; 
+        } 
+    }
+    
+    public Item checkGrab(List<String> inputArrayList){
+        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary" };
+        Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary};   
+        //iterating through itemStringList to check if there is an item in the command from user
+        for(int i=0; i<itemStringList.length; i++){
+            if (itemStringList[i].contains(" ")){ 
+                //splitting multiple word item into array
+                String[] multipleWordItem= itemStringList[i].split(" "); 
+                String[]foundWords= new String[multipleWordItem.length]; 
+                for (int wordIdx=0; wordIdx<multipleWordItem.length; wordIdx++){
+                    if (inputArrayList.contains(multipleWordItem[wordIdx])){
+                        foundWords[wordIdx]=multipleWordItem[wordIdx]; 
+                    }
+                } 
+                boolean matchesAllWords=true; 
+                for(int testI=0; testI<multipleWordItem.length; testI++){
+                    if (foundWords[testI]!=multipleWordItem[testI]){
+                        matchesAllWords=false; 
+                        break;  
                     }
                 }
-            }
-            if(hasItemString){
-                try{
-                    p.grab(itemOfInterest); 
-                }catch(RuntimeException e){
-                    System.out.println(e.getLocalizedMessage());
+                if(matchesAllWords){
+                    //checking all parts of multiple word item are contained 
+                    return itemList[i]; 
+                }       
+            }else{
+                if(inputArrayList.contains(itemStringList[i])){
+                    //if single word item is in list
+                    return itemList[i]; 
                 }
-                
             }
-        }  
-           
-     }
+        }
+        return this.nullItem; 
+    }
     
+    public void runGrab(Item itemOfInterest, Person p){
+        if( itemOfInterest== this.nullItem){
+            System.out.println("You must include an item to grab!");
+        }else{
+            try{
+                p.grab(itemOfInterest); 
+            }catch(RuntimeException e){
+                System.out.println(e.getLocalizedMessage());
+            } 
+        }
+    }     
+   
+    public void runUserInput(){
+        List<String> inputArrayList= this.getUserInput(this.player); 
+        if(inputArrayList.contains("help")){
+            this.runHelp(inputArrayList); 
+        }else if(inputArrayList.contains("grab")){
+            this.runGrab(this.checkGrab(inputArrayList), this.player);
+        }
+    }
 
 
     
     public static void main(String[] args) { 
-        Main currentGame= new Main();  
-        Location homeRoom= new Location("Home Room", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today, they radiate a youthful exuberance.", true); 
-        Person player= new Person(homeRoom); 
-        currentGame.getUserInput(player); 
+        Main testingGame= new Main(); 
+        testingGame.runUserInput();
+        System.out.println(testingGame.player.hasItem(testingGame.yellowSharpenedPencil));
     }
 }
