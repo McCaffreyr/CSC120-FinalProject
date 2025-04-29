@@ -18,6 +18,7 @@ public class Teacher extends NPC{
 
     
     public void talk(){
+        super.talk(); 
         double randomNum= Math.random(); 
         if (randomNum <0.25){
             System.out.println("random teacher response 1");
@@ -38,5 +39,6 @@ public class Teacher extends NPC{
 
     public void fight(Person p){
         p.setHealth(p.getHealth()-2); 
+        System.out.println("The teacher slaps you back! It does two damage. Your health is now "+p.getHealth());
     }
 }

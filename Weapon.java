@@ -21,9 +21,9 @@ public class Weapon extends Item {
      * This method uses the weapon and subtracts however many hit points the weapon has from the target.
      * @param target the target that is being attacked
      */
-    public void use(NPC target){
-        target.setHealth(target.getHealth() - this.hitPower); 
+    public void use(NPC target, Person player){
         System.out.println(attackDescription);
+        target.beAttacked(this.hitPower, player); 
     }
         
  }

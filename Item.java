@@ -66,4 +66,8 @@ public class Item {
         this.currentLocation=l; 
     }
 
+    public void use(NPC target, Person player){
+        System.out.println("Error message this should never appear in game!");
+    }
+
 }

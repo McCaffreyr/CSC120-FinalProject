@@ -1,4 +1,4 @@
-import java.util.random.*;
+
 public class Student extends NPC{
 
     /**
@@ -16,6 +16,7 @@ public class Student extends NPC{
     }
 
     public void talk(){
+        super.talk(); 
         double randomNum= Math.random(); 
         if (randomNum <0.25){
             System.out.println("random student response 1");

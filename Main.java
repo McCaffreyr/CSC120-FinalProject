@@ -46,6 +46,7 @@ public class Main {
     Student studyRoomStudent;
     Student cafeRoomStudent;
     Teacher homeRoomTeacher; 
+    NPC nullNPC;
 
     //player
     Person player;
@@ -81,33 +82,34 @@ public class Main {
         this.hallwayEleven= new Location("Hallway Eleven", "In front of you is hallway twelve and behind you is hallway eleven.", false); 
         this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library and behind you is hallway eleven.", true); 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
-        this.golfClub= new Weapon("Golf Club", "A shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
+        this.golfClub= new Weapon("Golf Club", "a shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
-        this.yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "An insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", this.homeRoom, false, 2, 2); 
+        this.yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "an insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", this.homeRoom, false, 2, 2); 
         this.homeRoom.addItem(this.yellowSharpenedPencil); 
         this.acid= new Acid(this.chemLab, false); 
         this.chemLab.addItem(this.acid);
-        this.pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "An insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", this.historyRoom, false, 2, 2); 
+        this.pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "an insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", this.historyRoom, false, 2, 2); 
         this.historyRoom.addItem(this.pinkSharpenedPencil); 
-        this.ruler= new BreakableWeapon("Ruler", "A wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", this.mathRoom, false, 2, 4); 
+        this.ruler= new BreakableWeapon("Ruler", "a wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", this.mathRoom, false, 2, 4); 
         this.mathRoom.addItem(this.ruler);
-        this.syringe= new BreakableWeapon("Syringe", "A large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", this.mathRoom, false, 5, 2); 
+        this.syringe= new BreakableWeapon("Syringe", "a large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", this.mathRoom, false, 5, 2); 
         this.bioLab.addItem(this.syringe);
-        this.scalpel= new Weapon("Scalpel", "A super sharp scalpel. Originally intended for dissections, but could be useful in some sticky situations.", "You slice your opponent with your scalpel. That one is gonna leave a nasty mark.", this.bioLab, false, 5); 
+        this.scalpel= new Weapon("Scalpel", "a super sharp scalpel. Originally intended for dissections, but could be useful in some sticky situations.", "You slice your opponent with your scalpel. That one is gonna leave a nasty mark.", this.bioLab, false, 5); 
         this.bioLab.addItem(this.scalpel);
-        this.knife= new Weapon("Knife", "A shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", this.cafe, false, 6 ); 
+        this.knife= new Weapon("Knife", "a shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", this.cafe, false, 6 ); 
         this.cafe.addItem(this.knife);
-        this.dictionary = new Weapon("Dictionary","You find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",this.englishRoom,false,2);
+        this.dictionary = new Weapon("Dictionary","you find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",this.englishRoom,false,2);
         this.englishRoom.addItem(this.dictionary);
-        this.homeRoomStudent= new Student("Student","Your fellow classmate who is locked in on some homework.", this.homeRoom, 100, false); 
+        this.homeRoomStudent= new Student("Home Room Student","your fellow classmate who is locked in on some homework.", this.homeRoom, 100, false); 
         this.homeRoom.addNPC(this.homeRoomStudent);
-        this.englishRoomStudent= new Student("Student", "Your classmate sits in the corner of the room. He is playing a video game on his phone.", this.englishRoom, 100, false); 
+        this.englishRoomStudent= new Student("English Room Student", "your classmate sits in the corner of the room. He is playing a video game on his phone.", this.englishRoom, 100, false); 
         this.englishRoom.addNPC(this.englishRoomStudent); 
-        this.studyRoomStudent=new Student("Student", "A senior student is reading a book in the corner of the room. He seems quite focused but still approachable", this.studyRoom, 100, false); 
+        this.studyRoomStudent=new Student("Study Room Student", "a senior student is reading a book in the corner of the room. He seems quite focused but still approachable", this.studyRoom, 100, false); 
         this.studyRoom.addNPC(this.studyRoomStudent); 
-        this.cafeRoomStudent= new Student("Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
+        this.cafeRoomStudent= new Student("Cafe Room Student", "a freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
         this.cafe.addNPC(this.cafeRoomStudent); 
-        this.homeRoomTeacher= new Teacher("Home Room Teacher", "Your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
+        this.homeRoomTeacher= new Teacher("Home Room Teacher", "your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
+        this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
         this.player= new Person(this.homeRoom);   
         this.scanner = new Scanner(System.in);
     }
@@ -152,7 +154,7 @@ public class Main {
     } 
     
     
-    public Item checkGrab(List<String> inputArrayList){
+    public Item checkGrabDropLookAtFight(List<String> inputArrayList){
         String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary" };
         Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary};   
         //iterating through itemStringList to check if there is an item in the command from user
@@ -219,6 +221,50 @@ public class Main {
         return this.nullLocation; 
     }
 
+    //add NPC's after all established
+    public NPC checkTalkFight(List<String> inputArrayList){
+        String [] npcStringList={"home room student", "english room student", "study room student", "cafe room student", "home room teacher" }; 
+        NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher}; 
+        for(int i=0; i<npcStringList.length; i++){
+            if(npcStringList[i].contains(" ")){
+                String[] multipleWordNPC= npcStringList[i].split(" "); 
+                String[] foundWords= new String[multipleWordNPC.length]; 
+                for(int wordIdx=0; wordIdx<multipleWordNPC.length; wordIdx++){
+                    if(inputArrayList.contains(multipleWordNPC[wordIdx])){
+                        foundWords[wordIdx]=multipleWordNPC[wordIdx]; 
+                    }
+                }
+                boolean matchesAllWords=true; 
+                for(int testI=0; testI<multipleWordNPC.length; testI++){
+                    if (foundWords[testI]!=multipleWordNPC[testI]){
+                        matchesAllWords=false; 
+                        break;  
+                    }
+                }
+                if(matchesAllWords){
+                    //checking all parts of multiple word item are contained 
+                    return npcList[i]; 
+                }       
+            }else{
+                if(inputArrayList.contains(npcStringList[i])){
+                    //if single word item is in list
+                    return npcList[i]; 
+                }
+            }
+        }
+        return this.nullNPC; 
+    }
+
+    public void runTalk(NPC npcOfInterest, Person player){
+        if(npcOfInterest== this.nullNPC){
+            System.out.println("You must include a character to talk to! (Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
+            System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
+        }else{
+            player.talk(npcOfInterest); 
+        }
+    }
+
+
     public void runMove(Location locationOfInterest, Person player){
         if (locationOfInterest== this.nullLocation){
             System.out.println("You must include a location to move to!");
@@ -232,12 +278,24 @@ public class Main {
             System.out.println("You must include an item to grab!");
         }else{
             try{
-                p.grab(itemOfInterest); 
+                p.grab(itemOfInterest, nullLocation); 
             }catch(RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             } 
         }
     } 
+
+    public void runDrop(Item itemOfInterest, Person p){
+        if( itemOfInterest==this.nullItem){
+            System.out.println("You must include an item to drop");
+        }else{
+            try{
+                p.drop(itemOfInterest); 
+            }catch(RuntimeException e){
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+    }
     
     public void runInventory(Person player){
        this.player.checkInventory(); 
@@ -247,27 +305,84 @@ public class Main {
     public void runLookAround(Person player){
         System.out.println(this.player.lookAround());
     }
+
+    public void runLookAt(Item itemOfInterest, Person player){
+        if( itemOfInterest==this.nullItem){
+            System.out.println("You must include an item to look at!");
+        }else{
+            try{
+                System.out.println(player.lookAt(itemOfInterest));
+            }catch(RuntimeException e){
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+    }
+    
+    public void runFight(NPC npcOfInterest,  Item itemOfInterest, Person player){
+        if(npcOfInterest==this.nullNPC){
+            System.out.println("You must include a character to fight!");
+            System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
+        }else if(itemOfInterest!=this.nullItem){
+            try{
+                player.fight(npcOfInterest, itemOfInterest);
+            }catch( RuntimeException e ){
+                System.out.println(e.getLocalizedMessage());
+            }
+             
+        }else{
+            try{
+                player.fight(npcOfInterest); 
+            }catch(RuntimeException e){
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+    }
    
     public void runUserInput(){
         List<String> inputArrayList= this.getUserInput(this.player); 
         if(inputArrayList.contains("help")){
             this.runHelp(inputArrayList); 
         }else if(inputArrayList.contains("grab")){
-            this.runGrab(this.checkGrab(inputArrayList), this.player);
+            this.runGrab(this.checkGrabDropLookAtFight(inputArrayList), this.player);
         }else if(inputArrayList.contains("inventory")){
             this.runInventory(this.player); 
         }else if(inputArrayList.contains("move")){
             this.runMove(this.checkMove(inputArrayList), this.player); 
         }else if(inputArrayList.contains("look")&& inputArrayList.contains("around")){
             this.runLookAround(this.player); 
+        }else if(inputArrayList.contains("talk")){
+            this.runTalk(this.checkTalkFight(inputArrayList), this.player); 
+        }else if(inputArrayList.contains("drop")){
+            this.runDrop(this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+        }else if(inputArrayList.contains("look")&& inputArrayList.contains("at")){
+            this.runLookAt(this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+        }else if(inputArrayList.contains("fight")){
+            this.runFight(this.checkTalkFight(inputArrayList), this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+        }else{
+            System.out.println("That didn't really make sense. Try again. Type \"help\" for a list of commands!");
         }
+    }
+
+    public void runRoundOfPhaseOne(){
+        this.runUserInput(); 
+
     }
 
 
     
     public static void main(String[] args) { 
         Main testingGame= new Main(); 
-        testingGame.runUserInput();
+        for(int i=0; i<15; i++){
+            testingGame.runUserInput();
+        }
+        testingGame.player.checkInventory();
+        System.out.println(testingGame.player.getHealth());
+        // System.out.println( testingGame.homeRoomTeacher.getHealth());
+        // testingGame.runUserInput(); 
+        // testingGame.runUserInput();
+        // System.out.println(testingGame.homeRoomTeacher.getHealth());
+
+       
         
         // System.out.println(testingGame.player.hasItem(testingGame.yellowSharpenedPencil));
         

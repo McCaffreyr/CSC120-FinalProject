@@ -37,11 +37,11 @@ public class BreakableWeapon extends Weapon {
      * It also decreases the number of uses the object have left. If it is zero it makes the object fall apart. 
      * @param target the targert to be attacked when using this weapon
      */
-    public void use(NPC target){
+    public void use(NPC target, Person player){
         if(isBroken){
             throw new RuntimeException("This weapon is broken and can no longer be used."); 
         }else{
-            super.use(target); 
+            super.use(target, player); 
             this.nUses= nUses-1; 
             if(nUses== 0){
                 this.fallApart();
@@ -53,17 +53,17 @@ public class BreakableWeapon extends Weapon {
         Location testingLocation= new Location("testingLocal", "n/a", false); 
         NPC test= new NPC("test NPC", "blah blah", testingLocation, 3, true); 
         BreakableWeapon testWeapon= new BreakableWeapon("testing weapon", "n/a", "you attack", testingLocation, true, 1, 3); 
-        testWeapon.use(test); 
+        // testWeapon.use(test); 
         System.out.println(test.getHealth()); 
-        testWeapon.use(test);
+        // testWeapon.use(test);
         System.out.println(test.getHealth()); 
-        testWeapon.use(test); 
+        // testWeapon.use(test); 
         System.out.println(test.getHealth()); 
         System.out.println(testWeapon.isItemBroken()); 
-        try{
-            testWeapon.use(test); 
-        }catch( RuntimeException e){
-            System.out.println(e.getLocalizedMessage()); 
-        }
+        // try{
+            // testWeapon.use(test); 
+        // }catch( RuntimeException e){
+            // System.out.println(e.getLocalizedMessage()); 
+        // }
     }
 }

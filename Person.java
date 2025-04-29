@@ -59,7 +59,7 @@ public class Person {
      * @return T/F whether the item is in the person's inventory
      */
     public Boolean hasItem(Item item){
-        return inventory.contains(item);
+        return this.inventory.contains(item);
     }
 
     /**
@@ -101,6 +101,8 @@ public class Person {
     public void talk(NPC npc){
         if(npc.getLocation()==this.getLocation()){
             npc.talk(); 
+        }else{
+            System.out.println("This person is not in"+ this.getLocation()+ " . You look silly talking to a wall.");
         }
     }
 
@@ -111,28 +113,65 @@ public class Person {
     }
 
     public void fight(NPC npc, Item item){
+        if(npc.isAttackable()==false){
+            throw new RuntimeException("You cannot fight a fellow student! That would lead to automatic expulsion. Especially if you try and fight a fellow student with a weapon."); 
+
+        }else if(this.getLocation()!= npc.getLocation()){
+            
+            throw new RuntimeException("You cannot fight someone who is not in the same room as you. You look quite silly attempting to fight no one."); 
+
+        }else if(this.hasItem(item)==false){
+            throw new RuntimeException("You cannot fight someone with a weapon you don't have."); 
+
+
+        }else{
+            try{
+                item.use(npc, this); 
+            }catch (RuntimeException e){
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
         //health goes down a random number between 5-10
 
     }
 
     //with fist
     public void fight(NPC npc){
+        if(npc.isAttackable()==false){
+            throw new RuntimeException("You cannot fight a fellow student! That would lead to automatic expulsion."); 
+
+        }else if(this.getLocation()== npc.getLocation()){
+            System.out.println("You punch the "+ npc.getName());
+            npc.beAttacked(2, this); 
+
+        }else{
+            throw new RuntimeException("You cannot fight someone who is not in the same room as you. You look quite silly swinging your fists at no one."); 
+        }
         //health goes down a random number between 1-10
     }
 
     //gives desc of item
     public String lookAt(Item item){
-        String desc = item.name + ", " + item.description;
-        return desc;
+        if(this.hasItem(item)){
+            String desc = "The " +item.name + " is a " + item.description;
+            return desc;
+        }else if(this.getLocation()==item.getLocation()){
+            String desc = "The " +item.name + " is " + item.description;
+            return desc;
+        }else{
+            throw new RuntimeException("You must have the item in your inventory or be in the same room as an item to look at it!"); 
+        }
+        
     }
 
     /**
      * Adds an item to the person's inventory
      * @param item item that is being added to the inventory
      */
-    public void grab(Item item){
+    public void grab(Item item, Location nullL){
         if (this.currentLocation== item.getLocation()){
-            inventory.add(item);
+            this.inventory.add(item);
+            item.setLocation(nullL);
             System.out.println(item.getName()+ " grabbed!");
         }else{
             throw new RuntimeException("This item is not in your current location. You can't grab something that is not there. duh."); 
@@ -145,7 +184,14 @@ public class Person {
      * @param item item that is leaving the inventory
      */
     public void drop(Item item){
-        inventory.remove(item);
+        if (this.hasItem(item)) {
+            this.inventory.remove(item);
+            item.setLocation(this.currentLocation);
+            System.out.println("You have dropped "+ item.getName());
+        }else{
+            throw new RuntimeException("This item is not in your inventory. You can't drop something you don't have. duh."); 
+        }
+        
     }
 
     protected void save(DrainedStudent drainedstu){
@@ -158,10 +204,10 @@ public class Person {
         Location Hallway7 = new Location("Hallway 7","desc",true);
 
 
-        Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);
+        // Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);
 
       
-        Abby.grab(pencil);
+        
         
 
         Abby.move(Hallway3);
