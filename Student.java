@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
 public class Student extends NPC{
     Random random = new Random();
     List<String> responses = Arrays.asList("I haven’t seen you before. Hi.", 

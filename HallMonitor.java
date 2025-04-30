@@ -25,9 +25,9 @@ public class HallMonitor extends NPC{
     }
     
     public static void main(String[] args) {
-        //Location HallwayThree = new Location("Hallway Three", "desc", false);
-        //HallMonitor Bob = new HallMonitor("Bob", "desc", HallwayThree, 100, true);
-        //Bob.move();
+        Location HallwayThree = new Location("Hallway Three", "desc", "desc w/key items", false, null);
+        HallMonitor Bob = new HallMonitor("Bob", "desc", HallwayThree, 100, true);
+        Bob.move();
 
 }
 

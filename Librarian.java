@@ -36,12 +36,12 @@ public class Librarian extends Teacher{
     
 
     public static void main(String[] args) {
-        //Location Library3 = new Location("Library Three", "desc", false);
-        //Person Molly = new Person(Library3);
-        //Librarian Polly = new Librarian("Polly", "desc", Library3, 100);
-        //Location Library4 = new Location("Library Four", "desc", false);
-        //Molly.move(Library4);
-        //Polly.move(Molly);
+        Location Library3 = new Location("Library Three", "desc","desc pt2", false, null);
+        Person Molly = new Person(Library3);
+        Librarian Polly = new Librarian("Polly", "desc", Library3, 100);
+        Location Library4 = new Location("Library Four", "desc","desc pt 2", false, null);
+        Molly.move(Library4);
+        Polly.move(Molly);
     }
 
 }
