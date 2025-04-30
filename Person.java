@@ -96,7 +96,7 @@ public class Person {
      * @return the description of the person's current location
      */
     public String lookAround(){
-        return this.currentLocation.description;
+        return this.currentLocation.getDescription();
     }
 
     public void talk(NPC npc){
@@ -179,6 +179,7 @@ public class Person {
     public void grab(Item item, Location nullL){
         if (this.currentLocation== item.getLocation()){
             this.inventory.add(item);
+            this.getLocation().removeItem(item);
             item.setLocation(nullL);
             System.out.println(item.getName()+ " grabbed!");
             this.points= this.getPoints()+2; 
@@ -196,7 +197,8 @@ public class Person {
         if (this.hasItem(item)) {
             this.inventory.remove(item);
             item.setLocation(this.currentLocation);
-            System.out.println("You have dropped "+ item.getName());
+            currentLocation.addItem(item);
+            System.out.println(item.getName()+ " dropped!");
         }else{
             throw new RuntimeException("This item is not in your inventory. You can't drop something you don't have. duh."); 
         }

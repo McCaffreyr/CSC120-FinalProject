@@ -18,7 +18,7 @@ public class LocationMap {
         locationMap.put("Library", new ArrayList<>(Arrays.asList("Hallway Twelve")));
         locationMap.put("Cafe", new ArrayList<>(Arrays.asList("Hallway Nine", "Hallway Ten")));
 
-        locationMap.put("Hallway One", new ArrayList<>(Arrays.asList("Study", "Gym", "Hallway Two")));
+        locationMap.put("Hallway One", new ArrayList<>(Arrays.asList("Study Room", "Gym", "Hallway Two")));
         locationMap.put("Hallway Two", new ArrayList<>(Arrays.asList("Hallway One", "Hallway Three")));
         locationMap.put("Hallway Three", new ArrayList<>(Arrays.asList("Hallway Two", "Hallway Five", "Home Room")));
         locationMap.put("Hallway Five", new ArrayList<>(Arrays.asList("Hallway Three", "Hallway Six")));

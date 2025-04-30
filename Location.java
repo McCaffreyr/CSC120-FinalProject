@@ -25,6 +25,10 @@ public class Location {
         this.keyItems=kI; 
     } 
 
+    public void setKeyItems(Object[] keyItemList){
+        this.keyItems= keyItemList; 
+    }
+
     /**
      * An accessor for the name of the location
      * @return a string with the name of the location
@@ -36,7 +40,7 @@ public class Location {
     public boolean checkHasOnlyKeyItems(){
         boolean hasOnlyKeyItems= true; 
         for (int i=0; i<this.keyItems.length; i++){
-            if(locationItemsAndNPCs.contains(keyItems[i])==false){
+            if(this.locationItemsAndNPCs.contains(this.keyItems[i])==false){
                 hasOnlyKeyItems=false; 
                 break; 
             }
@@ -60,11 +64,17 @@ public class Location {
             return this.descriptionWithKeyItems; 
         }
         else{
-            String description= this.description + "\n This room contains the following items: \n"; 
-            for(int i=0; i<this.locationItemsAndNPCs.size(); i++){
-                description= description+ "-"+ this.locationItemsAndNPCs.get(i).toString()+"\n"; 
+            System.out.println("");
+            if(this.locationItemsAndNPCs.size()>0){
+                String description= this.description + "\n This room contains the following items: \n"; 
+                for(int i=0; i<this.locationItemsAndNPCs.size(); i++){
+                    description= description+ "-"+ this.locationItemsAndNPCs.get(i).toString()+"\n"; 
+                }
+            return description;
+            }else{
+                return this.description; 
             }
-            return description; 
+            
         }
         
     }

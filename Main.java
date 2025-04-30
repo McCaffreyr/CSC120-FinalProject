@@ -41,6 +41,7 @@ public class Main {
     Weapon scalpel;
     Weapon knife;
     Weapon dictionary;
+    Note hoemRoomNote; 
     //npcs
     Student homeRoomStudent;
     Student englishRoomStudent;
@@ -50,6 +51,8 @@ public class Main {
     HallMonitor hallMonitorOne; 
     HallMonitor hallMonitorTwo; 
     NPC nullNPC;
+
+    //lists
 
     //player
     Person player;
@@ -63,48 +66,46 @@ public class Main {
         this.phaseTwoComplete= false; 
         this.phaseThreeComplete= false; 
         this.map = new LocationMap();
-        Object[] nullLocationKeyItems={}; 
-        this.nullLocation= new Location("null Location", "n/a", "n/a", true, nullLocationKeyItems); 
-        Object[] bioLabKeyItems={this.scalpel}; 
-        this.bioLab = new Location("Bio Lab","The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner.",  "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of scalpels ready for the upcoming dissection.", true, bioLabKeyItems);
-        Object[]chemLabKeyItems={this.acid}; 
-        this.chemLab = new Location("Chem Lab","The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. ", "The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside...", true, chemLabKeyItems);
-        Object[] cafeKeyItems={this.knife, this.cafeRoomStudent}; 
-        this.cafe = new Location("Cafe","This is the school's cafeteria. Dozens of long tables sit in organized rows. Cooking utensils lie around: spoons, tongs, spatula...", "This is the school's cafeteria. Dozens of long tables sit in organized rows. A student lingers at the back of the cafeteria eating a sandwhich. Near the front of the room is a kitchen. Cooking utensils lie around: spoons, tongs, spatula, and a knife...", true, cafeKeyItems);
-        Object[] englishRoomKeyItems={this.englishRoomStudent}; 
-        this.englishRoom = new Location("English Room", "Your English teacher decorated her room based on her favorite gothic novel, Dracula. The whole room has a red and black theme and is always dimly lit.", "Your English teacher decorated her room based on her favorite gothic novel, Dracula. The whole room has a red and black theme and is always dimly lit. In the corner, you can just barely make out another student. Their phone light brightens up the underside of their face, giving them a flashlight under face campfire scary story effect.", true, englishRoomKeyItems);
-        Object[]gymKeyItems={this.golfClub}; 
-        this.gym = new Location("Gym", "The gym walls are covered in banners won by different students over the years. The golf team was known across the country, they had won nationals ten years in a row. However, the team this year was known to be pranksters and particularly rebellious. Come to think of it, you haven’t seen any of the team in a while… strange.", "The gym walls are covered in banners won by different students over the years. The golf team was known across the country, they had won nationals ten years in a row. However, the team this year was known to be pranksters and particularly rebellious. Come to think of it, you haven’t seen any of the team in a while… strange. However, one of their golf clubs is resting against the far gym wall.", true, gymKeyItems);
-        Object[]historyRoomKeyItems={this.pinkSharpenedPencil}; 
-        this.historyRoom = new Location("History Room", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania.", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania. In a desk in the far back corner, there is a leftover note and a sharpened pencil lying next to it.", true, historyRoomKeyItems);
-        Object[]mathRoomKeyItems= {this.ruler}; 
-        this.mathRoom = new Location("Math Room", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55.", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55. A ruler that was left out after geometry class sits on a near desk.", true, mathRoomKeyItems);
-        Object[]studyRoomKeyItems={this.studyRoomStudent}; 
-        this.studyRoom = new Location("Study Room","This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago.",  "This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago. One senior is chilling in the corner, reading a book.", true, studyRoomKeyItems);
-        Object[] homeRoomKeyItems={this.yellowSharpenedPencil, this.homeRoomStudent, this.homeRoomStudent}; 
-        this.homeRoom= new Location("Home Room","Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as: I’m not lazy, I’m just overflowing with potential energy.", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as:  I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today. They radiate a youthful exuberance.", true, homeRoomKeyItems); 
-        Object[]hallwayOneKeyItems={};
-        this.hallwayOne= new Location("Hallway One", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", false, hallwayOneKeyItems); 
-        Object[]hallwayTwoKeyItems={}; 
-        this.hallwayTwo= new Location("Hallway Two","There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", "There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", false, hallwayTwoKeyItems); 
-        Object[]hallwayThreeKeyItems={}; 
-        this.hallwayThree= new Location("Hallway Three", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", false,hallwayThreeKeyItems); 
-        Object[]hallwayFiveKeyItems={}; 
-        this.hallwayFive= new Location("Hallway Five", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", false,hallwayFiveKeyItems); 
-        Object[]hallwaySixKeyItems={}; 
-        this.hallwaySix= new Location("Hallway Six", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven.", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven.", false, hallwaySixKeyItems); 
-        Object[]hallwaySevenKeyItems={}; 
-        this.hallwaySeven= new Location("Hallway Seven","To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.",  "To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.", false, hallwaySevenKeyItems); 
-        Object[]hallwayEightKeyItems={}; 
-        this.hallwayEight= new Location("Hallway Eight","To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.",  "To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.", false, hallwayEightKeyItems); 
-        Object[]hallwayNineKeyItems={}; 
-        this.hallwayNine=  new Location("Hallway Nine", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", false, hallwayNineKeyItems); 
-        Object[]hallwayTenKeyItems={}; 
-        this.hallwayTen= new Location("Hallway Ten","To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.",  "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false, hallwayTenKeyItems); 
-        Object[]hallwayElevenKeyItems={}; 
-        this.hallwayEleven= new Location("Hallway Eleven", "In front of you is hallway twelve and behind you is hallway eleven.", "In front of you is hallway twelve and behind you is hallway eleven.", false, hallwayElevenKeyItems); 
-        Object[]hallwayTwelveKeyItems={}; 
-        this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library and behind you is hallway eleven.", "In front of you is the entrance to the library and behind you is hallway eleven.", true, hallwayTwelveKeyItems); 
+        Object[] nullKeyItems={}; 
+        this.nullLocation= new Location("null Location", "n/a", "n/a", true, nullKeyItems); 
+
+        this.bioLab = new Location("Bio Lab","The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner.",  "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of scalpels ready for the upcoming dissection. Near the teacher's desk is a clean and shiny syringe.", true, nullKeyItems);
+        this.chemLab = new Location("Chem Lab","The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. ", "The chem lab has shiny gray countertops. It looks like a class was just in here. The chem teacher has taught here forever, but he doesn’t look a day over 25. You’ve gotta learn his skin care routine. Small beakers sit on the drying rack next to the sink. In the corner is a beaker with a solution still inside...", true, nullKeyItems);
+        this.cafe = new Location("Cafe","This is the school's cafeteria. Dozens of long tables sit in organized rows. Cooking utensils lie around: spoons, tongs, spatula...", "This is the school's cafeteria. Dozens of long tables sit in organized rows. A student lingers at the back of the cafeteria eating a sandwhich. Near the front of the room is a kitchen. Cooking utensils lie around: spoons, tongs, spatula, and a knife...", true, nullKeyItems);
+       
+        this.englishRoom = new Location("English Room", "Your English teacher decorated her room based on her favorite gothic novel, Dracula. The whole room has a red and black theme and is always dimly lit.", "Your English teacher decorated her room based on her favorite gothic novel, Dracula. The whole room has a red and black theme and is always dimly lit. In the corner, you can just barely make out another student. Their phone light brightens up the underside of their face, giving them a flashlight under face campfire scary story effect. On the teachers desk there is a hevy dictionary.", true, nullKeyItems);
+      
+        this.gym = new Location("Gym", "The gym walls are covered in banners won by different students over the years. The golf team was known across the country, they had won nationals ten years in a row. However, the team this year was known to be pranksters and particularly rebellious. Come to think of it, you haven’t seen any of the team in a while… strange.", "The gym walls are covered in banners won by different students over the years. The golf team was known across the country, they had won nationals ten years in a row. However, the team this year was known to be pranksters and particularly rebellious. Come to think of it, you haven’t seen any of the team in a while… strange. However, one of their golf clubs is resting against the far gym wall.", true, nullKeyItems);
+       
+        this.historyRoom = new Location("History Room", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania.", "The history room is pretty textbook high school classroom. On the walls, hung maps display all the different parts of the world. On the wall closest to you, there is a map of Europe with a pin marking the center of Romania. In a desk in the far back corner, there is a leftover note and a pink sharpened pencil lying next to it.", true, nullKeyItems);
+     
+        this.mathRoom = new Location("Math Room", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55.", "Your math teacher leaned hard into the dad puns on posters. She even has one that says, “Not all math jokes are bad, just sum”. It’s weird that she’s so lame, she seems so young… but she acts like she’s no younger than 55. A ruler that was left out after geometry class sits on a near desk.", true, nullKeyItems);
+       
+        this.studyRoom = new Location("Study Room","This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago.",  "This was the study room dedicated to the seniors. The room has a few couches and some bean bags. The floor is littered with backpacks of seniors who gave up on using lockers two years ago. One senior is chilling in the corner, reading a book.", true, nullKeyItems);
+       
+        this.homeRoom= new Location("Home Room","Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as: I’m not lazy, I’m just overflowing with potential energy.", "Your homeroom classroom is typically used as a physics classroom. There are posters around the room with bad physics puns, such as:  I’m not lazy, I’m just overflowing with potential energy. On your desk, there is a sharpened pencil and a note left by a previous student. You are early, and only one other student is in class yet. Your teacher is sitting at their desk. They seem particularly happy today. They radiate a youthful exuberance.", true, nullKeyItems); 
+       
+        this.hallwayOne= new Location("Hallway One", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", "This hallway has a door to the study room to the left and the entrance to the gym to the right. Behind you is hallway two.", false, nullKeyItems); 
+       
+        this.hallwayTwo= new Location("Hallway Two","There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", "There are no rooms directly connected to this hallway but up ahead of you in hallway one you can see some more rooms. Behind you in hallway three you can also see some more doors.", false, nullKeyItems); 
+      
+        this.hallwayThree= new Location("Hallway Three", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", "In this hallway to your right there is the door to your homeroom. To your left there is the entrance to the school but it is always locked while school is in session. In front of you is hallway two and behind you is hallway five.", false, nullKeyItems); 
+      
+        this.hallwayFive= new Location("Hallway Five", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", "There are no doors directly connected to this hallway but in ahead of you is hallway 3 where you can see some doors. Behind you is hallway six where you can make out some more doors.", false,nullKeyItems); 
+      
+        this.hallwaySix= new Location("Hallway Six", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven.", "To your left is the entrance to the english room and behind you is the entrance to the history room. In front of you is hallway five and to your right is hallway seven.", false, nullKeyItems); 
+      
+        this.hallwaySeven= new Location("Hallway Seven","To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.",  "To your left is the entrance to the math room. Behind you is hallway six and in front of you is hallway eight.", false, nullKeyItems); 
+      
+        this.hallwayEight= new Location("Hallway Eight","To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.",  "To your left is the chem lab and to your right is the bio lab. Behind you is hallway seven and in front of you is hallway nine.", false, nullKeyItems); 
+       
+        this.hallwayNine=  new Location("Hallway Nine", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", "To your left is one of the entrances to the cafe. In front of you is hallway ten and behind you is hallway eight.", false, nullKeyItems); 
+ 
+        this.hallwayTen= new Location("Hallway Ten","To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.",  "To your left is another entrance to the cafe. Behind you is hallway nine and in front of you is hallway eleven.", false, nullKeyItems); 
+       
+        this.hallwayEleven= new Location("Hallway Eleven", "In front of you is hallway twelve and behind you is hallway eleven.", "In front of you is hallway twelve and behind you is hallway eleven.", false, nullKeyItems); 
+
+        this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library (library room one) and behind you is hallway eleven. There is a note on the floor of the hallway.", "In front of you is the entrance to the library and behind you is hallway eleven.", true, nullKeyItems); 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
         this.golfClub= new Weapon("Golf Club", "a shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
@@ -133,9 +134,32 @@ public class Main {
         this.cafeRoomStudent= new Student("Cafe Room Student", "a freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
         this.cafe.addNPC(this.cafeRoomStudent); 
         this.homeRoomTeacher= new Teacher("Home Room Teacher", "your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
+        this.homeRoom.addNPC(homeRoomTeacher); 
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
+        this.hoemRoomNote= new Note("home Room Note", "note contents...", this.homeRoom, false); 
+        this.homeRoom.addItem(hoemRoomNote); 
+        Object[] bioLabKeyItems={this.scalpel}; 
+        this.bioLab.setKeyItems(bioLabKeyItems);
+        Object[]chemLabKeyItems={this.acid, this.syringe}; 
+        this.chemLab.setKeyItems(chemLabKeyItems);
+        Object[] cafeKeyItems={ this.cafeRoomStudent, this.knife}; 
+        this.cafe.setKeyItems(cafeKeyItems);
+        Object[] englishRoomKeyItems={this.englishRoomStudent, this.dictionary}; 
+        this.englishRoom.setKeyItems(englishRoomKeyItems);
+        Object[]gymKeyItems={this.golfClub}; 
+        this.gym.setKeyItems(gymKeyItems);
+        Object[]historyRoomKeyItems={this.pinkSharpenedPencil}; 
+        this.historyRoom.setKeyItems(historyRoomKeyItems);
+        Object[]mathRoomKeyItems= {this.ruler}; 
+        this.mathRoom.setKeyItems(mathRoomKeyItems);
+        Object[]studyRoomKeyItems={this.studyRoomStudent}; 
+        this.studyRoom.setKeyItems(studyRoomKeyItems);
+        Object[] homeRoomKeyItems={this.yellowSharpenedPencil, this.homeRoomStudent, this.homeRoomTeacher, this.hoemRoomNote}; 
+        this.homeRoom.setKeyItems(homeRoomKeyItems);
+        Object[]hallwayTwelveKeyItems={}; 
+        this.hallwayTwelve.setKeyItems(hallwayTwelveKeyItems);
         Object[]libraryOneKeyItems={}; 
         this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for?This room has a shelf of books recently returned!", false, libraryOneKeyItems ); 
         this.player= new Person(this.homeRoom);   
@@ -183,8 +207,8 @@ public class Main {
     
     
     public Item checkGrabDropLookAtFight(List<String> inputArrayList){
-        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary" };
-        Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary};   
+        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary", "syringe" };
+        Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary, this.syringe};   
         //iterating through itemStringList to check if there is an item in the command from user
         for(int i=0; i<itemStringList.length; i++){
             if (itemStringList[i].contains(" ")){ 
@@ -368,6 +392,7 @@ public class Main {
    
     public void runUserInput(){
         List<String> inputArrayList= this.getUserInput(this.player); 
+        System.out.println("");
         if(inputArrayList.contains("help")){
             this.runHelp(inputArrayList); 
         }else if(inputArrayList.contains("grab")){
@@ -393,6 +418,7 @@ public class Main {
 
     public void runRoundOfPhaseOne(){
         this.runUserInput(); 
+        System.out.println("");
         //this.hallMonitorOne.move(this.player); 
         //this.hallMonitorTwo.move(this.player); 
 
@@ -407,16 +433,35 @@ public class Main {
 
     
     public static void main(String[] args) { 
-        System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
+        
         Main testingGame= new Main(); 
-        // System.out.println(testingGame.hallMonitorOne.getLocation().getName());
-        // testingGame.hallMonitorOne.move(testingGame.player); 
-        // System.out.println(testingGame.hallMonitorOne.getLocation().getName());
+        testingGame.player.setLocation(testingGame.cafe); 
+        testingGame.runUserInput(); 
+
+
+        //final code
+        System.out.println("");
+        System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
+        System.out.println(" ");
+        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful your school doesn't like studnets lingering outside of class.");
+        System.out.println("");
         while(testingGame.phaseOneComplete==false){
             testingGame.runRoundOfPhaseOne(); 
             testingGame.checkPhaseOneComplete(); 
         }
         System.out.println("Phase One Complete. Welcome to phase two: The Library...");
         
+
+        //home room note not working
+        //move to study room
+        //english room dwki not working
+        //check description in modified empty room fixed
+        //teacher fight response printing before attack description
+        //check syringe works
+        //cafe description with dwki not working
+
+
+
+
     }
 }

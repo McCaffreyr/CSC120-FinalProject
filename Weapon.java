@@ -23,8 +23,8 @@ public class Weapon extends Item {
      */
     public void use(NPC target, Person player){
         try{
-            target.beAttacked(this.hitPower, player);
             System.out.println(attackDescription);
+            target.beAttacked(this.hitPower, player);
         }catch(RuntimeException e){
             System.out.println(e.getLocalizedMessage());
         }
