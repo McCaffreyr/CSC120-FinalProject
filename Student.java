@@ -1,5 +1,23 @@
-import java.util.random.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 public class Student extends NPC{
+    Random random = new Random();
+    List<String> responses = Arrays.asList("I haven’t seen you before. Hi.", 
+    "Be careful of the hall monitor down the hall in front of you.",
+    "I like your hair. It looks good today.",
+    "Don’t let the teachers touch your skin.",
+    "Be careful in the library…there’s a weird vibe.",
+    "It’s always good to have a pencil ready…to attack!",
+    "You should get new shoes. Yours are really loud.",
+    "Have you seen Joey the golfer?",
+    "Do you know how the golf team is doing this season? I haven’t heard much about them.",
+    "Do you see the ghosts too?",
+    "Shhhh, talk quietly.",
+    "Are you new here? You seem new.",
+    "Walk with your head down. Don’t let them see your face.",
+    "I hate Mr. Paulson.",
+    "Our science teacher sucks.");
 
     /**
      * A constructor for the basic student.
@@ -16,18 +34,19 @@ public class Student extends NPC{
     }
 
     public void talk(){
-        double randomNum= Math.random(); 
-        if (randomNum <0.25){
-            System.out.println("random student response 1");
-        }else if(randomNum>=0.25 && randomNum<0.50){
-            System.out.println("random student response #2");
-        }else if(randomNum>= 0.50 && randomNum<0.75){
-            System.out.println("random student response #3");
-        }else{
-            System.out.println("random student resopnse #4");
-        }
+        int randomNum = random.nextInt(15); 
+        System.out.println(responses.get(randomNum));
 
     }
+
+    public static void main(String[] args) {
+        Student Abby = new Student("Abby", "desc", null, 100, false);
+        Abby.talk();
+    
+}
+
+
 }
     
+
 
