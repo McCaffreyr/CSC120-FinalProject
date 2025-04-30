@@ -51,6 +51,7 @@ public class Teacher extends NPC{
 
     public void fight(Person p){
         p.setHealth(p.getHealth()-2); 
+        System.out.println("The teacher slaps you back! It does two damage. Your health is now "+p.getHealth());
     }
 
     public static void main(String[] args) {

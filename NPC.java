@@ -77,12 +77,20 @@ public class NPC {
         return this.attackable; 
     }
 
-    public void fight(){
+    public void fight(Person p){
         System.out.println("Error this message should not appear in game.");
     }
 
     public void talk(){
-        System.out.println("Error this message should not appear in game.");
+        System.out.print(this.getName()+ ": "); 
+    }
+
+    public void beAttacked(int nHPLoss, Person p){
+        System.out.println("Error this message should not appear in game"); 
+    }
+
+    public String toString(){
+        return this.getName(); 
     }
 
     

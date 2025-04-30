@@ -8,7 +8,7 @@ public class LocationMap {
     LocationMap(){
         locationMap = this.locationMap;
         locationMap.put("Gym", new ArrayList<>(Arrays.asList("Hallway One")));
-        locationMap.put("Study", new ArrayList<>(Arrays.asList("Hallway One")));
+        locationMap.put("Study Room", new ArrayList<>(Arrays.asList("Hallway One")));
         locationMap.put("Home Room", new ArrayList<>(Arrays.asList("Hallway Three")));
         locationMap.put("Chem Lab", new ArrayList<>(Arrays.asList("Hallway Eight")));
         locationMap.put("Bio Lab", new ArrayList<>(Arrays.asList("Hallway Eight")));
