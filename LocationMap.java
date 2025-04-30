@@ -64,11 +64,11 @@ public class LocationMap {
     
     public static void main(String[] args) {
         LocationMap map = new LocationMap();
-        map.connectingL("Library 3");
-        map.connectingL("Library 2");
-        map.connectingL("Hallway 3");
+        map.connectingL("Library Three");
+        map.connectingL("Library Two");
+        map.connectingL("Hallway Three");
 
-        System.out.println(map.get("Library 3"));
+        System.out.println(map.get("Library Three"));
 
     }
 }
