@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-=======
 
->>>>>>> 48819fc995abf4f1de465656c2a06856b37d2af0
 public class Student extends NPC{
     Random random = new Random();
     List<String> responses = Arrays.asList("I haven’t seen you before. Hi.", 
