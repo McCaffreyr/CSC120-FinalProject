@@ -29,6 +29,7 @@ public class Main {
     Location hallwayTen;
     Location hallwayEleven;
     Location hallwayTwelve;
+    Location libraryRoomOne; 
     //items
     Item nullItem;
     Weapon golfClub;
@@ -46,6 +47,8 @@ public class Main {
     Student studyRoomStudent;
     Student cafeRoomStudent;
     Teacher homeRoomTeacher; 
+    HallMonitor hallMonitorOne; 
+    HallMonitor hallMonitorTwo; 
     NPC nullNPC;
 
     //player
@@ -131,6 +134,10 @@ public class Main {
         this.cafe.addNPC(this.cafeRoomStudent); 
         this.homeRoomTeacher= new Teacher("Home Room Teacher", "your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
+        this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne); 
+        this.hallMonitorOne= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
+        Object[]libraryOneKeyItems={}; 
+        this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for?This room has a shelf of books recently returned!", false, libraryOneKeyItems ); 
         this.player= new Person(this.homeRoom);   
         this.scanner = new Scanner(System.in);
     }
@@ -211,8 +218,8 @@ public class Main {
     }
 
     public Location checkMove(List<String> inputArrayList){
-        String [] locationStringList={"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve"}; 
-        Location [] locationList= {this.bioLab, this.chemLab, this.cafe, this.englishRoom, this.gym, this.historyRoom, this.mathRoom, this.studyRoom, this.homeRoom, this.hallwayOne, this.hallwayTwo, this.hallwayThree, this.hallwayFive, this.hallwaySix, this.hallwaySeven, this.hallwayEight, this.hallwayNine, this.hallwayTen, this.hallwayEleven, this.hallwayTwelve}; 
+        String [] locationStringList={"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve", "library room one"}; 
+        Location [] locationList= {this.bioLab, this.chemLab, this.cafe, this.englishRoom, this.gym, this.historyRoom, this.mathRoom, this.studyRoom, this.homeRoom, this.hallwayOne, this.hallwayTwo, this.hallwayThree, this.hallwayFive, this.hallwaySix, this.hallwaySeven, this.hallwayEight, this.hallwayNine, this.hallwayTen, this.hallwayEleven, this.hallwayTwelve, this.libraryRoomOne}; 
         for(int i=0; i<locationStringList.length; i++){
             if(locationStringList[i].contains(" ")){
                 String[] multipleWordLocation= locationStringList[i].split(" "); 
@@ -386,7 +393,15 @@ public class Main {
 
     public void runRoundOfPhaseOne(){
         this.runUserInput(); 
+        //this.hallMonitorOne.move(this.player); 
+        //this.hallMonitorTwo.move(this.player); 
 
+    }
+    
+    public void checkPhaseOneComplete(){
+        if (this.player.getLocation()==this.libraryRoomOne){
+            this.phaseOneComplete=true;  
+        }
     }
 
 
@@ -394,9 +409,14 @@ public class Main {
     public static void main(String[] args) { 
         System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
         Main testingGame= new Main(); 
-        testingGame.runUserInput();
-        testingGame.runUserInput();
-        testingGame.runUserInput();
+        // System.out.println(testingGame.hallMonitorOne.getLocation().getName());
+        // testingGame.hallMonitorOne.move(testingGame.player); 
+        // System.out.println(testingGame.hallMonitorOne.getLocation().getName());
+        while(testingGame.phaseOneComplete==false){
+            testingGame.runRoundOfPhaseOne(); 
+            testingGame.checkPhaseOneComplete(); 
+        }
+        System.out.println("Phase One Complete. Welcome to phase two: The Library...");
         
     }
 }

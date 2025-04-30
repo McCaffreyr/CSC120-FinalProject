@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class Teacher extends NPC{
@@ -20,6 +19,7 @@ public class Teacher extends NPC{
     "I’m taller than you. Ha.",
     "Where are you going? Actually, I don’t care.",
     "Hm. Sorry, did you say something?"));
+    Boolean isAlive; 
 
 
     /**
@@ -32,6 +32,7 @@ public class Teacher extends NPC{
      */
     Teacher(String n, String d, Location cL, int h) {
         super(n, d, cL, h, true);
+        this.isAlive=true; 
     }
 
     public int getHealth(){
@@ -40,18 +41,29 @@ public class Teacher extends NPC{
 
     
     public void talk(){
-        int randomNum = random.nextInt(15); 
-        System.out.println(responses.get(randomNum));
+        if(isAlive){
+            int randomNum = random.nextInt(15); 
+            System.out.println(responses.get(randomNum));
+        }else{
+            throw new RuntimeException("You cannot talk to a dead man."); 
+        }
+       
     }
 
     public void beAttacked(int nHPLoss, Person p){
-        this.health= this.getHealth() -nHPLoss; 
-        this.fight(p); 
+        if(isAlive){
+            this.health= this.getHealth() -nHPLoss; 
+            this.fight(p);
+        }else{
+            throw new RuntimeException("You cannot fight a dead man."); 
+        }
     }
 
     public void fight(Person p){
-        p.setHealth(p.getHealth()-2); 
+        
+        p.setHealth(p.getHealth()-2);
         System.out.println("The teacher slaps you back! It does two damage. Your health is now "+p.getHealth());
+
     }
 
     public static void main(String[] args) {

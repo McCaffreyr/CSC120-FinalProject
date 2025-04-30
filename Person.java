@@ -101,8 +101,12 @@ public class Person {
 
     public void talk(NPC npc){
         if(npc.getLocation()==this.getLocation()){
-            npc.talk(); 
-            this.points= this.getPoints()+1; 
+            try{
+                npc.talk(); 
+                this.points= this.getPoints()+1;
+            }catch(RuntimeException e){
+                System.out.println(e.getLocalizedMessage());
+            }
         }else{
             System.out.println("This person is not in"+ this.getLocation()+ " . You look silly talking to a wall.");
         }

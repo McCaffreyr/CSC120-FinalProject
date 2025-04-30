@@ -28,17 +28,17 @@ public class LocationMap {
         locationMap.put("Hallway Nine", new ArrayList<>(Arrays.asList("Hallway Eight", "Hallway Ten", "Cafe")));
         locationMap.put("Hallway Ten", new ArrayList<>(Arrays.asList("Hallway Nine", "Hallway Eleven", "Cafe")));
         locationMap.put("Hallway Eleven", new ArrayList<>(Arrays.asList("Hallway Ten", "Hallway Twelve")));
-        locationMap.put("Hallway Twelve", new ArrayList<>(Arrays.asList("Hallway Eleven", "Library One")));
+        locationMap.put("Hallway Twelve", new ArrayList<>(Arrays.asList("Hallway Eleven", "Library Room One")));
 
-        locationMap.put("Library One", new ArrayList<>(Arrays.asList("Hallway Twelve", "Library Two", "Library Three")));
-        locationMap.put("Library Two", new ArrayList<>(Arrays.asList("Library One", "Library Eight", "Cellar Stairs")));
-        locationMap.put("Library Three", new ArrayList<>(Arrays.asList("Library One", "Library Four", "Library Six", "Library Seven")));
-        locationMap.put("Library Four", new ArrayList<>(Arrays.asList("Library Three", "Library Five")));
-        locationMap.put("Library Five", new ArrayList<>(Arrays.asList("Library Four")));
-        locationMap.put("Library Six", new ArrayList<>(Arrays.asList("Library Three")));
-        locationMap.put("Library Seven", new ArrayList<>(Arrays.asList("Library Three", "Library Eight")));
-        locationMap.put("Library Eight", new ArrayList<>(Arrays.asList("Library Seven", "Library Two")));
-        locationMap.put("Library Stairs", new ArrayList<>(Arrays.asList("Library Two", "Cellar Stairs")));
+        locationMap.put("Library Room One", new ArrayList<>(Arrays.asList("Hallway Twelve", "Library Room Two", "Library Room Three")));
+        locationMap.put("Library Room Two", new ArrayList<>(Arrays.asList("Library Room One", "Library Room Eight", "Cellar Stairs")));
+        locationMap.put("Library Room Three", new ArrayList<>(Arrays.asList("Library Room One", "Library Room Four", "Library Room Six", "Library Room Seven")));
+        locationMap.put("Library Room Four", new ArrayList<>(Arrays.asList("Library Room Three", "Library Room Five")));
+        locationMap.put("Library Room Five", new ArrayList<>(Arrays.asList("Library Room Four")));
+        locationMap.put("Library Room Six", new ArrayList<>(Arrays.asList("Library Room Three")));
+        locationMap.put("Library Room Seven", new ArrayList<>(Arrays.asList("Library Room Three", "Library Room Eight")));
+        locationMap.put("Library Room Eight", new ArrayList<>(Arrays.asList("Library Room Seven", "Library Room Two")));
+        locationMap.put("Library Stairs", new ArrayList<>(Arrays.asList("Library Room Two", "Cellar Stairs")));
 
         locationMap.put("Cellar Stairs", new ArrayList<>(Arrays.asList("Library Stairs", "Cellar One")));
         locationMap.put("Cellar One", new ArrayList<>(Arrays.asList("Cellar Stairs", "Cellar Two", "Cellar Three")));

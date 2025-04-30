@@ -22,8 +22,12 @@ public class Weapon extends Item {
      * @param target the target that is being attacked
      */
     public void use(NPC target, Person player){
-        System.out.println(attackDescription);
-        target.beAttacked(this.hitPower, player); 
+        try{
+            target.beAttacked(this.hitPower, player);
+            System.out.println(attackDescription);
+        }catch(RuntimeException e){
+            System.out.println(e.getLocalizedMessage());
+        }
     }
         
  }
