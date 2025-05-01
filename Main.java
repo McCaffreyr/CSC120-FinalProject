@@ -142,7 +142,7 @@ public class Main {
 
         this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for?This room has a shelf of books recently returned!", false, nullKeyItems ); 
 
-        this.libraryRoomTwo= new Location("Library Room Two", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. There are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. There are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books.", false, nullKeyItems); 
+        this.libraryRoomTwo= new Location("Library Room Two", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. \nThere are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books. \nA note lies on the librarians desk that reads 1.Gather books 2.Place on pedastals 3.MOVE TO LIBRARY STAIRS. Interesting note... the librarian must be very forgetful!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. \nThere are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books. \n A note lies on the librarians desk that reads 1.Gather books 2.Place on pedastals 3.MOVE TO LIBRARY STAIRS. Interesting note... the librarian must be very forgetful!", false, nullKeyItems); 
 
         this.libraryRoomThree= new Location("Library Room Three", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the children's book section.","Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the children's book section.", true, nullKeyItems); 
 
@@ -493,9 +493,56 @@ public class Main {
         return this.nullNPC; 
     }
 
+    public NPC checkSave(List<String> inputArrayList){
+        String [] npcStringList={"drained student one", "drained student two", "drained student three", "drained student four", "drained student five", "drained student six", "drained studnet seven", "drained student eight", "drained student nine"}; 
+        NPC [] npcList= {this.drainedStudentOne, this.drainedStudentTwo, this.drainedStudentThree, this.drainedStudentFour, this.drainedStudentFive, this.drainedStudentSix, this.drainedStudentSeven, this.drainedStudentEight, this.drainedStudentNine}; 
+        for(int i=0; i<npcStringList.length; i++){
+            if(npcStringList[i].contains(" ")){
+                String[] multipleWordNPC= npcStringList[i].split(" "); 
+                String[] foundWords= new String[multipleWordNPC.length]; 
+                for(int wordIdx=0; wordIdx<multipleWordNPC.length; wordIdx++){
+                    if(inputArrayList.contains(multipleWordNPC[wordIdx])){
+                        foundWords[wordIdx]=multipleWordNPC[wordIdx]; 
+                    }
+                }
+                boolean matchesAllWords=true; 
+                for(int testI=0; testI<multipleWordNPC.length; testI++){
+                    if (foundWords[testI]!=multipleWordNPC[testI]){
+                        matchesAllWords=false; 
+                        break;  
+                    }
+                }
+                if(matchesAllWords){
+                    //checking all parts of multiple word item are contained 
+                    return npcList[i]; 
+                }       
+            }else{
+                if(inputArrayList.contains(npcStringList[i])){
+                    //if single word item is in list
+                    return npcList[i]; 
+                }
+            }
+        }
+        return this.nullNPC; 
+    }
+
+    public void runSave(NPC npcOfInterest){
+        if(npcOfInterest== this.nullNPC){
+            System.out.println("You must include a drained student to save!");
+            System.out.println("(Helpful hint: drained students are named \"drained student\" plus a number.");
+        }else{
+            try{
+                player.save(npcOfInterest);  
+            }catch(RuntimeException e){
+                e.getLocalizedMessage();
+            }
+            
+        } 
+    }
+
     public void runTalk(NPC npcOfInterest, Person player){
         if(npcOfInterest== this.nullNPC){
-            System.out.println("You must include a character to talk to! (Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
+            System.out.println("You must include a character to talk to!");
             System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
         }else{
             player.talk(npcOfInterest); 
@@ -507,7 +554,7 @@ public class Main {
         if (locationOfInterest== this.nullLocation){
             System.out.println("You must include a location to move to!");
         }else{
-            player.move(locationOfInterest);
+            player.move(locationOfInterest, this.libraryStairs, this.tangled, this.historyOfTransylvania, this.dracula);
         }
     }
     
@@ -554,6 +601,10 @@ public class Main {
                 System.out.println(e.getLocalizedMessage());
             }
         }
+    }
+
+    public void runSearch(){
+        this.player.search(this.tangled, this.historyOfTransylvania, this.dracula);
     }
     
     public void runFight(NPC npcOfInterest,  Item itemOfInterest, Person player){
@@ -603,6 +654,18 @@ public class Main {
             this.runLookAt(this.checkGrabDropLookAtFight(inputArrayList), this.player); 
         }else if(inputArrayList.contains("fight")){
             this.runFight(this.checkTalkFight(inputArrayList), this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+        }else if(inputArrayList.contains("search")){
+            if(phaseOneComplete){
+                this.runSearch(); 
+            }else{
+                System.out.println("You cannot use the search command yet!");
+            }
+        }else if(inputArrayList.contains("save")){
+            if(phaseTwoComplete){
+                this.runSave(this.checkSave(inputArrayList)); 
+            }else{
+                System.out.println("You cannot use the save command yet!");
+            }
         }else{
             System.out.println("That didn't really make sense. Try again. Type \"help\" for a list of commands!");
         }
@@ -621,10 +684,7 @@ public class Main {
 
     }
 
-    
-
-
-
+    //write check dead and respawn method
 
     public void runRoundOfPhaseOne(){
         this.runUserInput(); 
@@ -654,19 +714,26 @@ public class Main {
 
 
         //final code
-        // System.out.println("");
-        // System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
-        // System.out.println(" ");
-        // System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful your school doesn't like studnets lingering outside of class.");
-        // System.out.println("");
-        // while(testingGame.phaseOneComplete==false){
-        //     testingGame.runRoundOfPhaseOne(); 
-        //     testingGame.checkPhaseOneComplete(); 
-        // }
-        // System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
-        // System.out.println("");
-        // System.out.println("Phase One Complete. Welcome to phase two: The Library. Be careful and be quiet... the librarian moves fast and quiet and she may be lurking around every corner.");
-
+        System.out.println("");
+        System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
+        System.out.println(" ");
+        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful your school doesn't like studnets lingering outside of class.");
+        System.out.println("");
+        while(testingGame.phaseOneComplete==false){
+            testingGame.runRoundOfPhaseOne(); 
+            testingGame.checkPhaseOneComplete(); 
+            if(testingGame.player.isdead()){
+                break; 
+            }
+        }
+        if(testingGame.player.isdead()){
+            testingGame.scanner.close(); 
+        }else{
+            System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
+            System.out.println("");
+            System.out.println("Phase One Complete. Welcome to phase two: The Library. Be careful and be quiet... the librarian moves fast and quiet and she may be lurking around every corner.");
+        }
+        
         
 
         //home room note not working

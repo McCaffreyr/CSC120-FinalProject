@@ -1,5 +1,7 @@
 public class DrainedStudent extends Student{
 
+    boolean isSaved; 
+
     /**
      * A constructor for a drained student.
      * @param n name of the drained student.
@@ -10,6 +12,12 @@ public class DrainedStudent extends Student{
      */
     DrainedStudent(String n, String d, Location cL) {
         super(n, d, cL, 2, false);
+        this.isSaved=false; 
+    }
+
+    public void beSaved(){
+        System.out.println(this.getName()+ " has been saved! They will now help you fight the science teacher.");
+        this.isSaved=true; 
     }
 
 }

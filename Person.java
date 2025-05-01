@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Person {
     protected ArrayList<Item> inventory;
     protected int health; 
@@ -79,12 +80,23 @@ public class Person {
      * A method to change a person's current location
      * @param place the place the person hopes to move to
      */
-    public void move(Location place){
-        if (map.get(currentLocation.name).contains(place.name)){
+    public void move(Location place, Location libraryStairs, Item tangled, Item historyOf, Item dracula){
+        if (map.get(currentLocation.name).contains(place.name)&& place!=libraryStairs){
             this.currentLocation = place;
             System.out.println("Currect location is now: " + place.name);
             this.points= this.getPoints()+1; 
-        } else{
+        }else if(map.get(currentLocation.name).contains(place.name)&& place==libraryStairs){
+            if(this.hasItem(dracula)==true && this.hasItem(historyOf)==true && this.hasItem(tangled)==true){
+                System.out.println("You put the three books on a pedstal and the bookshlef pops open revealing a secret set of stairs! Huzzah! \n You enter and hear the librarian slam the secret door shut behind you. You try to open it again, but it's barricaded shut.");
+                this.currentLocation = place;
+                System.out.println("Currect location is now: " + place.name);
+                this.points= this.getPoints()+4; 
+            }else{
+                System.out.println();
+            }
+        }
+        
+        else{
             System.out.println(place.name + " isn't connected to where you are.");
             System.out.println("The following rooms are connected: "); 
             System.out.println( map.get(this.currentLocation.name));
@@ -114,8 +126,19 @@ public class Person {
 
     //searchs bookshelves for book
     //FIXXXXXX
-    public String search(){
-        return "books!";
+    public void search(Item rapunzel, Item historyOf, Item dracula){
+        if(this.getLocation().hasItem(rapunzel)){
+            System.out.println("You found a book that might fit on one of the pedastals.");
+            this.grab(rapunzel, this.getLocation()); 
+        }else if(this.getLocation().hasItem(rapunzel)){
+            System.out.println("You found a book that might fit on one of the pedastals.");
+            this.grab(historyOf, this.getLocation());  
+        }else if(this.getLocation().hasItem(rapunzel)){
+            System.out.println("You found a book that might fit on one of the pedastals.");
+            this.grab(historyOf, this.getLocation());
+        }else{
+            System.out.println("There are no intersting books in this section of the library...");
+        }
     }
 
     public void fight(NPC npc, Item item){
@@ -214,7 +237,13 @@ public class Person {
         }
     }
 
-    protected void save(DrainedStudent drainedstu){
+    protected void save(NPC drainedstu){
+        if(this.getLocation()==drainedstu.getLocation()){
+            System.out.println("You are attempting to save "+ drainedstu.getName());
+
+        }else{
+            throw new RuntimeException("You cannot save a drained student you are not in the room with."); 
+        }
     }
 
     public static void main(String[] args) {
