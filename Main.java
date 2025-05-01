@@ -645,6 +645,7 @@ public class Main {
         System.out.println("");
         if(inputArrayList.contains("help")){
             this.runHelp(inputArrayList); 
+            this.runUserInput(); 
         }else if(inputArrayList.contains("grab")){
             this.runGrab(this.checkGrabDropLookAtFight(inputArrayList), this.player);
         }else if(inputArrayList.contains("inventory")){
