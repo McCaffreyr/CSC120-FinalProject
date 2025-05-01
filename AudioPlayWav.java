@@ -3,7 +3,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class AudioPlayWav {
-    public static void main(String[] args) {
+
+    public static void playAudio(){
         try {
             // Specify the path to the WAV file
             File audioFile = new File("AudioLaughter.wav");
@@ -34,5 +35,10 @@ public class AudioPlayWav {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        AudioPlayWav test = new AudioPlayWav();
+        test.playAudio();
     }
 }
