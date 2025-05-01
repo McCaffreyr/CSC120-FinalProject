@@ -138,7 +138,7 @@ public class Main {
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
-        this.hoemRoomNote= new Note("home Room Note", "note contents...", this.homeRoom, false); 
+        this.hoemRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I tried to investigate but was expelled. Find out what's happening in here and be careful!", this.homeRoom, false); 
         this.homeRoom.addItem(hoemRoomNote); 
         Object[] bioLabKeyItems={this.scalpel}; 
         this.bioLab.setKeyItems(bioLabKeyItems);
