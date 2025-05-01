@@ -7,6 +7,7 @@ public class Person {
     protected int points; 
     protected Location currentLocation; 
     protected LocationMap map = new LocationMap(); 
+    AudioPlayWav audio = new AudioPlayWav();
 
     /**
      * Constructor for the Person class
@@ -125,7 +126,6 @@ public class Person {
     }
 
     //searchs bookshelves for book
-    //FIXXXXXX
     public void search(Item rapunzel, Item historyOf, Item dracula){
         if(this.getLocation().hasItem(rapunzel)){
             System.out.println("You found a book that might fit on one of the pedastals.");
@@ -230,6 +230,7 @@ public class Person {
 
     public Boolean isdead(){
         if (this.health<=0){
+            audio.playAudio();
             System.out.println("You died! Whoops! You had "+ this.getPoints());
             return true; 
         }else{
@@ -247,10 +248,12 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        // Location starterClassroom = new Location("Starter Classroom","desc",true);
-        // Person Abby = new Person(starterClassroom);
+        Location starterClassroom = new Location("Starter Classroom","desc", "desc2", true, null);
+        Person Abby = new Person(starterClassroom);
         // Location Hallway3 = new Location("Hallway 3","desc",true);
         // Location Hallway7 = new Location("Hallway 7","desc",true);
+        Abby.health = 0;
+        System.out.println(Abby.isdead());
 
 
         // Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);

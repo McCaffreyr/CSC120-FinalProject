@@ -99,6 +99,7 @@ public class Main {
         this.phaseTwoComplete= false; 
         this.phaseThreeComplete= false; 
         this.map = new LocationMap();
+        AudioPlayWav audio = new AudioPlayWav();
         Object[] nullKeyItems={}; 
         this.nullLocation= new Location("null Location", "n/a", "n/a", true, nullKeyItems); 
 
@@ -204,11 +205,11 @@ public class Main {
         hallwayTwelve.addNPC(hallMonitorTwo); 
         this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I tried to investigate but was expelled. Find out what's happening in here and be careful!", this.homeRoom, false); 
         this.homeRoom.addItem(homeRoomNote); 
-        this.cellarStairsNote= new Note("Cellar Stairs Note", "note contents...", this.cellarStairs,false); 
+        this.cellarStairsNote= new Note("Cellar Stairs Note", "You are getting so close to figuring it out. But anything could be going on down here...make sure to have a weapon or two ready.", this.cellarStairs,false); 
         this.cellarStairs.addItem(cellarStairsNote);
-        this.historyRoomNote= new Note("History Room Note", "note contents...,", this.historyRoom, false); 
+        this.historyRoomNote= new Note("History Room Note", "Glad to see you wandering the school looking for clues. Have you found any of the weapons yet? Gotta be prepared for the unknown.", this.historyRoom, false); 
         this.historyRoom.addItem(historyRoomNote);
-        this.hallwayTwelveNote= new Note("Hallway Twelve Note", "note contents...", this.hallwayTwelve, false); 
+        this.hallwayTwelveNote= new Note("Hallway Twelve Note", "The Library is just ahead. There are some helpful books hidden around. Be careful what you tell the librarian...we can't have the teachers catch on to our investigation.", this.hallwayTwelve, false); 
         this.hallwayTwelve.addItem(hallwayTwelveNote);
         this.tangled= new Item("Tangled", "A picture book of Disney's Tangled. It is very worn... it must be a favorite.", this.libraryRoomThree, false); 
         this.historyOfTransylvania= new Item("History of Transylvania", "A thick chapter book that is the history of Transylvania. When you look at the check out history it has been checked out by teachers almost every day this past week. Strange.", this.libraryRoomSix, false); 
@@ -494,7 +495,7 @@ public class Main {
     }
 
     public NPC checkSave(List<String> inputArrayList){
-        String [] npcStringList={"drained student one", "drained student two", "drained student three", "drained student four", "drained student five", "drained student six", "drained studnet seven", "drained student eight", "drained student nine"}; 
+        String [] npcStringList={"drained student one", "drained student two", "drained student three", "drained student four", "drained student five", "drained student six", "drained student seven", "drained student eight", "drained student nine"}; 
         NPC [] npcList= {this.drainedStudentOne, this.drainedStudentTwo, this.drainedStudentThree, this.drainedStudentFour, this.drainedStudentFive, this.drainedStudentSix, this.drainedStudentSeven, this.drainedStudentEight, this.drainedStudentNine}; 
         for(int i=0; i<npcStringList.length; i++){
             if(npcStringList[i].contains(" ")){
@@ -715,9 +716,9 @@ public class Main {
 
         //final code
         System.out.println("");
-        System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
+        System.out.println("Welcome to our game created by Maggie McCaffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
         System.out.println(" ");
-        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful your school doesn't like studnets lingering outside of class.");
+        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.");
         System.out.println("");
         while(testingGame.phaseOneComplete==false){
             testingGame.runRoundOfPhaseOne(); 
