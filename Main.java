@@ -198,8 +198,10 @@ public class Main {
         this.homeRoomTeacher= new Teacher("Home Room Teacher", "your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
         this.homeRoom.addNPC(homeRoomTeacher); 
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
-        this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne); 
-        this.hallMonitorOne= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
+        this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne);
+        hallwayOne.addNPC(hallMonitorOne); 
+        this.hallMonitorTwo= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
+        hallwayTwelve.addNPC(hallMonitorTwo); 
         this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I tried to investigate but was expelled. Find out what's happening in here and be careful!", this.homeRoom, false); 
         this.homeRoom.addItem(homeRoomNote); 
         this.cellarStairsNote= new Note("Cellar Stairs Note", "note contents...", this.cellarStairs,false); 
@@ -648,23 +650,22 @@ public class Main {
     public static void main(String[] args) { 
         
         Main testingGame= new Main(); 
-        testingGame.player.setLocation(testingGame.cafe); 
-        testingGame.runUserInput(); 
+  
 
 
         //final code
-        System.out.println("");
-        System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
-        System.out.println(" ");
-        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful your school doesn't like studnets lingering outside of class.");
-        System.out.println("");
-        while(testingGame.phaseOneComplete==false){
-            testingGame.runRoundOfPhaseOne(); 
-            testingGame.checkPhaseOneComplete(); 
-        }
-        System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
-        System.out.println("");
-        System.out.println("Phase One Complete. Welcome to phase two: The Library. Be careful and be quiet... the librarian moves fast and quiet and she may be lurking around every corner.");
+        // System.out.println("");
+        // System.out.println("Welcome to our game created by Maggie McAffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
+        // System.out.println(" ");
+        // System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful your school doesn't like studnets lingering outside of class.");
+        // System.out.println("");
+        // while(testingGame.phaseOneComplete==false){
+        //     testingGame.runRoundOfPhaseOne(); 
+        //     testingGame.checkPhaseOneComplete(); 
+        // }
+        // System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
+        // System.out.println("");
+        // System.out.println("Phase One Complete. Welcome to phase two: The Library. Be careful and be quiet... the librarian moves fast and quiet and she may be lurking around every corner.");
 
         
 

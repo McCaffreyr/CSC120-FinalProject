@@ -1,7 +1,7 @@
 
 import java.util.Random;
 
-public class HallMonitor extends NPC{
+public class HallMonitor extends Teacher{
     Random random = new Random();
     LocationMap map = new LocationMap();
  
@@ -17,10 +17,14 @@ public class HallMonitor extends NPC{
      * @param a the attackability of the hall monitor.
      */
     HallMonitor(String n, String d, Location cL) {
-        super(n, d, cL, 10, true);
+        super(n, d, cL, 10);
         this.isAlive=true; 
     }
 
+    //just for testing
+    public void setHealth(int h){
+        this.health= h; 
+    }
     public Boolean isAlive(){
         return this.isAlive; 
     }
@@ -38,8 +42,10 @@ public class HallMonitor extends NPC{
     }
 
     public void move(Location l, Person player){
+        this.getLocation().removeNPC(this); 
         this.setCurrentLocation(l);
-        this.postMoveChecks(null);
+        l.addNPC(this); 
+        this.postMoveChecks(player);
     }
 
     public void postMoveChecks(Person player){
