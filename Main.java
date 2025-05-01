@@ -332,8 +332,8 @@ public class Main {
     
     
     public Item checkGrabDropLookAtFight(List<String> inputArrayList){
-        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary", "syringe" };
-        Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary, this.syringe};   
+        String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary", "syringe", "home room note", "history room note", "hallway twelve note", "cellar stairs note"};
+        Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary, this.syringe, this.homeRoomNote, this.historyRoomNote, this.hallwayTwelveNote, this.cellarStairsNote};   
         //iterating through itemStringList to check if there is an item in the command from user
         for(int i=0; i<itemStringList.length; i++){
             if (itemStringList[i].contains(" ")){ 

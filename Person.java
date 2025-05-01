@@ -14,7 +14,7 @@ public class Person {
      * Constructor for the Person class
      */
     public Person(Location sL) {
-        this.health = 20;
+        this.health = 40;
         this.points = 0;
         this.currentLocation= sL; 
         this.inventory = new ArrayList<>();
