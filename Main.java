@@ -84,6 +84,7 @@ public class Main {
     DrainedStudent drainedStudentSeven; 
     DrainedStudent drainedStudentEight; 
     DrainedStudent drainedStudentNine; 
+    ScienceTeacher scienceTeacher; 
 
 
     //lists
@@ -160,14 +161,14 @@ public class Main {
         
         //make sure to mention the students have label numbers 
         this.cellarStairs= new Location("Cellar Stairs", "The end of the dark deep stairway. It feels damp and haunting. There is a crumpled note on the floor.","The end of the dark deep stairway. It feels damp and haunting.", true, nullKeyItems ); 
-        this.cellarRoomOne= new Location("Cellar Roome One", "", "", false, nullKeyItems); 
-        this.cellarRoomTwo= new Location("Cellar Room Two", "", "", false, nullKeyItems); 
-        this.cellarRoomThree= new Location("Cellar Room Three", "", "", false, nullKeyItems); 
-        this.cellarRoomFour= new Location("Cellar Room Four", "", "", false, nullKeyItems); 
-        this.cellarRoomFive= new Location("Cellar Room Five", "", "", false ,nullKeyItems); 
-        this.cellarRoomSix= new Location("Cellar Room Six", "", "", true, nullKeyItems); 
-        this.cellarRoomSeven= new Location("Cellar Room Seven", "", "", false, nullKeyItems); 
-        this.dungeon= new Location("Dungeon", "", "", true, nullKeyItems); 
+        this.cellarRoomOne= new Location("Cellar Room One", "A dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
+        this.cellarRoomTwo= new Location("Cellar Room Two", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
+        this.cellarRoomThree= new Location("Cellar Room Three", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
+        this.cellarRoomFour= new Location("Cellar Room Four", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
+        this.cellarRoomFive= new Location("Cellar Room Five", "Another poorly lit room. However, in the corner of the room you see a student slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number nine is written above his head.", "Another poorly lit room.", false ,nullKeyItems); 
+        this.cellarRoomSix= new Location("Cellar Room Six", "This room is incredibly dim. However, next to you, you see a student slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number one is written above his head. Alongside the far wall you see an entrance to a DUNGEON", "This room is incredibly dim and stinky.", true, nullKeyItems); 
+        this.cellarRoomSeven= new Location("Cellar Room Seven", "Another dimly lit, dark, room that smells awful with not much in it.", "", false, nullKeyItems); 
+        this.dungeon= new Location("Dungeon", "Inside this room you find the whole golf team with a bright green liquid being pumped from their vains to a large vat in the center. Above each of them is the numbers 2-8.", "Inside this room you find a large vat in the center of the room.", true, nullKeyItems); 
 
         this.libraryStairs= new Location("Library Stairs", "A creepy stairway that leads only one way. Down. Move down to the Cellar Stairs.","A creepy stairway that leads only one way. Down.", false, nullKeyItems); 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
@@ -204,13 +205,15 @@ public class Main {
         hallwayOne.addNPC(hallMonitorOne); 
         this.hallMonitorTwo= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve,10); 
         hallwayTwelve.addNPC(hallMonitorTwo); 
-        this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I tried to investigate but was expelled. Find out what's happening in here and be careful!", this.homeRoom, false); 
+        this.scienceTeacher= new ScienceTeacher("Science Teacher", "Your science teacher who has awesome skin but a horrible vibe!", this.dungeon, 40); 
+        this.dungeon.addNPC(scienceTeacher); 
+        this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I am going to try investigate. But if i'm not seen around again...find out what's happening in here and be careful!", this.homeRoom, false); 
         this.homeRoom.addItem(homeRoomNote); 
-        this.cellarStairsNote= new Note("Cellar Stairs Note", "You are getting so close to figuring it out. But anything could be going on down here...make sure to have a weapon or two ready.", this.cellarStairs,false); 
+        this.cellarStairsNote= new Note("Cellar Stairs Note", "Oh no, I fear i may have lead you to far, but if your seeing this...it's to late to turn back now. I figured out what was going on... all the teachers, led by the science teacher, were kidnppaing the rebellious kids from school and draining their youth so they could appear more youthful themselves. Seems like there might be some larger message here about how society fears aging and the unrealistic beauty standrads we hold people too... but i dont have time for all of that right now. I can hear the science teacher down here with me... he's coming. I'm ill prepared it's too late for me. If your reading this maybe you can be the one to SAVE us DRAINED STUDENTS from this hell. Please help! ", this.cellarStairs,false); 
         this.cellarStairs.addItem(cellarStairsNote);
-        this.historyRoomNote= new Note("History Room Note", "Glad to see you wandering the school looking for clues. Have you found any of the weapons yet? Gotta be prepared for the unknown.", this.historyRoom, false); 
+        this.historyRoomNote= new Note("History Room Note", "Glad to see you wandering the school looking for clues just like I am. Have you found any of the weapons yet? Gotta be prepared for the unknown.", this.historyRoom, false); 
         this.historyRoom.addItem(historyRoomNote);
-        this.hallwayTwelveNote= new Note("Hallway Twelve Note", "The Library is just ahead. There are some helpful books hidden around. Be careful what you tell the librarian...we can't have the teachers catch on to our investigation.", this.hallwayTwelve, false); 
+        this.hallwayTwelveNote= new Note("Hallway Twelve Note", "The Library is just ahead. Be careful what you tell the librarian...we can't have the teachers catch on to our investigation...but i know she is involved somehow... I might try and snoop around her desk a little bit to try and find out.", this.hallwayTwelve, false); 
         this.hallwayTwelve.addItem(hallwayTwelveNote);
         this.tangled= new Item("Tangled", "A picture book of Disney's Tangled. It is very worn... it must be a favorite.", this.libraryRoomThree, false); 
         this.libraryRoomThree.addItem(this.tangled);
@@ -310,9 +313,6 @@ public class Main {
         System.out.println("--------------------------------");
     }
 
-    public void phaseOne(){
-        System.out.println("Welcome to the game. Feel free to start uncovering the world whenever you are ready. If you are stuck, type 'help' at any point to pull up a list of possible commands. We recommend you wait to use this option unless after you give it a try.");
-    }
 
     public List<String> getUserInput(Person p){
         //getting user input
@@ -541,7 +541,7 @@ public class Main {
             try{
                 player.save(npcOfInterest);  
             }catch(RuntimeException e){
-                e.getLocalizedMessage();
+                System.out.println(e.getLocalizedMessage());
             }
             
         } 
@@ -650,7 +650,7 @@ public class Main {
         }else if(inputArrayList.contains("inventory")){
             this.runInventory(this.player); 
         }else if(inputArrayList.contains("move")){
-            if(phaseOneComplete){
+            if(phaseOneComplete==true&& phaseTwoComplete==false){
                 this.runMove(checkMovePhaseTwo(inputArrayList), this.player); 
             }else if(phaseTwoComplete){
                 this.runMove(checkMovePhaseThree(inputArrayList), this.player); 
@@ -700,8 +700,12 @@ public class Main {
     //write check dead and respawn method
 
     public void runRoundOfPhaseOne(){
-        this.runUserInput(); 
-        System.out.println("");
+        if(this.player.getIsDead()==false){
+            this.runUserInput();
+            System.out.println("");
+        }else{
+            return;
+        }
         if(this.hallMonitorOne.isAlive){
             this.hallMonitorOne.move(this.changeStringtoLocation(this.hallMonitorOne.nextMove()), this.player);
         }
@@ -717,13 +721,73 @@ public class Main {
         }
     }
 
+    public void runRoundofPhaseThree(){
+        System.out.println("");
+        if(this.player.getIsDead()==false){
+            this.runUserInput();
+            System.out.println("");
+        }else{
+            return;
+        }
+        if(this.player.getIsDead()==false){
+            this.runUserInput();
+            System.out.println("");
+        }else{
+            return;
+        }
+        if(this.drainedStudentOne.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentOne.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentTwo.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentTwo.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentThree.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentThree.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentFour.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentFour.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentFive.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentFive.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentSix.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentSix.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentSeven.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentSeven.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentEight.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentEight.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.drainedStudentNine.isSaved()&& this.scienceTeacher.isAlive()){
+            this.drainedStudentNine.fight(this.scienceTeacher, this.player); 
+        }
+        if(this.scienceTeacher.isAlive()&& this.scienceTeacher.isAlive()){
+            scienceTeacher.move(this.changeStringtoLocation(scienceTeacher.nextMove()), this.player);
+        }
+    }
+
+    public void checkPhaseThreeComplete(){
+        if (this.scienceTeacher.isAlive()==false){
+            this.phaseThreeComplete=true;  
+        }else{
+            this.phaseThreeComplete=false;  
+        }
+    }
+
     
 
     public void runRoundOfPhaseTwo(){
-        this.runUserInput();
+        if(this.player.getIsDead()==false){
+            this.runUserInput();
+            System.out.println("");
+        }else{
+            return;
+        }
         System.out.println("");
         if(this.librarian.isAlive()){
-            this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove()), this.player); 
+            this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove()), this.player);
+            System.out.println(this.librarian.getLocation().getName()); 
         }
     }
 
@@ -749,9 +813,9 @@ public class Main {
 
         //final code
         System.out.println("");
-        System.out.println("Welcome to our game created by Maggie McCaffrey and Kylie Cave! You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
+        System.out.println("Welcome to our game created by Maggie McCaffrey and Kylie Cave! TW: This game contains loud sudden noises, and mild depictions of violence. You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
         System.out.println(" ");
-        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.");
+        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.(Helpful hint to leave you current classroom you will type move to hallway three.)");
         System.out.println("");
         while(testingGame.phaseOneComplete==false){
             testingGame.runRoundOfPhaseOne(); 
@@ -777,6 +841,18 @@ public class Main {
                 testingGame.scanner.close();
             }else{
                 System.out.println("Welcome to Phase Three... the cellar. You have no choice but to walk down the CELLAR STAIRS.");
+                while(testingGame.phaseThreeComplete==false){
+                    testingGame.runRoundofPhaseThree(); 
+                    testingGame.checkPhaseThreeComplete(); 
+                    if(testingGame.player.isdead()){
+                        break; 
+                    }
+                }
+                if(testingGame.player.isdead()){
+                    testingGame.scanner.close();
+                }else{
+                    System.out.println("Congrats you have won! You got "+ testingGame.player.getPoints()+" points!");
+                }
             }
         }
         
@@ -789,6 +865,10 @@ public class Main {
         //teacher fight response printing before attack description
         //check syringe works
         //cafe description with dwki not working
+        //librarian and science teacher have all text options not just theirs
+        //librarian move like doesnt work
+        //science teacher move like doesnt work
+
 
 
 

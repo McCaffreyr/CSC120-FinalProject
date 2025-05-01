@@ -42,7 +42,7 @@ public class LocationMap {
         locationMap.put("Cellar Stairs", new String[] { "Cellar Room One"});
         locationMap.put("Cellar Room One", new String[] {"Cellar Stairs", "Cellar Room Two", "Cellar Room Three"});
         locationMap.put("Cellar Room Two", new String[] {"Cellar Room One", "Cellar Room Four", "Cellar Room Six"});
-        locationMap.put("Cellar Room Three", new String[] {"Cellar One", "Cellar Four", "Cellar Five"});
+        locationMap.put("Cellar Room Three", new String[] {"Cellar Room One", "Cellar Room Four", "Cellar Room Five"});
         locationMap.put("Cellar Room Four", new String[] {"Cellar Room Two"});
         locationMap.put("Cellar Room Five", new String[] {"Cellar Room Three"});
         locationMap.put("Cellar Room Six", new String[] {"Cellar Room Two", "Cellar Room Seven", "Dungeon"});

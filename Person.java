@@ -6,7 +6,8 @@ public class Person {
     protected int health; 
     protected int points; 
     protected Location currentLocation; 
-    protected LocationMap map = new LocationMap(); 
+    protected LocationMap map = new LocationMap();
+    protected boolean isDead; 
     AudioPlayWav audio = new AudioPlayWav();
 
     /**
@@ -16,7 +17,8 @@ public class Person {
         this.health = 20;
         this.points = 0;
         this.currentLocation= sL; 
-        this.inventory = new ArrayList<>(); 
+        this.inventory = new ArrayList<>();
+        this.isDead= false;  
     }
 
     /**
@@ -229,10 +231,15 @@ public class Person {
         
     }
 
+    public boolean getIsDead(){
+        return this.isDead; 
+    }
+
     public Boolean isdead(){
         if (this.health<=0){
+            this.isDead=true; 
             audio.playAudio();
-            System.out.println("You died! Whoops! You had "+ this.getPoints());
+            System.out.println("You died! Whoops! You had "+ this.getPoints()+ "points.");
             return true; 
         }else{
             return false; 
@@ -242,6 +249,7 @@ public class Person {
     protected void save(NPC drainedstu){
         if(this.getLocation()==drainedstu.getLocation()){
             System.out.println("You are attempting to save "+ drainedstu.getName());
+            drainedstu.beSaved(this.getLocation()); 
 
         }else{
             throw new RuntimeException("You cannot save a drained student you are not in the room with."); 

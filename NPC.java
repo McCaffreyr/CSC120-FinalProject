@@ -93,5 +93,9 @@ public class NPC {
         return this.getName(); 
     }
 
+    public void beSaved(Location l){
+        System.out.println("Error this message should not appear in game");
+    }
+
     
 }

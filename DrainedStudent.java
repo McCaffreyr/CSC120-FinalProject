@@ -15,9 +15,21 @@ public class DrainedStudent extends Student{
         this.isSaved=false; 
     }
 
-    public void beSaved(){
+    public void beSaved(Location currentLocation){
         System.out.println(this.getName()+ " has been saved! They will now help you fight the science teacher.");
         this.isSaved=true; 
+        this.currentLocation.removeNPC(this); 
+    }
+
+    public boolean isSaved(){
+        return this.isSaved; 
+    }
+
+    public void fight(NPC scienceTeacher, Person player){
+        System.out.println(this.getName()+ " punches the science teacher.");
+        scienceTeacher.beAttacked(2, player); 
+        System.out.println("");
+
     }
 
 }

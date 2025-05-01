@@ -1,4 +1,4 @@
-public class ScienceTeacher extends Teacher{
+public class ScienceTeacher extends HallMonitor{
 
     ScienceTeacher(String n, String d, Location cL, int h) {
         super(n, d, cL, h);
@@ -11,12 +11,19 @@ public class ScienceTeacher extends Teacher{
      * @param stu the person / user
      */
     public String nextMove(Person stu){
-        if(isAlive){
-            String place = this.map.get(stu.currentLocation.name);
+        if(this.isAlive){
+            String place = this.map.get(stu.getLocation().getName());
             return place;
         } else{
-            return "You are dead:(";
+            return "null Location";
         }
+    }
+
+    public void fight(Person p){
+        System.out.println(this.getName()+ " attacks you with a syringe. Ow... god I hate shots.");
+        p.setHealth(p.getHealth()-3);
+        System.out.println("Your health is now "+p.getHealth());
+        System.out.println("");
     }
     
 

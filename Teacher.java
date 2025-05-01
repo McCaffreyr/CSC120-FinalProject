@@ -67,6 +67,13 @@ public class Teacher extends NPC{
 
     }
 
+    public void checkAlive(){
+        if(health<=0){
+            System.out.println(this.getName()+ " has died! A body lying around the school defintely won't be weird at all!");
+            this.isAlive=false; 
+        }
+    }
+
     public static void main(String[] args) {
         Teacher Paul = new Teacher("Paul", null, null, 100);
         Paul.talk();
