@@ -390,8 +390,8 @@ public class Main {
     }
 
     public Location checkMovePhaseTwo(List<String> inputArrayList){
-        String [] locationStringList={"library room one", "library room two", "library room three", "library room four", "library room five", "library room six", "library room seven", "library room eight", "library stairs" }; 
-        Location [] locationList= {this.libraryRoomOne, this.libraryRoomTwo, this.libraryRoomThree, this.libraryRoomFour, this.libraryRoomFive, this.libraryRoomSix, this.libraryRoomSeven, this.libraryRoomEight, this.libraryStairs}; 
+        String [] locationStringList={"library room one", "library room two", "library room three", "library room four", "library room five", "library room six", "library room seven", "library room eight", "library stairs", "cellar stairs" }; 
+        Location [] locationList= {this.libraryRoomOne, this.libraryRoomTwo, this.libraryRoomThree, this.libraryRoomFour, this.libraryRoomFive, this.libraryRoomSix, this.libraryRoomSeven, this.libraryRoomEight, this.libraryStairs, this.cellarStairs}; 
         for(int i=0; i<locationStringList.length; i++){
             if(locationStringList[i].contains(" ")){
                 String[] multipleWordLocation= locationStringList[i].split(" "); 
@@ -606,13 +606,33 @@ public class Main {
         }
     }
 
+    public Location changeStringtoLocation(String stringLocation){
+        stringLocation= stringLocation.toLowerCase(); 
+        String[] fullLocationStringList= {"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve", "library room one","library room two", "library room three", "library room four", "library room five", "library room six", "library room seven", "library room eight", "library stairs", "cellar stairs", "cellar room one", "cellar room two", "cellar room three", "cellar room four", "cellar room five", "cellar room six", "cellar room seven", "dungeon", "null location"};
+        Location[] fullLocationList={this.bioLab, this.chemLab, this.cafe, this.englishRoom, this.gym, this.historyRoom, this.mathRoom, this.studyRoom, this.homeRoom, this.hallwayOne, this.hallwayTwo, this.hallwayThree, this.hallwayFive, this.hallwaySix, this.hallwaySeven, this.hallwayEight, this.hallwayNine, this.hallwayTen, this.hallwayEleven, this.hallwayTwelve, this.libraryRoomOne, this.libraryRoomTwo, this.libraryRoomThree, this.libraryRoomFour, this.libraryRoomFive, this.libraryRoomSix, this.libraryRoomSeven, this.libraryRoomEight, this.libraryStairs, this.cellarStairs,this.cellarRoomOne, this.cellarRoomTwo, this.cellarRoomThree, this.cellarRoomFour, this.cellarRoomFive, this.cellarRoomSix, this.cellarRoomSeven, this.dungeon, this.nullLocation};
+        for (int i=0; i<fullLocationStringList.length; i++){
+            if (fullLocationStringList[i].equals(stringLocation)){
+                return fullLocationList[i];
+            }
+        }
+        return this.nullLocation; 
+
+    }
+
+    
+
+
 
 
     public void runRoundOfPhaseOne(){
         this.runUserInput(); 
         System.out.println("");
-        //this.hallMonitorOne.move(this.player); 
-        //this.hallMonitorTwo.move(this.player); 
+        if(this.hallMonitorOne.isAlive){
+            this.hallMonitorOne.move(this.changeStringtoLocation(this.hallMonitorOne.nextMove()), this.player);
+        }
+        if(this.hallMonitorTwo.isAlive){
+            this.hallMonitorTwo.move(this.changeStringtoLocation(this.hallMonitorTwo.nextMove()), this.player); 
+        }
 
     }
     
@@ -621,6 +641,7 @@ public class Main {
             this.phaseOneComplete=true;  
         }
     }
+
 
 
     
