@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class HallMonitor extends NPC{
@@ -20,10 +21,15 @@ public class HallMonitor extends NPC{
         this.isAlive=true; 
     }
 
-    public String moveTo(){
+    public String nextMove(Person stu){
         if(isAlive){
-            int randomNum = random.nextInt(this.map.get(currentLocation.name).size()); 
-            System.out.println(this.map.get(currentLocation.name).get(randomNum));
+            String options = this.map.get(stu.currentLocation.name);
+            String[] options2 = options.split(", ");
+            int randomNum = random.nextInt(options2.length); 
+            String newloc = options2[randomNum];
+        return newloc;
+        } else{
+            return "You are dead:(";
         }
     }
 
@@ -55,7 +61,7 @@ public class HallMonitor extends NPC{
 
     public void checkAlive(){
         if(health<=0){
-            System.out.println(this.getName()+ " has died! A body lying around the school defintley won't be weird at all!");
+            System.out.println(this.getName()+ " has died! A body lying around the school defintely won't be weird at all!");
             this.isAlive=false; 
         }
     }
@@ -70,8 +76,7 @@ public class HallMonitor extends NPC{
         Location HallwayThree = new Location("Hallway Three", "desc", "desc w/key items", false, null);
         HallMonitor Bob = new HallMonitor("Bob", "desc", HallwayThree);
         Person testingP= new Person(HallwayThree); 
-        Bob.move(testingP);
-
+        System.out.println(Bob.nextMove(testingP));
 }
 
 }

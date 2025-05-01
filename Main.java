@@ -144,7 +144,7 @@ public class Main {
         
         this.cellarStairs= new Location("Cellar Stairs", "The end of the dark deep stairway. It feels damp and haunting. There is a crumpled note on the floor.","The end of the dark deep stairway. It feels damp and haunting.", true, nullKeyItems ); 
 
-        this.libraryStairs= new Location("Library Stairs", "A creepy stairway that leads only one way. Down. Move down to the Cellar Stairs.","A creepy stairway that leads only one way. Down.", false, nullKeyItems): 
+        this.libraryStairs= new Location("Library Stairs", "A creepy stairway that leads only one way. Down. Move down to the Cellar Stairs.","A creepy stairway that leads only one way. Down.", false, nullKeyItems); 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
         this.golfClub= new Weapon("Golf Club", "a shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
@@ -177,7 +177,7 @@ public class Main {
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
-        this.homeRoomNote= new Note("Home Room Note", "note contents...", this.homeRoom, false); 
+        this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I tried to investigate but was expelled. Find out what's happening in here and be careful!", this.homeRoom, false); 
         this.cellarStairsNote= new Note("Cellar Stairs Note", "note contents...", this.cellarStairs,false); 
         this.historyRoomNote= new Note("History Room Note", "note contents...,", this.historyRoom, false); 
         this.hallwayTwelveNote= new Note("Hallway Twelve Note", "note contents...", this.hallwayTwelve, false); 
@@ -186,6 +186,7 @@ public class Main {
         this.dracula= new Item("Dracula", "The classic original vampire book. There is a weird green substance coating some of the pages.", this.libraryRoomEight, false); 
 
         this.homeRoom.addItem(homeRoomNote); 
+       
         Object[] bioLabKeyItems={this.scalpel}; 
         this.bioLab.setKeyItems(bioLabKeyItems);
         Object[]chemLabKeyItems={this.acid, this.syringe}; 
@@ -370,7 +371,9 @@ public class Main {
         return this.nullLocation; 
     }
 
-    public Location checkMovePhase
+    public Location checkMovePhase(List<String> inputArrayList){
+        return this.nullLocation; 
+    }
 
     
 
