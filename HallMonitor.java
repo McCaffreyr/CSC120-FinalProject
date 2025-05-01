@@ -1,7 +1,7 @@
-import java.util.Arrays;
+
 import java.util.Random;
 
-public class HallMonitor extends NPC{
+public class HallMonitor extends Teacher{
     Random random = new Random();
     LocationMap map = new LocationMap();
  
@@ -17,20 +17,35 @@ public class HallMonitor extends NPC{
      * @param a the attackability of the hall monitor.
      */
     HallMonitor(String n, String d, Location cL) {
-        super(n, d, cL, 10, true);
+        super(n, d, cL, 10);
         this.isAlive=true; 
     }
 
-    public String nextMove(Person stu){
+    //just for testing
+    public void setHealth(int h){
+        this.health= h; 
+    }
+    public Boolean isAlive(){
+        return this.isAlive; 
+    }
+
+    public String nextMove( ){
         if(isAlive){
-            String options = this.map.get(stu.currentLocation.name);
+            String options = this.map.get(this.currentLocation.name);
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
         return newloc;
         } else{
-            return "You are dead:(";
+            return "null location";
         }
+    }
+
+    public void move(Location l, Person player){
+        this.getLocation().removeNPC(this); 
+        this.setCurrentLocation(l);
+        l.addNPC(this); 
+        this.postMoveChecks(player);
     }
 
     public void postMoveChecks(Person player){
@@ -73,10 +88,10 @@ public class HallMonitor extends NPC{
     }
     
     public static void main(String[] args) {
-        Location HallwayThree = new Location("Hallway Three", "desc", "desc w/key items", false, null);
-        HallMonitor Bob = new HallMonitor("Bob", "desc", HallwayThree);
-        Person testingP= new Person(HallwayThree); 
-        System.out.println(Bob.nextMove(testingP));
-}
+        // Location HallwayThree = new Location("Hallway Three", "desc", "desc w/key items", false, null);
+        // HallMonitor Bob = new HallMonitor("Bob", "desc", HallwayThree);
+        // Person testingP= new Person(HallwayThree); 
+        // System.out.println(Bob.nextMove());
+    }
 
 }

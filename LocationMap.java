@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.HashMap;
 public class LocationMap {
 
@@ -31,7 +29,7 @@ public class LocationMap {
         locationMap.put("Hallway Eleven", new String[] {"Hallway Ten", "Hallway Twelve"});
         locationMap.put("Hallway Twelve", new String[] {"Hallway Eleven", "Library Room One"});
 
-        locationMap.put("Library Room One", new String[] {"Hallway Twelve", "Library Room Two", "Library Room Three"});
+        locationMap.put("Library Room One", new String[] {"Library Room Two", "Library Room Three"});
         locationMap.put("Library Room Two", new String[] {"Library Room One", "Library Room Eight", "Cellar Stairs"});
         locationMap.put("Library Room Three", new String[] {"Library Room One", "Library Room Four", "Library Room Six", "Library Room Seven"});
         locationMap.put("Library Room Four", new String[] {"Library Room Three", "Library Room Five"});
@@ -41,15 +39,15 @@ public class LocationMap {
         locationMap.put("Library Room Eight", new String[] {"Library Room Seven", "Library Room Two"});
         locationMap.put("Library Stairs", new String[] {"Library Room Two", "Cellar Stairs"});
 
-        locationMap.put("Cellar Stairs", new String[] {"Library Stairs", "Cellar One"});
-        locationMap.put("Cellar One", new String[] {"Cellar Stairs", "Cellar Two", "Cellar Three"});
-        locationMap.put("Cellar Two", new String[] {"Cellar One", "Cellar Four", "Cellar Six"});
-        locationMap.put("Cellar Three", new String[] {"Cellar One", "Cellar Four", "Cellar Five"});
-        locationMap.put("Cellar Four", new String[] {"Cellar Two"});
-        locationMap.put("Cellar Five", new String[] {"Cellar Three"});
-        locationMap.put("Cellar Six", new String[] {"Cellar Two", "Cellar Seven", "Dungeon"});
-        locationMap.put("Cellar Seven", new String[] {"Cellar Six"});
-        locationMap.put("Dungeon", new String[] {"Cellar Six"});
+        locationMap.put("Cellar Stairs", new String[] { "Cellar Room One"});
+        locationMap.put("Cellar Room One", new String[] {"Cellar Stairs", "Cellar Room Two", "Cellar Room Three"});
+        locationMap.put("Cellar Room Two", new String[] {"Cellar Room One", "Cellar Room Four", "Cellar Room Six"});
+        locationMap.put("Cellar Room Three", new String[] {"Cellar One", "Cellar Four", "Cellar Five"});
+        locationMap.put("Cellar Room Four", new String[] {"Cellar Room Two"});
+        locationMap.put("Cellar Room Five", new String[] {"Cellar Room Three"});
+        locationMap.put("Cellar Room Six", new String[] {"Cellar Room Two", "Cellar Room Seven", "Dungeon"});
+        locationMap.put("Cellar Room Seven", new String[] {"Cellar Room Six"});
+        locationMap.put("Dungeon", new String[] {"Cellar Room Six"});
     }
 
     /**
