@@ -92,7 +92,7 @@ public class Person {
                 System.out.println("Currect location is now: " + place.name);
                 this.points= this.getPoints()+4; 
             }else{
-                System.out.println();
+                System.out.println("You don't see any stairs to move too... just the same bookshelf with the three pedastals for books.");
             }
         }
         
@@ -126,16 +126,16 @@ public class Person {
 
     //searchs bookshelves for book
     //FIXXXXXX
-    public void search(Item rapunzel, Item historyOf, Item dracula){
-        if(this.getLocation().hasItem(rapunzel)){
+    public void search(Item rapunzel, Item historyOf, Item dracula, Location nullL){
+        if(this.getLocation().getLocationItemsAndNPCS().contains(rapunzel)){
             System.out.println("You found a book that might fit on one of the pedastals.");
-            this.grab(rapunzel, this.getLocation()); 
-        }else if(this.getLocation().hasItem(rapunzel)){
+            this.grab(rapunzel, nullL); 
+        }else if(this.getLocation().getLocationItemsAndNPCS().contains(historyOf)){
             System.out.println("You found a book that might fit on one of the pedastals.");
-            this.grab(historyOf, this.getLocation());  
-        }else if(this.getLocation().hasItem(rapunzel)){
+            this.grab(historyOf, nullL);  
+        }else if(this.getLocation().getLocationItemsAndNPCS().contains(dracula)){
             System.out.println("You found a book that might fit on one of the pedastals.");
-            this.grab(historyOf, this.getLocation());
+            this.grab(dracula, nullL);
         }else{
             System.out.println("There are no intersting books in this section of the library...");
         }
@@ -171,7 +171,7 @@ public class Person {
             throw new RuntimeException("You cannot fight a fellow student! That would lead to automatic expulsion."); 
 
         }else if(this.getLocation()== npc.getLocation()){
-            System.out.println("You punch the "+ npc.getName());
+            System.out.println("You punch the "+ npc.getName()+".");
             npc.beAttacked(2, this); 
             this.points=this.getPoints()+3;
 

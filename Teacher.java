@@ -43,7 +43,7 @@ public class Teacher extends NPC{
     public void talk(){
         if(isAlive){
             int randomNum = random.nextInt(15); 
-            System.out.println(responses.get(randomNum));
+            System.out.println(this.getName()+ ": "+responses.get(randomNum));
         }else{
             throw new RuntimeException("You cannot talk to a dead man."); 
         }
@@ -63,6 +63,7 @@ public class Teacher extends NPC{
         
         p.setHealth(p.getHealth()-2);
         System.out.println("The teacher slaps you back! It does two damage. Your health is now "+p.getHealth());
+        System.out.println("");
 
     }
 

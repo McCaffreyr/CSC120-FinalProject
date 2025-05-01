@@ -24,6 +24,9 @@ public class Location {
         this.locationItemsAndNPCs= new ArrayList<Object>(); 
         this.keyItems=kI; 
     } 
+    public ArrayList<Object> getLocationItemsAndNPCS(){
+        return this.locationItemsAndNPCs; 
+    }
 
     public void setKeyItems(Object[] keyItemList){
         this.keyItems= keyItemList; 

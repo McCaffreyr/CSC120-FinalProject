@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Librarian extends Teacher{
+public class Librarian extends HallMonitor{
     Random random = new Random();
     LocationMap map = new LocationMap();
     
@@ -31,14 +31,31 @@ public class Librarian extends Teacher{
      */
     public String nextMove(Person stu){
         if(isAlive){
-            String options = this.map.get(stu.currentLocation.name);
+            String options = this.map.get(stu.getLocation().getName());
+            System.out.println(options);
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
         return newloc;
         } else{
-            return "You are dead:(";
+            return "null location";
         }
+    }
+
+    public void beAttacked(int nHPLoss, Person p){
+        if(this.isAlive){
+            this.health=this.getHealth()-nHPLoss;
+            this.checkAlive();
+        }else{
+            throw new RuntimeException("You cannot fight a dead woman."); 
+        }
+    }
+
+    public void fight(Person p){
+        System.out.println(this.getName()+ " attacks you with a dictionary. That's gonna leave a bruise.");
+        p.setHealth(p.getHealth()-4);
+        System.out.println("Your health is now "+p.getHealth());
+        System.out.println("");
     }
     
 

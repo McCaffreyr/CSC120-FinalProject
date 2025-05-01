@@ -16,8 +16,8 @@ public class HallMonitor extends Teacher{
      * @param h The health of the hall monitor.
      * @param a the attackability of the hall monitor.
      */
-    HallMonitor(String n, String d, Location cL) {
-        super(n, d, cL, 10);
+    HallMonitor(String n, String d, Location cL, int h) {
+        super(n, d, cL, h);
         this.isAlive=true; 
     }
 
@@ -35,6 +35,9 @@ public class HallMonitor extends Teacher{
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
+            if(newloc.equals("Library Room One")){
+                newloc= "Hallway Three"; 
+            }
         return newloc;
         } else{
             return "null location";
@@ -42,6 +45,7 @@ public class HallMonitor extends Teacher{
     }
 
     public void move(Location l, Person player){
+        this.checkLocationForPlayer(player, "myMove");
         this.getLocation().removeNPC(this); 
         this.setCurrentLocation(l);
         l.addNPC(this); 
@@ -71,6 +75,16 @@ public class HallMonitor extends Teacher{
             System.out.println(this.getName()+" has entered the room your in! Watch out!");
             this.fight(p); 
             super.talk(); 
+            System.out.println("");
+        }
+    }
+
+    public void checkLocationForPlayer(Person p, String playerMove){
+        if(this.getLocation()==p.getLocation()){
+            System.out.println("You entered the room with the "+ this.getName()+ ". Watch out!");
+            this.fight(p); 
+            super.talk(); 
+            System.out.println("");
         }
     }
 
@@ -85,6 +99,7 @@ public class HallMonitor extends Teacher{
         System.out.println(this.getName()+ " attacks you with a wooden ruler. That's gonna leave a bruise.");
         p.setHealth(p.getHealth()-2);
         System.out.println("Your health is now "+p.getHealth());
+        System.out.println("");
     }
     
     public static void main(String[] args) {

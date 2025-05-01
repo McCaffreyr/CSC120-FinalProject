@@ -74,6 +74,7 @@ public class Main {
     HallMonitor hallMonitorOne; 
     HallMonitor hallMonitorTwo; 
     NPC nullNPC;
+    Librarian librarian; 
     DrainedStudent drainedStudentOne; 
     DrainedStudent drainedStudentTwo; 
     DrainedStudent drainedStudentThree; 
@@ -140,7 +141,7 @@ public class Main {
 
         this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library (library room one) and behind you is hallway eleven. There is a note on the floor of the hallway.", "In front of you is the entrance to the library and behind you is hallway eleven.", true, nullKeyItems); 
 
-        this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for?This room has a shelf of books recently returned!", false, nullKeyItems ); 
+        this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", false, nullKeyItems ); 
 
         this.libraryRoomTwo= new Location("Library Room Two", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. \nThere are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books. \nA note lies on the librarians desk that reads 1.Gather books 2.Place on pedastals 3.MOVE TO LIBRARY STAIRS. Interesting note... the librarian must be very forgetful!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. \nThere are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books. \n A note lies on the librarians desk that reads 1.Gather books 2.Place on pedastals 3.MOVE TO LIBRARY STAIRS. Interesting note... the librarian must be very forgetful!", false, nullKeyItems); 
 
@@ -198,9 +199,9 @@ public class Main {
         this.homeRoomTeacher= new Teacher("Home Room Teacher", "your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
         this.homeRoom.addNPC(homeRoomTeacher); 
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
-        this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne);
+        this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne, 10);
         hallwayOne.addNPC(hallMonitorOne); 
-        this.hallMonitorTwo= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
+        this.hallMonitorTwo= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve,10); 
         hallwayTwelve.addNPC(hallMonitorTwo); 
         this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I tried to investigate but was expelled. Find out what's happening in here and be careful!", this.homeRoom, false); 
         this.homeRoom.addItem(homeRoomNote); 
@@ -211,8 +212,11 @@ public class Main {
         this.hallwayTwelveNote= new Note("Hallway Twelve Note", "note contents...", this.hallwayTwelve, false); 
         this.hallwayTwelve.addItem(hallwayTwelveNote);
         this.tangled= new Item("Tangled", "A picture book of Disney's Tangled. It is very worn... it must be a favorite.", this.libraryRoomThree, false); 
+        this.libraryRoomThree.addItem(this.tangled);
         this.historyOfTransylvania= new Item("History of Transylvania", "A thick chapter book that is the history of Transylvania. When you look at the check out history it has been checked out by teachers almost every day this past week. Strange.", this.libraryRoomSix, false); 
+        this.libraryRoomSix.addItem(this.historyOfTransylvania);
         this.dracula= new Item("Dracula", "The classic original vampire book. There is a weird green substance coating some of the pages.", this.libraryRoomEight, false); 
+        this.libraryRoomEight.addItem(this.dracula); 
 
         this.drainedStudentOne= new DrainedStudent("Drained Student One", "A very tired looking student. They look older than normal. Very Wrinkly.", this.cellarRoomSix); 
         this.drainedStudentTwo= new DrainedStudent("Drained Student Two", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
@@ -224,6 +228,8 @@ public class Main {
         this.drainedStudentEight= new DrainedStudent("Drained Student Eight", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
         this.drainedStudentNine= new DrainedStudent("Drained Student Nine", "A very tired looking student. They look older than normal. Very Wrinkly.", this.cellarRoomFive); 
        
+        this.librarian= new Librarian("Librarian", "a nasty short lady with small glasses and a evil grin. ", this.libraryRoomTwo, 20); 
+        this.libraryRoomTwo.addNPC(librarian); 
         Object[] bioLabKeyItems={this.scalpel}; 
         this.bioLab.setKeyItems(bioLabKeyItems);
         Object[]chemLabKeyItems={this.acid, this.syringe}; 
@@ -254,7 +260,7 @@ public class Main {
         this.libraryRoomFour.setKeyItems(libraryFourKeyItems);
         Object[]libraryFiveKeyItems={}; 
         this.libraryRoomFive.setKeyItems(libraryFiveKeyItems);
-        Object[]librarySixKeyItems={historyOfTransylvania}; 
+        Object[]librarySixKeyItems={this.historyOfTransylvania}; 
         this.libraryRoomSix.setKeyItems(librarySixKeyItems);
         Object[]librarySevenKeyItems={}; 
         this.libraryRoomSeven.setKeyItems(librarySevenKeyItems);
@@ -461,8 +467,8 @@ public class Main {
 
     //add NPC's after all established
     public NPC checkTalkFight(List<String> inputArrayList){
-        String [] npcStringList={"home room student", "english room student", "study room student", "cafe room student", "home room teacher" }; 
-        NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher}; 
+        String [] npcStringList={"home room student", "english room student", "study room student", "cafe room student", "home room teacher", "librarian", "hall monitor two", "hall monitor one"}; 
+        NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher, this.librarian, this.hallMonitorTwo, this.hallMonitorOne}; 
         for(int i=0; i<npcStringList.length; i++){
             if(npcStringList[i].contains(" ")){
                 String[] multipleWordNPC= npcStringList[i].split(" "); 
@@ -563,7 +569,7 @@ public class Main {
             System.out.println("You must include an item to grab!");
         }else{
             try{
-                p.grab(itemOfInterest, nullLocation); 
+                p.grab(itemOfInterest, this.nullLocation); 
             }catch(RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             } 
@@ -604,13 +610,19 @@ public class Main {
     }
 
     public void runSearch(){
-        this.player.search(this.tangled, this.historyOfTransylvania, this.dracula);
+        try{
+            this.player.search(this.tangled, this.historyOfTransylvania, this.dracula, this.nullLocation);
+        }catch(RuntimeException e){
+            System.out.println(e.getLocalizedMessage());
+            
+        }
+        
     }
     
     public void runFight(NPC npcOfInterest,  Item itemOfInterest, Person player){
         if(npcOfInterest==this.nullNPC){
             System.out.println("You must include a character to fight!");
-            System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
+            System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.) Alternatively characters that move like hall monitors are named with numbers (Exp.Hall Monitor One).");
         }else if(itemOfInterest!=this.nullItem){
             try{
                 player.fight(npcOfInterest, itemOfInterest);
@@ -704,12 +716,33 @@ public class Main {
         }
     }
 
+    
+
+    public void runRoundOfPhaseTwo(){
+        this.runUserInput();
+        System.out.println("");
+        if(this.librarian.isAlive()){
+            this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove()), this.player); 
+        }
+    }
+
+    public void checkPhaseTwoComplete(){
+        if(this.player.getLocation()==this.libraryStairs){
+            this.phaseTwoComplete=true; 
+        }
+    }
+
 
 
     
     public static void main(String[] args) { 
         
         Main testingGame= new Main(); 
+        // testingGame.player.setLocation(testingGame.libraryRoomEight);
+        // System.out.println(testingGame.libraryRoomEight.locationItemsAndNPCs);
+        // System.out.println(testingGame.player.getLocation().getName());
+        // System.out.println(testingGame.dracula.getLocation().getName());
+        // testingGame.player.search(testingGame.tangled, testingGame.historyOfTransylvania, testingGame.dracula, testingGame.nullLocation);
   
 
 
@@ -732,6 +765,18 @@ public class Main {
             System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
             System.out.println("");
             System.out.println("Phase One Complete. Welcome to phase two: The Library. Be careful and be quiet... the librarian moves fast and quiet and she may be lurking around every corner.");
+            System.out.println("");
+            while(testingGame.phaseTwoComplete==false){
+                testingGame.runRoundOfPhaseTwo(); 
+                testingGame.checkPhaseTwoComplete(); 
+                if(testingGame.player.isdead()){
+                    break; 
+                }
+            }if(testingGame.player.isdead()){
+                testingGame.scanner.close();
+            }else{
+                System.out.println("Welcome to Phase Three... the cellar. You have no choice but to walk down the CELLAR STAIRS.");
+            }
         }
         
         

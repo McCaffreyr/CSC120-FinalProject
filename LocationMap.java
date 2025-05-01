@@ -30,7 +30,7 @@ public class LocationMap {
         locationMap.put("Hallway Twelve", new String[] {"Hallway Eleven", "Library Room One"});
 
         locationMap.put("Library Room One", new String[] {"Library Room Two", "Library Room Three"});
-        locationMap.put("Library Room Two", new String[] {"Library Room One", "Library Room Eight", "Cellar Stairs"});
+        locationMap.put("Library Room Two", new String[] {"Library Room One", "Library Room Eight", "Library Stairs"});
         locationMap.put("Library Room Three", new String[] {"Library Room One", "Library Room Four", "Library Room Six", "Library Room Seven"});
         locationMap.put("Library Room Four", new String[] {"Library Room Three", "Library Room Five"});
         locationMap.put("Library Room Five", new String[] {"Library Room Four"});
