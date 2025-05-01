@@ -30,6 +30,19 @@ public class Main {
     Location hallwayEleven;
     Location hallwayTwelve;
     Location libraryRoomOne; 
+    Location libraryRoomTwo; 
+    Location libraryRoomThree; 
+    Location libraryRoomFour; 
+    Location libraryRoomFive; 
+    Location libraryRoomSix; 
+    Location libraryRoomSeven; 
+    Location libraryRoomEight; 
+    Location libraryStairs; 
+    Location cellarStairs; 
+    Location cellarRoomOne; 
+    Location cellarRoomTwo; 
+    Location cellarRoomThree; 
+    Location cellarRoomFour; 
     //items
     Item nullItem;
     Weapon golfClub;
@@ -41,7 +54,13 @@ public class Main {
     Weapon scalpel;
     Weapon knife;
     Weapon dictionary;
-    Note hoemRoomNote; 
+    Note homeRoomNote; 
+    Note historyRoomNote; 
+    Note hallwayTwelveNote; 
+    Note cellarStairsNote; 
+    Item tangled; 
+    Item historyOfTransylvania; 
+    Item dracula; 
     //npcs
     Student homeRoomStudent;
     Student englishRoomStudent;
@@ -106,6 +125,26 @@ public class Main {
         this.hallwayEleven= new Location("Hallway Eleven", "In front of you is hallway twelve and behind you is hallway eleven.", "In front of you is hallway twelve and behind you is hallway eleven.", false, nullKeyItems); 
 
         this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library (library room one) and behind you is hallway eleven. There is a note on the floor of the hallway.", "In front of you is the entrance to the library and behind you is hallway eleven.", true, nullKeyItems); 
+
+        this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for?This room has a shelf of books recently returned!", false, nullKeyItems ); 
+
+        this.libraryRoomTwo= new Location("Library Room Two", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. There are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has the librarians desk and a looming suspicious bookshelf behind it. There are three book pedastals that seem suspiciously empty. Perhaps it's a good idea to SEARCH for these books.", false, nullKeyItems); 
+
+        this.libraryRoomThree= new Location("Library Room Three", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the children's book section.","Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the children's book section.", true, nullKeyItems); 
+
+        this.libraryRoomFour= new Location("Library Room Four", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the young adult section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the young adult section.", false, nullKeyItems); 
+
+        this.libraryRoomFive= new Location("Library Room Five", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the poetry section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the poetry section.", false, nullKeyItems); 
+
+        this.libraryRoomSix= new Location("Library Room Six", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the non-fiction section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the non-fiction section.", true, nullKeyItems );
+
+        this.libraryRoomSeven= new Location("Library Room Seven", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the sci-fi section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the sci-fi section.", false, nullKeyItems); 
+
+        this.libraryRoomEight= new Location("Library Room Eight", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the classics section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the classics section.", true , nullKeyItems); 
+        
+        this.cellarStairs= new Location("Cellar Stairs", "The end of the dark deep stairway. It feels damp and haunting. There is a crumpled note on the floor.","The end of the dark deep stairway. It feels damp and haunting.", true, nullKeyItems ); 
+
+        this.libraryStairs= new Location("Library Stairs", "A creepy stairway that leads only one way. Down. Move down to the Cellar Stairs.","A creepy stairway that leads only one way. Down.", false, nullKeyItems): 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
         this.golfClub= new Weapon("Golf Club", "a shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
@@ -138,8 +177,15 @@ public class Main {
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor Two", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayTwelve); 
-        this.hoemRoomNote= new Note("home Room Note", "note contents...", this.homeRoom, false); 
-        this.homeRoom.addItem(hoemRoomNote); 
+        this.homeRoomNote= new Note("Home Room Note", "note contents...", this.homeRoom, false); 
+        this.cellarStairsNote= new Note("Cellar Stairs Note", "note contents...", this.cellarStairs,false); 
+        this.historyRoomNote= new Note("History Room Note", "note contents...,", this.historyRoom, false); 
+        this.hallwayTwelveNote= new Note("Hallway Twelve Note", "note contents...", this.hallwayTwelve, false); 
+        this.tangled= new Item("Tangled", "A picture book of Disney's Tangled. It is very worn... it must be a favorite.", this.libraryRoomThree, false); 
+        this.historyOfTransylvania= new Item("History of Transylvania", "A thick chapter book that is the history of Transylvania. When you look at the check out history it has been checked out by teachers almost every day this past week. Strange.", this.libraryRoomSix, false); 
+        this.dracula= new Item("Dracula", "The classic original vampire book. There is a weird green substance coating some of the pages.", this.libraryRoomEight, false); 
+
+        this.homeRoom.addItem(homeRoomNote); 
         Object[] bioLabKeyItems={this.scalpel}; 
         this.bioLab.setKeyItems(bioLabKeyItems);
         Object[]chemLabKeyItems={this.acid, this.syringe}; 
@@ -156,12 +202,31 @@ public class Main {
         this.mathRoom.setKeyItems(mathRoomKeyItems);
         Object[]studyRoomKeyItems={this.studyRoomStudent}; 
         this.studyRoom.setKeyItems(studyRoomKeyItems);
-        Object[] homeRoomKeyItems={this.yellowSharpenedPencil, this.homeRoomStudent, this.homeRoomTeacher, this.hoemRoomNote}; 
+        Object[] homeRoomKeyItems={this.yellowSharpenedPencil, this.homeRoomStudent, this.homeRoomTeacher, this.homeRoomNote}; 
         this.homeRoom.setKeyItems(homeRoomKeyItems);
         Object[]hallwayTwelveKeyItems={}; 
         this.hallwayTwelve.setKeyItems(hallwayTwelveKeyItems);
         Object[]libraryOneKeyItems={}; 
-        this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for?This room has a shelf of books recently returned!", false, libraryOneKeyItems ); 
+        this.libraryRoomOne.setKeyItems(libraryOneKeyItems);
+        Object[]libraryTwoKeyItems={}; 
+        this.libraryRoomTwo.setKeyItems(libraryTwoKeyItems);
+        Object[]libraryThreeKeyItems={this.tangled}; 
+        this.libraryRoomThree.setKeyItems(libraryThreeKeyItems);
+        Object[]libraryFourKeyItems={}; 
+        this.libraryRoomFour.setKeyItems(libraryFourKeyItems);
+        Object[]libraryFiveKeyItems={}; 
+        this.libraryRoomFive.setKeyItems(libraryFiveKeyItems);
+        Object[]librarySixKeyItems={historyOfTransylvania}; 
+        this.libraryRoomSix.setKeyItems(librarySixKeyItems);
+        Object[]librarySevenKeyItems={}; 
+        this.libraryRoomSeven.setKeyItems(librarySevenKeyItems);
+        Object[]libraryEightKeyItems={this.dracula}; 
+        this.libraryRoomEight.setKeyItems(libraryEightKeyItems);
+        Object[]libraryStairsKeyItems={}; 
+        this.libraryStairs.setKeyItems(libraryStairsKeyItems);
+        Object[]cellarStairsKeyItems={this.cellarStairsNote}; 
+        this.cellarStairs.setKeyItems(cellarStairsKeyItems);
+       
         this.player= new Person(this.homeRoom);   
         this.scanner = new Scanner(System.in);
     }
@@ -241,7 +306,7 @@ public class Main {
         return this.nullItem; 
     }
 
-    public Location checkMove(List<String> inputArrayList){
+    public Location checkMovePhaseOne(List<String> inputArrayList){
         String [] locationStringList={"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve", "library room one"}; 
         Location [] locationList= {this.bioLab, this.chemLab, this.cafe, this.englishRoom, this.gym, this.historyRoom, this.mathRoom, this.studyRoom, this.homeRoom, this.hallwayOne, this.hallwayTwo, this.hallwayThree, this.hallwayFive, this.hallwaySix, this.hallwaySeven, this.hallwayEight, this.hallwayNine, this.hallwayTen, this.hallwayEleven, this.hallwayTwelve, this.libraryRoomOne}; 
         for(int i=0; i<locationStringList.length; i++){
@@ -272,6 +337,42 @@ public class Main {
         }
         return this.nullLocation; 
     }
+
+    public Location checkMovePhaseTwo(List<String> inputArrayList){
+        String [] locationStringList={"library room one", "library room two", "library room three", "library room four", "library room five", "library room six", "library room seven", "library room eight", "library stairs" }; 
+        Location [] locationList= {this.libraryRoomOne, this.libraryRoomTwo, this.libraryRoomThree, this.libraryRoomFour, this.libraryRoomFive, this.libraryRoomSix, this.libraryRoomSeven, this.libraryRoomEight, this.libraryStairs}; 
+        for(int i=0; i<locationStringList.length; i++){
+            if(locationStringList[i].contains(" ")){
+                String[] multipleWordLocation= locationStringList[i].split(" "); 
+                String[] foundWords= new String[multipleWordLocation.length]; 
+                for(int wordIdx=0; wordIdx<multipleWordLocation.length; wordIdx++){
+                    if(inputArrayList.contains(multipleWordLocation[wordIdx])){
+                        foundWords[wordIdx]=multipleWordLocation[wordIdx]; 
+                    }
+                }
+                boolean matchesAllWords=true; 
+                for(int testI=0; testI<multipleWordLocation.length; testI++){
+                    if(foundWords[testI]!=multipleWordLocation[testI]){
+                        matchesAllWords=false; 
+                        break; 
+                    }
+                }
+                if(matchesAllWords){
+                    return locationList[i]; 
+                }
+            }else{
+                if(inputArrayList.contains(locationStringList[i])){
+                    return locationList[i]; 
+                }
+            }
+
+        }
+        return this.nullLocation; 
+    }
+
+    public Location checkMovePhase
+
+    
 
     //add NPC's after all established
     public NPC checkTalkFight(List<String> inputArrayList){
@@ -400,7 +501,13 @@ public class Main {
         }else if(inputArrayList.contains("inventory")){
             this.runInventory(this.player); 
         }else if(inputArrayList.contains("move")){
-            this.runMove(this.checkMove(inputArrayList), this.player); 
+            if(phaseOneComplete){
+                this.runMove(checkMovePhaseTwo(inputArrayList), this.player); 
+            }else if(phaseTwoComplete){
+                this.runMove(checkMovePhaseThree(inputArrayList), this.player); 
+            }else{
+                this.runMove(checkMovePhaseOne(inputArrayList), this.player); 
+            }
         }else if(inputArrayList.contains("look")&& inputArrayList.contains("around")){
             this.runLookAround(this.player); 
         }else if(inputArrayList.contains("talk")){
@@ -415,6 +522,8 @@ public class Main {
             System.out.println("That didn't really make sense. Try again. Type \"help\" for a list of commands!");
         }
     }
+
+
 
     public void runRoundOfPhaseOne(){
         this.runUserInput(); 
@@ -449,7 +558,10 @@ public class Main {
             testingGame.runRoundOfPhaseOne(); 
             testingGame.checkPhaseOneComplete(); 
         }
-        System.out.println("Phase One Complete. Welcome to phase two: The Library...");
+        System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
+        System.out.println("");
+        System.out.println("Phase One Complete. Welcome to phase two: The Library. Be careful and be quiet... the librarian moves fast and quiet and she may be lurking around every corner.");
+
         
 
         //home room note not working
