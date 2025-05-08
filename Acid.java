@@ -16,6 +16,7 @@ public class Acid extends Weapon{
      * An override of the weapon's use method. If the acid is still full it will run the super classes use method and then it will empty itself 
      * If the acid is already empty when the player tries to use it it will throw  a runtime exception
      * @param target the target to be attacked by the acid. 
+     * @param player the player to use the acid.
      */
     public void use(NPC target, Person player) {
         if(hasAcid){

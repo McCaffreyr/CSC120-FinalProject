@@ -95,13 +95,16 @@ public class Main {
     //scanner
     Scanner scanner; 
 
-
+    /**
+     * This is the construcutor for the main part of the game.
+     */
     Main(){ 
         this.phaseOneComplete= false; 
         this.phaseTwoComplete= false; 
         this.phaseThreeComplete= false; 
         this.map = new LocationMap();
         Object[] nullKeyItems={}; 
+
         //establishing locations
         this.nullLocation= new Location("null Location", "n/a", "n/a", true, nullKeyItems); 
 
@@ -309,6 +312,9 @@ public class Main {
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * This method prints out the help screen with all the commands currently avalible to the player.
+     */
     public void help(){
         System.out.println("--------------------------------");
         System.out.println("-move: This command must be used with the name of an adjacent location. It moves your character to that location.");
@@ -331,8 +337,11 @@ public class Main {
         System.out.println("--------------------------------");
     }
 
-
-    public List<String> getUserInput(Person p){
+    /**
+     * This method get's the users input
+     * @return an Array List of strings of the users input broken into words.
+     */
+    public List<String> getUserInput(){
         //getting user input
         String userString= scanner.nextLine();  
         userString= userString.toLowerCase(); 
@@ -343,12 +352,20 @@ public class Main {
         return inputArrayList; 
     }
 
-    public void runHelp(List<String> inputArrayList){
+    /**
+     * This method runs the help command to display the help screen.
+     * @param inputArrayList
+     */
+    public void runHelp(){
         this.help(); 
         return; 
     } 
     
-    
+    /**
+     * This method checks that an item is in the users string to be used with any of the grab, drop, look at, or fight commands.
+     * @param inputArrayList the users input 
+     * @return the item to be used with the grab, drop, look at, or fight commands
+     */
     public Item checkGrabDropLookAtFight(List<String> inputArrayList){
         String [] itemStringList = {"golf club", "yellow sharpened pencil","pink sharpened pencil","acid","ruler","knife","scalpel","dictionary", "syringe", "home room note", "history room note", "hallway twelve note", "cellar stairs note"};
         Item [] itemList= {this.golfClub, this.yellowSharpenedPencil, this.pinkSharpenedPencil, this.acid, this.ruler, this.knife, this.scalpel, this.dictionary, this.syringe, this.homeRoomNote, this.historyRoomNote, this.hallwayTwelveNote, this.cellarStairsNote};   
@@ -384,6 +401,11 @@ public class Main {
         return this.nullItem; 
     }
 
+    /**
+     * This method checks that a location is given for the move command during phase one.
+     * @param inputArrayList the users input to check for a location in
+     * @return the location to be moved to
+     */
     public Location checkMovePhaseOne(List<String> inputArrayList){
         String [] locationStringList={"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve", "library room one"}; 
         Location [] locationList= {this.bioLab, this.chemLab, this.cafe, this.englishRoom, this.gym, this.historyRoom, this.mathRoom, this.studyRoom, this.homeRoom, this.hallwayOne, this.hallwayTwo, this.hallwayThree, this.hallwayFive, this.hallwaySix, this.hallwaySeven, this.hallwayEight, this.hallwayNine, this.hallwayTen, this.hallwayEleven, this.hallwayTwelve, this.libraryRoomOne}; 
@@ -416,6 +438,11 @@ public class Main {
         return this.nullLocation; 
     }
 
+    /**
+     * This method checks that the users input has a valid move location for phase two
+     * @param inputArrayList the users input to be checked for a location
+     * @return the location to be moved to
+     */
     public Location checkMovePhaseTwo(List<String> inputArrayList){
         String [] locationStringList={"library room one", "library room two", "library room three", "library room four", "library room five", "library room six", "library room seven", "library room eight", "library stairs", "cellar stairs" }; 
         Location [] locationList= {this.libraryRoomOne, this.libraryRoomTwo, this.libraryRoomThree, this.libraryRoomFour, this.libraryRoomFive, this.libraryRoomSix, this.libraryRoomSeven, this.libraryRoomEight, this.libraryStairs, this.cellarStairs}; 
@@ -448,6 +475,11 @@ public class Main {
         return this.nullLocation; 
     }
 
+    /**
+     * This method checks that there is a valid move location for phase three 
+     * @param inputArrayList the users input to be checked
+     * @return the location to be moved to
+     */
     public Location checkMovePhaseThree(List<String> inputArrayList){
         String [] locationStringList={"cellar stairs", "cellar room one", "cellar room two", "cellar room three", "cellar room four", "cellar room five", "cellar room six", "cellar room seven", "dungeon"}; 
         Location [] locationList= {this.cellarStairs, this.cellarRoomOne, this.cellarRoomTwo, this.cellarRoomThree, this.cellarRoomFour, this.cellarRoomFive, this.cellarRoomSix, this.cellarRoomSeven, this.dungeon}; 
@@ -480,11 +512,11 @@ public class Main {
         return this.nullLocation; 
     }
 
-    
-
-    
-
-    //add NPC's after all established
+   /**
+    * This method checks that there is an NPC to talk or fight in the users input
+    * @param inputArrayList the users input to be checked
+    * @return the NPC to talk or fight
+    */
     public NPC checkTalkFight(List<String> inputArrayList){
         String [] npcStringList={"home room student", "english room student", "study room student", "cafe student", "home room teacher", "librarian", "hall monitor two", "hall monitor one", "science teacher"}; 
         NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher, this.librarian, this.hallMonitorTwo, this.hallMonitorOne, this.scienceTeacher}; 
@@ -518,6 +550,11 @@ public class Main {
         return this.nullNPC; 
     }
 
+    /**
+     * This method checks that the users input contains a drained student to be saved
+     * @param inputArrayList the users input to be checked 
+     * @return the drained student to be saved
+     */
     public NPC checkSave(List<String> inputArrayList){
         String [] npcStringList={"drained student one", "drained student two", "drained student three", "drained student four", "drained student five", "drained student six", "drained student seven", "drained student eight", "drained student nine"}; 
         NPC [] npcList= {this.drainedStudentOne, this.drainedStudentTwo, this.drainedStudentThree, this.drainedStudentFour, this.drainedStudentFive, this.drainedStudentSix, this.drainedStudentSeven, this.drainedStudentEight, this.drainedStudentNine}; 
@@ -551,6 +588,10 @@ public class Main {
         return this.nullNPC; 
     }
 
+    /**
+     * This method runs the save method which saves a drained student
+     * @param npcOfInterest the NPC to be saved
+     */
     public void runSave(NPC npcOfInterest){
         if(npcOfInterest== this.nullNPC){
             System.out.println("You must include a drained student to save!");
@@ -565,17 +606,25 @@ public class Main {
         } 
     }
 
-    public void runTalk(NPC npcOfInterest, Person player){
+    /**
+     * This method runs the talk method which prints out an NPC response 
+     * @param npcOfInterest the NPC to talk too
+     */
+    public void runTalk(NPC npcOfInterest){
         if(npcOfInterest== this.nullNPC){
             System.out.println("You must include a character to talk to!");
             System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.)");
         }else{
-            player.talk(npcOfInterest); 
+            this.player.talk(npcOfInterest); 
         }
     }
 
 
-    public void runMove(Location locationOfInterest, Person player){
+    /**
+     * This method runs the move method and moves the player to the location of interest
+     * @param locationOfInterest the location for the player to be moved to
+     */
+    public void runMove(Location locationOfInterest){
         if (locationOfInterest== this.nullLocation){
             System.out.println("You must include a location to move to!");
         }else{
@@ -586,51 +635,72 @@ public class Main {
         }
     }
     
-    public void runGrab(Item itemOfInterest, Person p){
+    /**
+     * This method runs the grab method which has a player grab an item.
+     * @param itemOfInterest this is the item for the player to grab
+     */
+    public void runGrab(Item itemOfInterest){
         if( itemOfInterest== this.nullItem){
             System.out.println("You must include an item to grab!");
         }else{
             try{
-                p.grab(itemOfInterest, this.nullLocation); 
+                this.player.grab(itemOfInterest, this.nullLocation); 
             }catch(RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             } 
         }
     } 
 
-    public void runDrop(Item itemOfInterest, Person p){
+    /**
+     * This method runs the drop method 
+     * @param itemOfInterest the item to be dropped
+     */
+    public void runDrop(Item itemOfInterest){
         if( itemOfInterest==this.nullItem){
             System.out.println("You must include an item to drop");
         }else{
             try{
-                p.drop(itemOfInterest); 
+                this.player.drop(itemOfInterest); 
             }catch(RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             }
         }
     }
     
-    public void runInventory(Person player){
+    /**
+     * This method runs the check inventory method for the player
+     */
+    public void runInventory(){
        this.player.checkInventory(); 
 
     }
     
-    public void runLookAround(Person player){
+    /**
+     * This method runs the look around method which prints out the players surroundings.
+     */
+    public void runLookAround(){
         System.out.println(this.player.lookAround());
     }
 
-    public void runLookAt(Item itemOfInterest, Person player){
+    /**
+     * This method runs the look at method which prints the visual description of the item of interest. 
+     * @param itemOfInterest the item to be looked at.
+     */
+    public void runLookAt(Item itemOfInterest){
         if( itemOfInterest==this.nullItem){
             System.out.println("You must include an item to look at!");
         }else{
             try{
-                System.out.println(player.lookAt(itemOfInterest));
+                System.out.println(this.player.lookAt(itemOfInterest));
             }catch(RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             }
         }
     }
 
+    /**
+     * This method runs the search method which is used in phase two to find the key books in the library.
+     */
     public void runSearch(){
         try{
             this.player.search(this.tangled, this.historyOfTransylvania, this.dracula, this.nullLocation);
@@ -641,54 +711,62 @@ public class Main {
         
     }
     
-    public void runFight(NPC npcOfInterest,  Item itemOfInterest, Person player){
+    /**
+     * This runs the fight method on the given NPC with the given item or lack there of.
+     * @param npcOfInterest the NPC to be fought
+     * @param itemOfInterest the item to fight with
+     */
+    public void runFight(NPC npcOfInterest,  Item itemOfInterest){
         if(npcOfInterest==this.nullNPC){
             System.out.println("You must include a character to fight!");
             System.out.println("(Helpful hint: characters are named for the room their in and what they are. Example: Home Room Student or Home Room Teacher.) Alternatively characters that move like hall monitors are named with numbers (Exp.Hall Monitor One).");
         }else if(itemOfInterest!=this.nullItem){
             try{
-                player.fight(npcOfInterest, itemOfInterest);
+                this.player.fight(npcOfInterest, itemOfInterest);
             }catch( RuntimeException e ){
                 System.out.println(e.getLocalizedMessage());
             }
              
         }else{
             try{
-                player.fight(npcOfInterest); 
+                this.player.fight(npcOfInterest); 
             }catch(RuntimeException e){
                 System.out.println(e.getLocalizedMessage());
             }
         }
     }
    
+    /**
+     * This method parses through the users input to run the first method the user calls.
+     */
     public void runUserInput(){
-        List<String> inputArrayList= this.getUserInput(this.player); 
+        List<String> inputArrayList= this.getUserInput(); 
         System.out.println("");
         if(inputArrayList.contains("help")){
-            this.runHelp(inputArrayList); 
+            this.runHelp(); 
             this.runUserInput(); 
         }else if(inputArrayList.contains("grab")){
-            this.runGrab(this.checkGrabDropLookAtFight(inputArrayList), this.player);
+            this.runGrab(this.checkGrabDropLookAtFight(inputArrayList));
         }else if(inputArrayList.contains("inventory")){
-            this.runInventory(this.player); 
+            this.runInventory(); 
         }else if(inputArrayList.contains("move")){
             if(phaseOneComplete==true&& phaseTwoComplete==false){
-                this.runMove(checkMovePhaseTwo(inputArrayList), this.player); 
+                this.runMove(checkMovePhaseTwo(inputArrayList)); 
             }else if(phaseTwoComplete){
-                this.runMove(checkMovePhaseThree(inputArrayList), this.player); 
+                this.runMove(checkMovePhaseThree(inputArrayList)); 
             }else{
-                this.runMove(checkMovePhaseOne(inputArrayList), this.player); 
+                this.runMove(checkMovePhaseOne(inputArrayList)); 
             }
         }else if(inputArrayList.contains("look")&& inputArrayList.contains("around")){
-            this.runLookAround(this.player); 
+            this.runLookAround(); 
         }else if(inputArrayList.contains("talk")){
-            this.runTalk(this.checkTalkFight(inputArrayList), this.player); 
+            this.runTalk(this.checkTalkFight(inputArrayList)); 
         }else if(inputArrayList.contains("drop")){
-            this.runDrop(this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+            this.runDrop(this.checkGrabDropLookAtFight(inputArrayList)); 
         }else if(inputArrayList.contains("look")&& inputArrayList.contains("at")){
-            this.runLookAt(this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+            this.runLookAt(this.checkGrabDropLookAtFight(inputArrayList)); 
         }else if(inputArrayList.contains("fight")){
-            this.runFight(this.checkTalkFight(inputArrayList), this.checkGrabDropLookAtFight(inputArrayList), this.player); 
+            this.runFight(this.checkTalkFight(inputArrayList), this.checkGrabDropLookAtFight(inputArrayList)); 
         }else if(inputArrayList.contains("search")){
             if(phaseOneComplete){
                 this.runSearch(); 
@@ -706,6 +784,11 @@ public class Main {
         }
     }
 
+    /**
+     * This method changes the given string of a location name to a location present in game
+     * @param stringLocation the string location to be changed to a Location.
+     * @return the Location version of the given stringLocation.
+     */
     public Location changeStringtoLocation(String stringLocation){
         stringLocation= stringLocation.toLowerCase(); 
         String[] fullLocationStringList= {"bio lab", "chem lab", "cafe", "english room", "gym", "history room", "math room", "study room", "home room", "hallway one", "hallway two", "hallway three", "hallway five", "hallway six", "hallway seven", "hallway eight", "hallway nine", "hallway ten", "hallway eleven", "hallway twelve", "library room one","library room two", "library room three", "library room four", "library room five", "library room six", "library room seven", "library room eight", "library stairs", "cellar stairs", "cellar room one", "cellar room two", "cellar room three", "cellar room four", "cellar room five", "cellar room six", "cellar room seven", "dungeon", "null location"};
@@ -720,6 +803,9 @@ public class Main {
     }
 
 
+    /**
+     * This method runs a singular round of phase one which has a player move and then both hall monitors move.
+     */
     public void runRoundOfPhaseOne(){
         if(this.player.getIsDead()==false){
             this.runUserInput();
@@ -736,12 +822,18 @@ public class Main {
 
     }
     
+    /**
+     * This method checks if the player is in library room one which means that phase one is complete. It changes the main boolean phase one complete if it is.
+     */
     public void checkPhaseOneComplete(){
         if (this.player.getLocation()==this.libraryRoomOne){
             this.phaseOneComplete=true;  
         }
     }
 
+    /**
+     * This method runs on round of phase three which has the player do three actions before the drained students who are alive fight the science teacher. After the drained students fight the science teacher he moves.
+     */
     public void runRoundofPhaseThree(){
         System.out.println("");
         if(this.player.getIsDead()==false){
@@ -791,10 +883,12 @@ public class Main {
         }
         if(this.scienceTeacher.isAlive()&& this.scienceTeacher.isAlive()){
             scienceTeacher.move(this.changeStringtoLocation(scienceTeacher.nextMove(this.player)), this.player);
-            System.out.println(this.scienceTeacher.getLocation().getName());
         }
     }
 
+    /**
+     * This method checks if the science teacher is dead which means phase three is complete. If it is it changes the phaseThreeComplete boolean in main.
+     */
     public void checkPhaseThreeComplete(){
         if (this.scienceTeacher.isAlive()==false){
             this.phaseThreeComplete=true;  
@@ -803,8 +897,9 @@ public class Main {
         }
     }
 
-    
-
+    /**
+     * This method runs one round of phase two which has the librarian move and then the player has two actions.
+     */
     public void runRoundOfPhaseTwo(){
         if(this.librarian.isAlive()){
             this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove(this.player)), this.player);
@@ -835,6 +930,9 @@ public class Main {
         }
     }
 
+    /**
+     * This method checks if the player is in library stairs which means that phase two is complete. If it is it changes the main phaseTwoComplete boolean to true.
+     */
     public void checkPhaseTwoComplete(){
         if(this.player.getLocation()==this.libraryStairs){
             this.phaseTwoComplete=true; 

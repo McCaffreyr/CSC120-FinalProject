@@ -33,6 +33,9 @@ public class Student extends NPC{
         a = false;
     }
 
+    /**
+     * A method that prints out a random reponse from a student 
+     */
     public void talk(){
         int randomNum = random.nextInt(15); 
         System.out.println(responses.get(randomNum));

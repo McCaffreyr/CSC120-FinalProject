@@ -41,13 +41,6 @@ public class Item {
      */
     public Location getLocation(){
         return this.currentLocation; 
-        //if(this.inInventory== false){
-        //    return this.getLocation();
-        //}else{
-        //    throw new RuntimeException("This item is in your inventory! It moves with you! It was found at "+ this.getLocation()); 
-
-        //}
-
     }
 
     /**
@@ -66,10 +59,19 @@ public class Item {
         this.currentLocation=l; 
     }
 
+    /**
+     * This method is a filler method so that the use method can be used on any item type when it really only needs to be used on weapons.
+     * @param target the target to use the item on
+     * @param player the player to use the item
+     */
     public void use(NPC target, Person player){
         System.out.println("Error message this should never appear in game!");
     }
 
+    /**
+     * a toString method that sets it so when an item is printed it prints out the name
+     * @return a string of the name of the item
+     */
     public String toString(){
         return this.getName(); 
     }

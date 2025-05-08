@@ -18,13 +18,17 @@ public class BreakableWeapon extends Weapon {
         this.isBroken= false; 
     }
 
+    /**
+     * A accessor method for the isBroken attribute
+     * @return T/F wether the item is broken
+     */
     public Boolean isItemBroken(){
         return this.isBroken; 
     }
 
     /**
      * This method changes the isBrokean boolean to be true and modifies the name and 
-     * description to indicate the weapon is broken.
+     * description to indicate the weapon is broken. As well as printing out a message to let the plater know the message is broken.
      */
     public void fallApart(){
         this.isBroken= true;
@@ -37,6 +41,7 @@ public class BreakableWeapon extends Weapon {
      * This overrides the use method of the weapon class. It subrtacts the number of hit points from the health of the enemy. 
      * It also decreases the number of uses the object have left. If it is zero it makes the object fall apart. 
      * @param target the targert to be attacked when using this weapon
+     * @param player the person who uses the weapon
      */
     public void use(NPC target, Person player){
         if(isBroken){

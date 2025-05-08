@@ -20,6 +20,7 @@ public class Weapon extends Item {
     /**
      * This method uses the weapon and subtracts however many hit points the weapon has from the target.
      * @param target the target that is being attacked
+     * @param player the person who is using the weapon
      */
     public void use(NPC target, Person player){
         try{
