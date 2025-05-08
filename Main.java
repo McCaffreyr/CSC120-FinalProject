@@ -580,6 +580,9 @@ public class Main {
             System.out.println("You must include a location to move to!");
         }else{
             player.move(locationOfInterest, this.libraryStairs, this.tangled, this.historyOfTransylvania, this.dracula);
+            if(this.player.getLocation()!=this.hallMonitorOne.getLocation() ||this.player.getLocation()!=this.hallMonitorTwo.getLocation() || this.player.getLocation()!=this.librarian.getLocation() || this.player.getLocation()!=this.scienceTeacher.getLocation() ){
+                this.player.setHealth(this.player.getHealth()+1);
+            }
         }
     }
     
@@ -716,7 +719,6 @@ public class Main {
 
     }
 
-    //write check dead and respawn method
 
     public void runRoundOfPhaseOne(){
         if(this.player.getIsDead()==false){
@@ -806,7 +808,6 @@ public class Main {
     public void runRoundOfPhaseTwo(){
         if(this.librarian.isAlive()){
             this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove(this.player)), this.player);
-            System.out.println(this.librarian.getLocation().getName()); 
         }
         if(this.player.getIsDead()==false){
             this.runUserInput();
@@ -818,10 +819,13 @@ public class Main {
             return;
         }
         if(this.player.getIsDead()==false){
+            this.runUserInput();
             if (this.librarian.getLocation()==this.player.getLocation()) {
                 this.librarian.fight(this.player);
             }
-            this.runUserInput();
+            if(this.player.getLocation()==this.libraryStairs){
+                return; 
+            }
             System.out.println("");
             if (this.librarian.getLocation()==this.player.getLocation()) {
                 System.out.println("The librian disapears behind a book shelf. \n");
@@ -887,23 +891,5 @@ public class Main {
                 }
             }
         }
-        
-        
-
-        //home room note not working
-        //move to study room
-        //english room dwki not working
-        //check description in modified empty room fixed
-        //teacher fight response printing before attack description
-        //check syringe works
-        //cafe description with dwki not working
-        //librarian and science teacher have all text options not just theirs
-        //librarian move like doesnt work
-        //science teacher move like doesnt work
-
-
-
-
-
     }
 }

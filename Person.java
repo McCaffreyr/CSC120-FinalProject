@@ -127,8 +127,6 @@ public class Person {
         }
     }
 
-    //searchs bookshelves for book
-    //FIXXXXXX
     public void search(Item rapunzel, Item historyOf, Item dracula, Location nullL){
         if(this.getLocation().getLocationItemsAndNPCS().contains(rapunzel)){
             System.out.println("You found a book that might fit on one of the pedastals.");

@@ -32,7 +32,6 @@ public class Librarian extends HallMonitor{
     public String nextMove(Person stu){
         if(isAlive){
             String options = this.map.getAll(stu.getLocation().getName());
-            System.out.println(options);
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
