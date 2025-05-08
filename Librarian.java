@@ -31,12 +31,15 @@ public class Librarian extends HallMonitor{
      */
     public String nextMove(Person stu){
         if(isAlive){
-            String options = this.map.get(stu.getLocation().getName());
+            String options = this.map.getAll(stu.getLocation().getName());
             System.out.println(options);
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
-        return newloc;
+            if(newloc.equals("Library Stairs")){
+                newloc= "Library Room Two"; 
+            }
+            return newloc;
         } else{
             return "null location";
         }

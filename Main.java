@@ -783,7 +783,8 @@ public class Main {
             this.drainedStudentNine.fight(this.scienceTeacher, this.player); 
         }
         if(this.scienceTeacher.isAlive()&& this.scienceTeacher.isAlive()){
-            scienceTeacher.move(this.changeStringtoLocation(scienceTeacher.nextMove()), this.player);
+            scienceTeacher.move(this.changeStringtoLocation(scienceTeacher.nextMove(this.player)), this.player);
+            System.out.println(this.scienceTeacher.getLocation().getName());
         }
     }
 
@@ -798,16 +799,24 @@ public class Main {
     
 
     public void runRoundOfPhaseTwo(){
+        if(this.librarian.isAlive()){
+            this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove(this.player)), this.player);
+            System.out.println(this.librarian.getLocation().getName()); 
+        }
         if(this.player.getIsDead()==false){
             this.runUserInput();
             System.out.println("");
         }else{
             return;
         }
-        System.out.println("");
-        if(this.librarian.isAlive()){
-            this.librarian.move(this.changeStringtoLocation(this.librarian.nextMove()), this.player);
-            System.out.println(this.librarian.getLocation().getName()); 
+        if(this.player.getIsDead()==false){
+            this.runUserInput();
+            System.out.println("");
+            if (this.librarian.getLocation()==this.player.getLocation()) {
+                System.out.println("The librian disapears behind a book shelf.");
+            }
+        }else{
+            return;
         }
     }
 
@@ -823,10 +832,17 @@ public class Main {
     public static void main(String[] args) { 
         
         Main testingGame= new Main(); 
-        // testingGame.player.setLocation(testingGame.hallwayOne);
-        // testingGame.hallMonitorOne.setCurrentLocation(testingGame.studyRoom);
-        // testingGame.runRoundOfPhaseOne(); 
-        // testingGame.runRoundOfPhaseOne(); 
+        testingGame.scienceTeacher.setCurrentLocation(testingGame.cellarRoomOne);
+        testingGame.player.setLocation(testingGame.cellarRoomFour); 
+        testingGame.scienceTeacher.move(testingGame.changeStringtoLocation(testingGame.scienceTeacher.nextMove(testingGame.player)), testingGame.player);
+        System.out.println(testingGame.scienceTeacher.getLocation().getName());
+        testingGame.player.setLocation(testingGame.cellarRoomFive); 
+        testingGame.scienceTeacher.move(testingGame.changeStringtoLocation(testingGame.scienceTeacher.nextMove(testingGame.player)), testingGame.player);
+        System.out.println(testingGame.scienceTeacher.getLocation().getName());
+        testingGame.player.setLocation(testingGame.dungeon); 
+        testingGame.scienceTeacher.move(testingGame.changeStringtoLocation(testingGame.scienceTeacher.nextMove(testingGame.player)), testingGame.player);
+        System.out.println(testingGame.scienceTeacher.getLocation().getName());
+  
   
 
 

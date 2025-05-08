@@ -84,11 +84,11 @@ public class Person {
      * @param place the place the person hopes to move to
      */
     public void move(Location place, Location libraryStairs, Item tangled, Item historyOf, Item dracula){
-        if (map.get(currentLocation.name).contains(place.name)&& place!=libraryStairs){
+        if (map.getAll(currentLocation.name).contains(place.name)&& place!=libraryStairs){
             this.currentLocation = place;
             System.out.println("Currect location is now: " + place.name);
             this.points= this.getPoints()+1; 
-        }else if(map.get(currentLocation.name).contains(place.name)&& place==libraryStairs){
+        }else if(map.getAll(currentLocation.name).contains(place.name)&& place==libraryStairs){
             if(this.hasItem(dracula)==true && this.hasItem(historyOf)==true && this.hasItem(tangled)==true){
                 System.out.println("You put the three books on a pedstal and the bookshlef pops open revealing a secret set of stairs! Huzzah! \n You enter and hear the librarian slam the secret door shut behind you. You try to open it again, but it's barricaded shut.");
                 this.currentLocation = place;
@@ -102,7 +102,7 @@ public class Person {
         else{
             System.out.println(place.name + " isn't connected to where you are.");
             System.out.println("The following rooms are connected: "); 
-            System.out.println( map.get(this.currentLocation.name));
+            System.out.println( map.getAll(this.currentLocation.name));
         }
     }
 

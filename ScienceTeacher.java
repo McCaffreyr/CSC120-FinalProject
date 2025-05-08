@@ -12,7 +12,7 @@ public class ScienceTeacher extends HallMonitor{
      */
     public String nextMove(Person stu){
         if(this.isAlive){
-            String place = this.map.get(stu.getLocation().getName());
+            String place = stu.getLocation().getName();
             return place;
         } else{
             return "null Location";

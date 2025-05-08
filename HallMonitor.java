@@ -31,14 +31,14 @@ public class HallMonitor extends Teacher{
 
     public String nextMove( ){
         if(isAlive){
-            String options = this.map.get(this.currentLocation.name);
+            String options = this.map.getAll(this.currentLocation.name);
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
             if(newloc.equals("Library Room One")){
                 newloc= "Hallway Three"; 
             }
-        return newloc;
+            return newloc;
         } else{
             return "null location";
         }
