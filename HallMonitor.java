@@ -45,7 +45,7 @@ public class HallMonitor extends Teacher{
     }
 
     public void move(Location l, Person player){
-        this.checkLocationForPlayer(player, "myMove");
+        //
         this.getLocation().removeNPC(this); 
         this.setCurrentLocation(l);
         l.addNPC(this); 

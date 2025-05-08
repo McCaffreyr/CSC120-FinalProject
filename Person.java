@@ -174,7 +174,7 @@ public class Person {
             throw new RuntimeException("You cannot fight a fellow student! That would lead to automatic expulsion."); 
 
         }else if(this.getLocation()== npc.getLocation()){
-            System.out.println("You punch the "+ npc.getName()+".");
+            System.out.println("You punch the "+ npc.getName()+". It does 2 damage!");
             npc.beAttacked(2, this); 
             this.points=this.getPoints()+3;
 
@@ -235,7 +235,7 @@ public class Person {
         return this.isDead; 
     }
 
-    public Boolean isdead(){
+    public Boolean isDead(){
         if (this.health<=0){
             this.isDead=true; 
             audio.playAudio();
@@ -262,7 +262,7 @@ public class Person {
         // Location Hallway3 = new Location("Hallway 3","desc",true);
         // Location Hallway7 = new Location("Hallway 7","desc",true);
         Abby.health = 0;
-        System.out.println(Abby.isdead());
+        System.out.println(Abby.isDead());
 
 
         // Item pencil = new Item("Pencil","sharp tool",starterClassroom,false);

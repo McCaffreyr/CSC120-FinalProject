@@ -804,11 +804,10 @@ public class Main {
     public static void main(String[] args) { 
         
         Main testingGame= new Main(); 
-        // testingGame.player.setLocation(testingGame.libraryRoomEight);
-        // System.out.println(testingGame.libraryRoomEight.locationItemsAndNPCs);
-        // System.out.println(testingGame.player.getLocation().getName());
-        // System.out.println(testingGame.dracula.getLocation().getName());
-        // testingGame.player.search(testingGame.tangled, testingGame.historyOfTransylvania, testingGame.dracula, testingGame.nullLocation);
+        // testingGame.player.setLocation(testingGame.hallwayOne);
+        // testingGame.hallMonitorOne.setCurrentLocation(testingGame.studyRoom);
+        // testingGame.runRoundOfPhaseOne(); 
+        // testingGame.runRoundOfPhaseOne(); 
   
 
 
@@ -821,11 +820,11 @@ public class Main {
         while(testingGame.phaseOneComplete==false){
             testingGame.runRoundOfPhaseOne(); 
             testingGame.checkPhaseOneComplete(); 
-            if(testingGame.player.isdead()){
+            if(testingGame.player.isDead()){
                 break; 
             }
         }
-        if(testingGame.player.isdead()){
+        if(testingGame.player.isDead()){
             testingGame.scanner.close(); 
         }else{
             System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
@@ -835,21 +834,21 @@ public class Main {
             while(testingGame.phaseTwoComplete==false){
                 testingGame.runRoundOfPhaseTwo(); 
                 testingGame.checkPhaseTwoComplete(); 
-                if(testingGame.player.isdead()){
+                if(testingGame.player.isDead()){
                     break; 
                 }
-            }if(testingGame.player.isdead()){
+            }if(testingGame.player.getIsDead()){
                 testingGame.scanner.close();
             }else{
                 System.out.println("Welcome to Phase Three... the cellar. You have no choice but to walk down the CELLAR STAIRS.");
                 while(testingGame.phaseThreeComplete==false){
                     testingGame.runRoundofPhaseThree(); 
                     testingGame.checkPhaseThreeComplete(); 
-                    if(testingGame.player.isdead()){
+                    if(testingGame.player.isDead()){
                         break; 
                     }
                 }
-                if(testingGame.player.isdead()){
+                if(testingGame.player.isDead()){
                     testingGame.scanner.close();
                 }else{
                     System.out.println("Congrats you have won! You got "+ testingGame.player.getPoints()+" points!");
