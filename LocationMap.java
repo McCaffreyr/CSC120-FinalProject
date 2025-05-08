@@ -5,7 +5,6 @@ public class LocationMap {
     HashMap<String, String[]> locationMap = new HashMap<>();
     
     LocationMap(){
-        locationMap = this.locationMap;
         locationMap.put("Gym", new String[] {"Hallway One"});
         locationMap.put("Study Room", new String[] {"Hallway One"});
         locationMap.put("Home Room", new String[] {"Hallway Three"});

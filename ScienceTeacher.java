@@ -31,7 +31,7 @@ public class ScienceTeacher extends HallMonitor{
         Location Library3 = new Location("Library Room Three", "desc","desc pt2", false, null);
         Person Molly = new Person(Library3);
         Librarian Polly = new Librarian("Polly", "desc", Library3, 100);
-        Location Library4 = new Location("Library Room Four", "desc","desc pt 2", false, null);
+        
 
         System.out.println(Polly.nextMove(Molly));
     }

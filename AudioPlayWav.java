@@ -38,7 +38,6 @@ public class AudioPlayWav {
     }
 
     public static void main(String[] args) {
-        AudioPlayWav test = new AudioPlayWav();
-        test.playAudio();
+        playAudio();
     }
 }

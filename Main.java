@@ -101,7 +101,6 @@ public class Main {
         this.phaseTwoComplete= false; 
         this.phaseThreeComplete= false; 
         this.map = new LocationMap();
-        AudioPlayWav audio = new AudioPlayWav();
         Object[] nullKeyItems={}; 
         //establishing locations
         this.nullLocation= new Location("null Location", "n/a", "n/a", true, nullKeyItems); 

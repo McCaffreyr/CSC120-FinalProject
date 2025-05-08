@@ -238,8 +238,8 @@ public class Person {
     public Boolean isDead(){
         if (this.health<=0){
             this.isDead=true; 
-            audio.playAudio();
-            System.out.println("You died! Whoops! You had "+ this.getPoints()+ "points.");
+            AudioPlayWav.playAudio();
+            System.out.println("You died! Whoops! You had "+ this.getPoints()+ " points.");
             return true; 
         }else{
             return false; 
