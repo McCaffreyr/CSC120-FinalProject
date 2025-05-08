@@ -28,7 +28,8 @@ public class BreakableWeapon extends Weapon {
      */
     public void fallApart(){
         this.isBroken= true;
-        this.name= "broken" + this.name; 
+        System.out.println("Your"+ this.getName()+ " has broken! Oh no!");
+        this.name= "broken " + this.name; 
         this.description= this.description + "It is broken."; 
     }
 

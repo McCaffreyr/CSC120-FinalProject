@@ -7,7 +7,7 @@ public class Acid extends Weapon{
      * @param iI if the acid is currently in the players inventory
      */
     Acid(Location cL, Boolean iI){
-        super("Acid Solution", "A bright green acid solution in a clear beaker, originally found in the chemistry lab. It bubbles and hisses at you.", 
+        super("Acid", "A bright green acid solution in a clear beaker, originally found in the chemistry lab. It bubbles and hisses at you.", 
         "You throw the acid at your opponent. They let out a yelp as it burns them.", cL, iI, 8); 
         this.hasAcid=true; 
     }

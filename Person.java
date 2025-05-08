@@ -86,7 +86,7 @@ public class Person {
     public void move(Location place, Location libraryStairs, Item tangled, Item historyOf, Item dracula){
         if (map.getAll(currentLocation.name).contains(place.name)&& place!=libraryStairs){
             this.currentLocation = place;
-            System.out.println("Currect location is now: " + place.name);
+            System.out.println("Current location is now: " + place.name);
             this.points= this.getPoints()+1; 
         }else if(map.getAll(currentLocation.name).contains(place.name)&& place==libraryStairs){
             if(this.hasItem(dracula)==true && this.hasItem(historyOf)==true && this.hasItem(tangled)==true){
@@ -187,10 +187,10 @@ public class Person {
     //gives desc of item
     public String lookAt(Item item){
         if(this.hasItem(item)){
-            String desc = "The " +item.name + " is a " + item.description;
+            String desc = item.name + ": " + item.description;
             return desc;
         }else if(this.getLocation()==item.getLocation()){
-            String desc = "The " +item.name + " is " + item.description;
+            String desc = item.name + ": " + item.description;
             return desc;
         }else{
             throw new RuntimeException("You must have the item in your inventory or be in the same room as an item to look at it!"); 

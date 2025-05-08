@@ -174,35 +174,35 @@ public class Main {
 
         //establishing items phase one
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
-        this.golfClub= new Weapon("Golf Club", "a shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
+        this.golfClub= new Weapon("Golf Club", "A shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
-        this.yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "an insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", this.homeRoom, false, 2, 2); 
+        this.yellowSharpenedPencil= new BreakableWeapon("Yellow Sharpened Pencil", "An insanely sharp classic #2 pencil. This thing would be a beast on a standardized test.", "You jab your opponent with the sharpened pencil. It breaks skin.", this.homeRoom, false, 2, 2); 
         this.homeRoom.addItem(this.yellowSharpenedPencil); 
         this.acid= new Acid(this.chemLab, false); 
         this.chemLab.addItem(this.acid);
-        this.pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "an insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", this.historyRoom, false, 2, 2); 
+        this.pinkSharpenedPencil= new BreakableWeapon("Pink Sharpened Pencil", "An insanely sharp #2 pencil, now in a new fun pink color! This thing would be a beast on a standardized test in style.", "You jab your opponent with the pink sharpened pencil. It breaks skin and looks chic while doing it.", this.historyRoom, false, 2, 2); 
         this.historyRoom.addItem(this.pinkSharpenedPencil); 
-        this.ruler= new BreakableWeapon("Ruler", "a wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", this.mathRoom, false, 2, 4); 
+        this.ruler= new BreakableWeapon("Ruler", "A wooden ruler with both inches and cenimeters depending on which side you use. How exciting!", "You slap your opponent with a ruler. It's not very effective but it does more than your hands.", this.mathRoom, false, 2, 4); 
         this.mathRoom.addItem(this.ruler);
-        this.syringe= new BreakableWeapon("Syringe", "a large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", this.bioLab, false, 3, 2); 
+        this.syringe= new BreakableWeapon("Syringe", "A large syringe with a very sharp tip.", "You stab your opponent with a syringe. It's very effective, but you feel the needle bend.", this.bioLab, false, 3, 2); 
         this.bioLab.addItem(this.syringe);
-        this.scalpel= new Weapon("Scalpel", "a super sharp scalpel. Originally intended for dissections, but could be useful in some sticky situations.", "You slice your opponent with your scalpel. That one is gonna leave a nasty mark.", this.bioLab, false, 5); 
+        this.scalpel= new Weapon("Scalpel", "A super sharp scalpel. Originally intended for dissections, but could be useful in some sticky situations.", "You slice your opponent with your scalpel. That one is gonna leave a nasty mark.", this.bioLab, false, 5); 
         this.bioLab.addItem(this.scalpel);
-        this.knife= new Weapon("Knife", "a shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", this.cafe, false, 6 ); 
+        this.knife= new Weapon("Knife", "A shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", this.cafe, false, 6 ); 
         this.cafe.addItem(this.knife);
-        this.dictionary = new Weapon("Dictionary","you find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",this.englishRoom,false,2);
+        this.dictionary = new Weapon("Dictionary","You find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",this.englishRoom,false,2);
         
         //establishing NPCS
         this.englishRoom.addItem(this.dictionary);
-        this.homeRoomStudent= new Student("Home Room Student","your fellow classmate who is locked in on some homework.", this.homeRoom, 100, false); 
+        this.homeRoomStudent= new Student("Home Room Student","Your fellow classmate who is locked in on some homework.", this.homeRoom, 100, false); 
         this.homeRoom.addNPC(this.homeRoomStudent);
-        this.englishRoomStudent= new Student("English Room Student", "your classmate sits in the corner of the room. He is playing a video game on his phone.", this.englishRoom, 100, false); 
+        this.englishRoomStudent= new Student("English Room Student", "Your classmate sits in the corner of the room. He is playing a video game on his phone.", this.englishRoom, 100, false); 
         this.englishRoom.addNPC(this.englishRoomStudent); 
-        this.studyRoomStudent=new Student("Study Room Student", "a student is reading a book in the corner of the room. He seems quite focused but still approachable", this.studyRoom, 100, false); 
+        this.studyRoomStudent=new Student("Study Room Student", "A student is reading a book in the corner of the room. He seems quite focused but still approachable", this.studyRoom, 100, false); 
         this.studyRoom.addNPC(this.studyRoomStudent); 
-        this.cafeRoomStudent= new Student("Cafe Room Student", "a freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
+        this.cafeRoomStudent= new Student("Cafe Student", "A freshman eating a sanwhich. You think it is peanut butter and jelly.", this.cafe, 100, false); 
         this.cafe.addNPC(this.cafeRoomStudent); 
-        this.homeRoomTeacher= new Teacher("Home Room Teacher", "your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
+        this.homeRoomTeacher= new Teacher("Home Room Teacher", "Your home room teacher who glows with a youthful exuberance.", this.homeRoom, 10); 
         this.homeRoom.addNPC(homeRoomTeacher); 
         this.nullNPC= new NPC("Null NPC", "n/a", this.nullLocation, 10, true); 
         this.hallMonitorOne= new HallMonitor("Hall Monitor One", "A menancing teacher that walks around the halls looking for mischevious students skipping class.", this.hallwayOne, 10);
@@ -253,7 +253,7 @@ public class Main {
         //setting key items to rooms
         Object[] bioLabKeyItems={this.scalpel, this.syringe}; 
         this.bioLab.setKeyItems(bioLabKeyItems);
-        Object[]chemLabKeyItems={this.acid, this.syringe}; 
+        Object[]chemLabKeyItems={this.acid}; 
         this.chemLab.setKeyItems(chemLabKeyItems);
         Object[] cafeKeyItems={ this.cafeRoomStudent, this.knife}; 
         this.cafe.setKeyItems(cafeKeyItems);
@@ -320,7 +320,7 @@ public class Main {
         System.out.println("-grab: This command must be used in conjuction with an item. Adds the item to your players inventory.");
         System.out.println("-drop: This command must be used with an item currently in your inventory. This command will remove the item from your inventory.");
         if(this.phaseOneComplete){
-            System.out.println("-search: This command allows you to search the room you are in for a specific book.");
+            System.out.println("-search: This command allows you to search the room you are in for a specific book. To place these books on pedastals you must have all of them in your inventory and then move to LIBRARY STAIRS.");
         }
         if(this.phaseTwoComplete){
             System.out.println("-save: This command must be used with \"drained student\" + number to save the student. ");
@@ -486,7 +486,7 @@ public class Main {
 
     //add NPC's after all established
     public NPC checkTalkFight(List<String> inputArrayList){
-        String [] npcStringList={"home room student", "english room student", "study room student", "cafe room student", "home room teacher", "librarian", "hall monitor two", "hall monitor one", "science teacher"}; 
+        String [] npcStringList={"home room student", "english room student", "study room student", "cafe student", "home room teacher", "librarian", "hall monitor two", "hall monitor one", "science teacher"}; 
         NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher, this.librarian, this.hallMonitorTwo, this.hallMonitorOne, this.scienceTeacher}; 
         for(int i=0; i<npcStringList.length; i++){
             if(npcStringList[i].contains(" ")){
@@ -754,6 +754,12 @@ public class Main {
         }else{
             return;
         }
+        if(this.player.getIsDead()==false){
+            this.runUserInput();
+            System.out.println("");
+        }else{
+            return;
+        }
         if(this.drainedStudentOne.isSaved()&& this.scienceTeacher.isAlive()){
             this.drainedStudentOne.fight(this.scienceTeacher, this.player); 
         }
@@ -804,15 +810,21 @@ public class Main {
         }
         if(this.player.getIsDead()==false){
             this.runUserInput();
+            if (this.librarian.getLocation()==this.player.getLocation()) {
+                this.librarian.fight(this.player);
+            }
             System.out.println("");
         }else{
             return;
         }
         if(this.player.getIsDead()==false){
+            if (this.librarian.getLocation()==this.player.getLocation()) {
+                this.librarian.fight(this.player);
+            }
             this.runUserInput();
             System.out.println("");
             if (this.librarian.getLocation()==this.player.getLocation()) {
-                System.out.println("The librian disapears behind a book shelf.");
+                System.out.println("The librian disapears behind a book shelf. \n");
             }
         }else{
             return;
@@ -830,26 +842,12 @@ public class Main {
     
     public static void main(String[] args) { 
         
-        Main testingGame= new Main(); 
-        testingGame.scienceTeacher.setCurrentLocation(testingGame.cellarRoomOne);
-        testingGame.player.setLocation(testingGame.cellarRoomFour); 
-        testingGame.scienceTeacher.move(testingGame.changeStringtoLocation(testingGame.scienceTeacher.nextMove(testingGame.player)), testingGame.player);
-        System.out.println(testingGame.scienceTeacher.getLocation().getName());
-        testingGame.player.setLocation(testingGame.cellarRoomFive); 
-        testingGame.scienceTeacher.move(testingGame.changeStringtoLocation(testingGame.scienceTeacher.nextMove(testingGame.player)), testingGame.player);
-        System.out.println(testingGame.scienceTeacher.getLocation().getName());
-        testingGame.player.setLocation(testingGame.dungeon); 
-        testingGame.scienceTeacher.move(testingGame.changeStringtoLocation(testingGame.scienceTeacher.nextMove(testingGame.player)), testingGame.player);
-        System.out.println(testingGame.scienceTeacher.getLocation().getName());
-  
-  
-
-
         //final code
+        Main testingGame= new Main(); 
         System.out.println("");
         System.out.println("Welcome to our game created by Maggie McCaffrey and Kylie Cave! TW: This game contains loud sudden noises, and mild depictions of violence. You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
         System.out.println(" ");
-        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.(Helpful hint to leave you current classroom you will type move to hallway three.)");
+        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.(Helpful hint to leave you current classroom you will type move to HALLWAY THREE.)");
         System.out.println("");
         while(testingGame.phaseOneComplete==false){
             testingGame.runRoundOfPhaseOne(); 
@@ -858,7 +856,7 @@ public class Main {
                 break; 
             }
         }
-        if(testingGame.player.isDead()){
+        if(testingGame.player.getIsDead()){
             testingGame.scanner.close(); 
         }else{
             System.out.println("As you enter the library the door locks shut behind you. There is no going back.");
@@ -882,7 +880,7 @@ public class Main {
                         break; 
                     }
                 }
-                if(testingGame.player.isDead()){
+                if(testingGame.player.getIsDead()){
                     testingGame.scanner.close();
                 }else{
                     System.out.println("Congrats you have won! You got "+ testingGame.player.getPoints()+" points!");
