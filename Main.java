@@ -141,7 +141,7 @@ public class Main {
        
         this.hallwayEleven= new Location("Hallway Eleven", "In front of you is hallway twelve and behind you is hallway eleven.", "In front of you is hallway twelve and behind you is hallway eleven.", false, nullKeyItems); 
 
-        this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library (library room one) and behind you is hallway eleven. There is a note on the floor of the hallway.", "In front of you is the entrance to the library and behind you is hallway eleven.", true, nullKeyItems); 
+        this.hallwayTwelve= new Location("Hallway Twelve", "In front of you is the entrance to the library (library room one) and behind you is hallway eleven.", "In front of you is the entrance to the library and behind you is hallway eleven. There is a note on the floor of the hallway.", true, nullKeyItems); 
 
         this.libraryRoomOne= new Location("Library Room One", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This room has a shelf of books recently returned!", false, nullKeyItems ); 
 
@@ -165,10 +165,10 @@ public class Main {
         this.cellarRoomTwo= new Location("Cellar Room Two", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
         this.cellarRoomThree= new Location("Cellar Room Three", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
         this.cellarRoomFour= new Location("Cellar Room Four", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
-        this.cellarRoomFive= new Location("Cellar Room Five", "Another poorly lit room. However, in the corner of the room you see a student slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number nine is written above his head.", "Another poorly lit room.", false ,nullKeyItems); 
-        this.cellarRoomSix= new Location("Cellar Room Six", "This room is incredibly dim. However, next to you, you see a student slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number one is written above his head. Alongside the far wall you see an entrance to a DUNGEON", "This room is incredibly dim and stinky.", true, nullKeyItems); 
-        this.cellarRoomSeven= new Location("Cellar Room Seven", "Another dimly lit, dark, room that smells awful with not much in it.", "", false, nullKeyItems); 
-        this.dungeon= new Location("Dungeon", "Inside this room you find the whole golf team with a bright green liquid being pumped from their vains to a large vat in the center. Above each of them is the numbers 2-8.", "Inside this room you find a large vat in the center of the room.", true, nullKeyItems); 
+        this.cellarRoomFive= new Location("Cellar Room Five", "Another poorly lit room.", "Another poorly lit room. However, in the corner of the room you see a student slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number nine is written above his head.", false ,nullKeyItems); 
+        this.cellarRoomSix= new Location("Cellar Room Six", "This room is incredibly dim and stinky", "This room is incredibly dim. However, next to you, you see a student slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number one is written above his head. Alongside the far wall you see an entrance to a DUNGEON", true, nullKeyItems); 
+        this.cellarRoomSeven= new Location("Cellar Room Seven", "Another dimly lit, dark, room that smells awful with not much in it.", "Another dimly lit, dark, room that smells awful with not much in it.", false, nullKeyItems); 
+        this.dungeon= new Location("Dungeon", "Inside this room you find a large vat in the center of the room.", "Inside this room you find a large vat in the center of the room. Inside this room you find the whole golf team with a bright green liquid being pumped from their vains to a large vat in the center. Above each of them is the numbers 2-8.", true, nullKeyItems); 
 
         this.libraryStairs= new Location("Library Stairs", "A creepy stairway that leads only one way. Down. Move down to the Cellar Stairs.","A creepy stairway that leads only one way. Down.", false, nullKeyItems); 
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
@@ -244,7 +244,7 @@ public class Main {
         this.englishRoom.setKeyItems(englishRoomKeyItems);
         Object[]gymKeyItems={this.golfClub}; 
         this.gym.setKeyItems(gymKeyItems);
-        Object[]historyRoomKeyItems={this.pinkSharpenedPencil}; 
+        Object[]historyRoomKeyItems={this.pinkSharpenedPencil, this.historyRoomNote}; 
         this.historyRoom.setKeyItems(historyRoomKeyItems);
         Object[]mathRoomKeyItems= {this.ruler}; 
         this.mathRoom.setKeyItems(mathRoomKeyItems);
@@ -252,7 +252,7 @@ public class Main {
         this.studyRoom.setKeyItems(studyRoomKeyItems);
         Object[] homeRoomKeyItems={this.yellowSharpenedPencil, this.homeRoomStudent, this.homeRoomTeacher, this.homeRoomNote}; 
         this.homeRoom.setKeyItems(homeRoomKeyItems);
-        Object[]hallwayTwelveKeyItems={}; 
+        Object[]hallwayTwelveKeyItems={this.hallwayTwelveNote}; 
         this.hallwayTwelve.setKeyItems(hallwayTwelveKeyItems);
         Object[]libraryOneKeyItems={}; 
         this.libraryRoomOne.setKeyItems(libraryOneKeyItems);
@@ -468,8 +468,8 @@ public class Main {
 
     //add NPC's after all established
     public NPC checkTalkFight(List<String> inputArrayList){
-        String [] npcStringList={"home room student", "english room student", "study room student", "cafe room student", "home room teacher", "librarian", "hall monitor two", "hall monitor one"}; 
-        NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher, this.librarian, this.hallMonitorTwo, this.hallMonitorOne}; 
+        String [] npcStringList={"home room student", "english room student", "study room student", "cafe room student", "home room teacher", "librarian", "hall monitor two", "hall monitor one", "science teacher"}; 
+        NPC [] npcList= {this.homeRoomStudent, this.englishRoomStudent, this.studyRoomStudent, this.cafeRoomStudent, this.homeRoomTeacher, this.librarian, this.hallMonitorTwo, this.hallMonitorOne, this.scienceTeacher}; 
         for(int i=0; i<npcStringList.length; i++){
             if(npcStringList[i].contains(" ")){
                 String[] multipleWordNPC= npcStringList[i].split(" "); 
