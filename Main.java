@@ -6,6 +6,7 @@ public class Main {
     Boolean phaseOneComplete; 
     Boolean phaseTwoComplete;
     Boolean phaseThreeComplete;
+
     //locations
     LocationMap map;
     Location nullLocation;  
@@ -47,6 +48,7 @@ public class Main {
     Location cellarRoomSix; 
     Location cellarRoomSeven; 
     Location dungeon;  
+
     //items
     Item nullItem;
     Weapon golfClub;
@@ -65,6 +67,7 @@ public class Main {
     Item tangled; 
     Item historyOfTransylvania; 
     Item dracula; 
+
     //npcs
     Student homeRoomStudent;
     Student englishRoomStudent;
@@ -86,9 +89,6 @@ public class Main {
     DrainedStudent drainedStudentNine; 
     ScienceTeacher scienceTeacher; 
 
-
-    //lists
-
     //player
     Person player;
 
@@ -103,6 +103,7 @@ public class Main {
         this.map = new LocationMap();
         AudioPlayWav audio = new AudioPlayWav();
         Object[] nullKeyItems={}; 
+        //establishing locations
         this.nullLocation= new Location("null Location", "n/a", "n/a", true, nullKeyItems); 
 
         this.bioLab = new Location("Bio Lab","The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner.",  "The biology lab has many workstations set up for dissection. There are pins at each table and a tank of frogs in the back corner. On the drying rack, there lies a bunch of SCALPELs ready for the upcoming dissection. Near the teacher's desk is a clean and shiny SYRINGE.", true, nullKeyItems);
@@ -161,7 +162,6 @@ public class Main {
 
         this.libraryRoomEight= new Location("Library Room Eight", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the classics section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the classics section.", true , nullKeyItems); 
         
-        //make sure to mention the students have label numbers 
         this.cellarStairs= new Location("Cellar Stairs", "The end of the dark deep stairway. It feels damp and haunting. You can just barley make out CELLAR ROOM ONE from here.","The end of the dark deep stairway. It feels damp and haunting. You can just barely make out CELLAR ROOM ONE from here. There is a crumpled NOTE on the floor.", true, nullKeyItems ); 
         this.cellarRoomOne= new Location("Cellar Room One", "A dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
         this.cellarRoomTwo= new Location("Cellar Room Two", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
@@ -171,8 +171,9 @@ public class Main {
         this.cellarRoomSix= new Location("Cellar Room Six", "This room is incredibly dim and stinky", "This room is incredibly dim. However, next to you, you see a DRAINED STUDENT slumped over not moving. Tubes are connected to his arms and a bright green liquid flows out and collects in a bag. The number one is written above his head. Alongside the far wall you see an entrance to a DUNGEON", true, nullKeyItems); 
         this.cellarRoomSeven= new Location("Cellar Room Seven", "Another dimly lit, dark, room that smells awful with not much in it.", "Another dimly lit, dark, room that smells awful with not much in it.", false, nullKeyItems); 
         this.dungeon= new Location("Dungeon", "Inside this room you find a large vat in the center of the room.", "Inside this room you find the whole golf team with a bright green liquid being pumped from their vains to a large vat in the center. Above each of them is the numbers 2-8.", true, nullKeyItems); 
-
         this.libraryStairs= new Location("Library Stairs", "A creepy stairway that leads only one way. Down. Move down to the CELLAR STAIRS.","A creepy stairway that leads only one way. Down. Move down to the CELLAR STAIRS", false, nullKeyItems); 
+
+        //establishing items phase one
         this.nullItem= new Item("null", "null", this.nullLocation, false ); 
         this.golfClub= new Weapon("Golf Club", "a shiny nine iron that once belonged to the golf team.", "You swing and hit you enemy with the golf club. It makes a great loud thwack.", this.gym, false, 5 ); 
         this.gym.addItem(this.golfClub);
@@ -191,6 +192,8 @@ public class Main {
         this.knife= new Weapon("Knife", "a shiny black and silver kitchen knife.", "You stab your opponent with the knife. It makes and awful squishing noise. Gross.", this.cafe, false, 6 ); 
         this.cafe.addItem(this.knife);
         this.dictionary = new Weapon("Dictionary","you find the heaviest book in the classroom. It would definitely hurt to get hit with this thing.","You smack your opponent with the dictionary. It leaves a red mark.",this.englishRoom,false,2);
+        
+        //establishing NPCS
         this.englishRoom.addItem(this.dictionary);
         this.homeRoomStudent= new Student("Home Room Student","your fellow classmate who is locked in on some homework.", this.homeRoom, 100, false); 
         this.homeRoom.addNPC(this.homeRoomStudent);
@@ -209,6 +212,8 @@ public class Main {
         hallwayTwelve.addNPC(hallMonitorTwo); 
         this.scienceTeacher= new ScienceTeacher("Science Teacher", "Your science teacher who has awesome skin but a horrible vibe!", this.dungeon, 40); 
         this.dungeon.addNPC(scienceTeacher); 
+
+        //estblashing items phase two and three 
         this.homeRoomNote= new Note("Home Room Note", "I'm glad you found me. I hid it well so the teachers wouldn't find me. Something bad is happening in this school. I don't know exactly what it is, but I know the golf team members have been disappearing. I am going to try investigate. But if i'm not seen around again...find out what's happening in here and be careful!", this.homeRoom, false); 
         this.homeRoom.addItem(homeRoomNote); 
         this.cellarStairsNote= new Note("Cellar Stairs Note", "Oh no, I fear i may have lead you to far, but if your seeing this...it's to late to turn back now. I figured out what was going on... all the teachers, led by the science teacher, were kidnppaing the rebellious kids from school and draining their youth so they could appear more youthful themselves. Seems like there might be some larger message here about how society fears aging and the unrealistic beauty standrads we hold people too... but i dont have time for all of that right now. I can hear the science teacher down here with me... he's coming. I'm ill prepared it's too late for me. If your reading this maybe you can be the one to SAVE us DRAINED STUDENTS from this hell. Please help! ", this.cellarStairs,false); 
@@ -224,18 +229,29 @@ public class Main {
         this.dracula= new Item("Dracula", "The classic original vampire book. There is a weird green substance coating some of the pages.", this.libraryRoomEight, false); 
         this.libraryRoomEight.addItem(this.dracula); 
 
+        //establishing NPCS phase 3 and two
         this.drainedStudentOne= new DrainedStudent("Drained Student One", "A very tired looking student. They look older than normal. Very Wrinkly.", this.cellarRoomSix); 
+        this.cellarRoomSix.addNPC(drainedStudentOne);
         this.drainedStudentTwo= new DrainedStudent("Drained Student Two", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
+        this.dungeon.addNPC(drainedStudentTwo);
         this.drainedStudentThree= new DrainedStudent("Drained Student Three", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
+        this.dungeon.addNPC(drainedStudentThree);
         this.drainedStudentFour= new DrainedStudent("Drained Student Four", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
+        this.dungeon.addNPC(drainedStudentFour);
         this.drainedStudentFive= new DrainedStudent("Drained Student Five", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
+        this.dungeon.addNPC(drainedStudentFive);
         this.drainedStudentSix= new DrainedStudent("Drained Student Six", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon);
+        this.dungeon.addNPC(drainedStudentSix);
         this.drainedStudentSeven= new DrainedStudent("Drained Student Seven", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon);  
+        this.dungeon.addNPC(drainedStudentSeven);
         this.drainedStudentEight= new DrainedStudent("Drained Student Eight", "A very tired looking student. They look older than normal. Very Wrinkly.", this.dungeon); 
-        this.drainedStudentNine= new DrainedStudent("Drained Student Nine", "A very tired looking student. They look older than normal. Very Wrinkly.", this.cellarRoomFive); 
-       
+        this.dungeon.addNPC(drainedStudentEight);
+        this.drainedStudentNine= new DrainedStudent("Drained Student Nine", "A very tired looking student. They look older than normal. Very Wrinkly.", this.cellarRoomFive);    
+        this.cellarRoomFive.addNPC(drainedStudentNine);
         this.librarian= new Librarian("Librarian", "a nasty short lady with small glasses and a evil grin. ", this.libraryRoomTwo, 20); 
         this.libraryRoomTwo.addNPC(librarian); 
+
+        //setting key items to rooms
         Object[] bioLabKeyItems={this.scalpel, this.syringe}; 
         this.bioLab.setKeyItems(bioLabKeyItems);
         Object[]chemLabKeyItems={this.acid, this.syringe}; 
@@ -289,7 +305,7 @@ public class Main {
         Object[] dungeonKeyItems={this.drainedStudentTwo, this.drainedStudentThree, this.drainedStudentFour, this.drainedStudentFive, this.drainedStudentSix, this.drainedStudentEight}; 
         this.dungeon.setKeyItems(dungeonKeyItems);
 
-       
+       //final establishments
         this.player= new Person(this.homeRoom);   
         this.scanner = new Scanner(System.in);
     }
