@@ -1,5 +1,11 @@
-    Our game design hinges upon user interaction with the main 10 commands.
-It is a fully text based game so all interaction with the user occurs through print statements
+    Our game design hinges upon user interaction with the main 10 commands. There are multiple possible outcomes for our game as 
+your character can either live or die at any point throughout the game, aditionally you can pick up or not pick up different weapons 
+items and objects. Additionally, a player gains points throughout the game by interacting with objects items and npcs, so how they play
+the game influences how many points they end the game with. The game does have reversible moves as you can pick up and put donw objects
+you can return to locations and pick up the objects you drop in there. There are both locations with restricted acess, such as the library 
+stairs which you must have the three key books to enter, and also restrcted commands such as search and save which you must be at a specific
+point in the game to use.
+    It is a fully text based game so all interaction with the user occurs through print statements
 to the console and a scanner readings the users input. The main class houses the initalizations of 
 all of the items, locations, and NPCS as well as quite a few methods that work to read the users input, 
 ensure that an item/location/NPC is in the users input if neccessary, and run the commands the users input.

@@ -346,7 +346,7 @@ public class Main {
         String userString= scanner.nextLine();  
         userString= userString.toLowerCase(); 
         userString= userString.trim(); 
-        //lines 70-72 refrence 1
+        //lines 350-352 refrence 1
         String[] inputArray= userString.split(" "); 
         List<String> inputArrayList= Arrays.asList(inputArray); 
         return inputArrayList; 
