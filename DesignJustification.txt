@@ -20,7 +20,12 @@ When a player wants to move the location map class provides all the locations th
 does work well for our game. I think we could've also changed the value to be an array of location objects. This would've 
 particularly helpful when creating the move methods for the librarian, hall monitors, and science teacher because currently 
 we have to chnage the string of the location name to an actual location in the main method. However, this would've 
-required the aforementioned static locations.
+required the aforementioned static locations. Instead of doing our map system by location name, we could of deisgned our map system to be a 
+move by cardinal directions system. This would have avoided errors with users typing the names of locations wrong. However, we 
+decided to do a move to location system because we thought it better made the world feel real and actualized. It makes more sense to 
+chose the name of a room to move to instead of a direction which can get confusing and lead to players walking in circles, which often
+happened to both game creators while playing zork. Instead, having the user chose a name of a room to move into helps them better imagine the
+layout of the world they are playing in, as well as helps the player get aquainted and learn what they can expect in the room they are about to enter.
     The student, drained student, teacher, librarian, hall monitor, and science teacher are all children of the NPC 
 class. They all have locations and are able to talk to the user. The teacher is the parent class of the hall monitor, 
 librarian and science teacher who all have fight methods and move methods that make it so the game get's harder 
@@ -34,3 +39,4 @@ the weapon class and adds a method for the weapon to fall apart after a certain 
     I also think in the future it could be helpful to add one larger class possibly called something along the lines of game object 
 which contains a lot of the acessor methods that are present in items, NPCS, and Person such as get name, get location, get description, since
 these simple methods were written a few different times throughout the course of the game. 
+
