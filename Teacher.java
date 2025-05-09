@@ -28,18 +28,23 @@ public class Teacher extends NPC{
      * @param d A physical description of the teacher.
      * @param cL The current Location of the teacher.
      * @param h The health of the teacher.
-     * @param a the attackability of the teacher.
      */
     Teacher(String n, String d, Location cL, int h) {
         super(n, d, cL, h, true);
         this.isAlive=true; 
     }
 
+    /**
+     * An acessor method for the health of the teacher
+     * @return an int of the health
+     */
     public int getHealth(){
         return this.health; 
     }
 
-    
+    /**
+     * A method that prints out a random response from a teacher.
+     */
     public void talk(){
         if(isAlive){
             int randomNum = random.nextInt(15); 
@@ -50,6 +55,11 @@ public class Teacher extends NPC{
        
     }
 
+    /**
+     * A method that lowers the health of a teacher and fights the player that attacked them
+     * @param nHPLoss the health amount that the teacher looses 
+     * @param p the person that attacked the teacher and that the teachers attacks
+     */
     public void beAttacked(int nHPLoss, Person p){
         if(isAlive){
             this.health= this.getHealth() -nHPLoss; 
@@ -59,6 +69,10 @@ public class Teacher extends NPC{
         }
     }
 
+    /**
+     * A method that lowers the health of the players and prints out some messages for the user.
+     * @param p the player to be fought by the teacher
+     */
     public void fight(Person p){
         
         p.setHealth(p.getHealth()-2);
@@ -67,6 +81,9 @@ public class Teacher extends NPC{
 
     }
 
+    /**
+     * A method that checks to see if the teachers health is greater than zero. If so it changes the isAlive boolean to false and prints out some messages to the user.
+     */
     public void checkAlive(){
         if(health<=0){
             System.out.println(this.getName()+ " has died! A body lying around the school defintely won't be weird at all!");

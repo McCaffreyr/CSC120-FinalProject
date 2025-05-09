@@ -14,7 +14,9 @@ public class Location {
      * A constuctor for a Location
      * @param n the name of the location
      * @param d the description of the location
+     * @param dWKI the description of the location when all key items are present
      * @param hI T/F wether the location contains and item. 
+     * @param kI an array of key objects that begin the game in the room
      */
     Location(String n, String d, String dWKI, boolean hI, Object[] kI){
         this.name = n; 
@@ -24,10 +26,19 @@ public class Location {
         this.locationItemsAndNPCs= new ArrayList<Object>(); 
         this.keyItems=kI; 
     } 
+
+    /**
+     * This returns the list of all the items and npcs in the location
+     * @return an array list of objects and items present in the location
+     */
     public ArrayList<Object> getLocationItemsAndNPCS(){
         return this.locationItemsAndNPCs; 
     }
 
+    /**
+     * This method sets this locations key items to the given array of key items
+     * @param keyItemList the list of items to become the key items
+     */
     public void setKeyItems(Object[] keyItemList){
         this.keyItems= keyItemList; 
     }
@@ -40,6 +51,10 @@ public class Location {
         return this.name; 
     }
 
+    /**
+     * This method checks that the location only has the assigned key items
+     * @return T/F wether or not ONLY the key items are present in the room.
+     */
     public boolean checkHasOnlyKeyItems(){
         boolean hasOnlyKeyItems= true; 
         for (int i=0; i<this.keyItems.length; i++){
@@ -84,7 +99,8 @@ public class Location {
     
     /**
      * an accessor method for whether the Location has an item in it or not
-     * @return T/F wether the location contains at least one item. 
+     * @param i the item to check 
+     * @return T/F wether the location has the given item
      */
     public Boolean hasItem(Item i){
        if(this.locationItemsAndNPCs.contains(i)){

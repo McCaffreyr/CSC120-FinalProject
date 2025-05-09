@@ -5,7 +5,6 @@ public class LocationMap {
     HashMap<String, String[]> locationMap = new HashMap<>();
     
     LocationMap(){
-        locationMap = this.locationMap;
         locationMap.put("Gym", new String[] {"Hallway One"});
         locationMap.put("Study Room", new String[] {"Hallway One"});
         locationMap.put("Home Room", new String[] {"Hallway Three"});
@@ -67,7 +66,7 @@ public class LocationMap {
         }
     }
 
-    public String get(String place){
+    public String getAll(String place){
         String[] connectingrooms = locationMap.get(place);
         String allPlaces = "";
         for (String connection : connectingrooms) {
@@ -75,6 +74,8 @@ public class LocationMap {
         }
         return allPlaces;
     }
+
+
     
     public static void main(String[] args) {
         LocationMap map = new LocationMap();
@@ -82,7 +83,7 @@ public class LocationMap {
         map.connectingL("Library Room Two");
         map.connectingL("Hallway Three");
 
-        System.out.println(map.get("Library Room Three"));
+        System.out.println(map.getAll("Library Room Three"));
 
     }
 

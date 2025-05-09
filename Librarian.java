@@ -31,17 +31,24 @@ public class Librarian extends HallMonitor{
      */
     public String nextMove(Person stu){
         if(isAlive){
-            String options = this.map.get(stu.getLocation().getName());
-            System.out.println(options);
+            String options = this.map.getAll(stu.getLocation().getName());
             String[] options2 = options.split(", ");
             int randomNum = random.nextInt(options2.length); 
             String newloc = options2[randomNum];
-        return newloc;
+            if(newloc.equals("Library Stairs")){
+                newloc= "Library Room Two"; 
+            }
+            return newloc;
         } else{
             return "null location";
         }
     }
 
+    /**
+     * This method lowers the HP of the librarian and checks that the librarian is still alive
+     * @param nHPLoss the amount of health to be lost 
+     * @param p the player that attacked the librarian
+     */
     public void beAttacked(int nHPLoss, Person p){
         if(this.isAlive){
             this.health=this.getHealth()-nHPLoss;
@@ -51,6 +58,10 @@ public class Librarian extends HallMonitor{
         }
     }
 
+    /**
+     * This method has the librarian fight the player printing our messages and decreasing the players health.
+     * @param p the player to be fought by the librarian
+     */
     public void fight(Person p){
         System.out.println(this.getName()+ " attacks you with a dictionary. That's gonna leave a bruise.");
         p.setHealth(p.getHealth()-4);
