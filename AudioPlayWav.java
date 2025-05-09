@@ -2,34 +2,36 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Program that plays the two audio files at the same time.
+ */
 public class AudioPlayWav {
 
+    /**
+     * Enables the two audio files to actually be played.
+     * @throws UnsupportedAudioFileException if the audio file format is not supported
+     * @throws IOException if an IO error occurs
+     * @throws LineUnavailableException if a line cannot be opened due
+     * @throws InterruptedException if the thread is interrupted
+     */
     public static void playAudio(){
         try {
-            // Specify the path to the WAV file
             File audioFile = new File("AudioLaughter.wav");
             File audioFile2 = new File("Audioscream.wav");
 
-
-            // Create an AudioInputStream from the file
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audioFile2);
 
-
-            // Get a Clip object that can play the audio
             Clip clip = AudioSystem.getClip();
             Clip clip2 = AudioSystem.getClip();
 
-
-            // Open the clip with the audio stream
             clip.open(audioStream);
             clip2.open(audioStream2);
 
-            // Start playing the audio
             clip.start();
             clip2.start();
 
-            // Optionally, wait for the clip to finish playing before exiting
+            // Wait for the clip to finish playing before continuing
             Thread.sleep(clip.getMicrosecondLength() / 1000);  // Convert microseconds to milliseconds
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {

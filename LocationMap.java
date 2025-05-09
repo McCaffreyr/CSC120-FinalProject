@@ -1,9 +1,15 @@
 
 import java.util.HashMap;
+/**
+ * Builds the map - each location is mapped to adjacent locations
+ */
 public class LocationMap {
 
     HashMap<String, String[]> locationMap = new HashMap<>();
     
+    /**
+     * initializes all the room connections
+     */
     LocationMap(){
         locationMap.put("Gym", new String[] {"Hallway One"});
         locationMap.put("Study Room", new String[] {"Hallway One"});
@@ -50,7 +56,7 @@ public class LocationMap {
     }
 
     /**
-     * Prints out the locations connected to a location
+     * Prints out the locations connected to a location.
      * @param place takes in a String location
      */
     public void connectingL(String place){
@@ -66,6 +72,11 @@ public class LocationMap {
         }
     }
 
+    /**
+     * returns all the locations attached to a location, string place
+     * @param place the string name of the location
+     * @return a string of adjacent locations
+     */
     public String getAll(String place){
         String[] connectingrooms = locationMap.get(place);
         String allPlaces = "";
@@ -75,8 +86,6 @@ public class LocationMap {
         return allPlaces;
     }
 
-
-    
     public static void main(String[] args) {
         LocationMap map = new LocationMap();
         map.connectingL("Library Room Three");
@@ -87,8 +96,4 @@ public class LocationMap {
 
     }
 
-    public String[] keySet() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keySet'");
-    }
 }

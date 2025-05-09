@@ -19,29 +19,25 @@
 
  - Is there anything that you wish you had **implemented differently**?
 
-
-
-
+   Next time, we would distribute some methods out of main to individual classes. We would also make the keys and values in the locationMap Locations instead of strings. Orignially we had the values as arraylists, then moved them to arrays. That transition could have been avoided if we had the values as locations from the start. It would also make the code a bit more smooth and compact. 
 
  - If you had **unlimited time**, what additional features would you implement?
 
     If we had unlimited time, we would've implemented a respawn method. This method could respawn you when your player dies in the current phase you are at, or respawn you at the beginning of the game. This would be helpful because right now when you die or win you must restart the whole game, and since our game is quite hard and long. The lack of a respawn can be annoying if a user is struggling but determined to finish the game.
 
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
-
-
+   The most helpful piece of feedback we received was from a friend after explaining the project to them. Despite not knowing very much about coding, they suggested simplifying the idea at least to start with. They suggested to then, if we had extra time to go and create more classes and details. Having a core-working version was definitely a confidence boost and it was helpful to then adjust goals for the rest of the project given out time contraints.
 
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
 
-    Do not fall behind! The final project is a large undertaking and your best coding is often done in small chunks with breaks in between! Working
-    a little bit at a time will lead to better more thoughout code instead of rushed or tired late night coding. Working and debugging a little bit everyday helps the project feel more digestable and can alleviate a lot of stress! Additionally, start with coding the main method and work out from there, this helps avoid writing confusing redundant methods. Additionally, make sure you have a clear plan before starting coding on how everything interacts and what methods each class will have. It is okay to add to this plan as needed but a clear plan at the beginning will help make sure all project partners are on the same page. 
+    Do not fall behind! The final project is a large undertaking and your best coding is often done in small chunks with breaks in between! Working a little bit at a time will lead to better more thoughout code instead of rushed or tired late night coding. Working and debugging a little bit everyday helps the project feel more digestable and can alleviate a lot of stress! Additionally, start with coding the main method and work out from there, this helps avoid writing confusing redundant methods. Additionally, make sure you have a clear plan before starting coding on how everything interacts and what methods each class will have. It is okay to add to this plan as needed but a clear plan at the beginning will help make sure all project partners are on the same page. 
 
 
  - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.
-
-
+   Working in a team absolutely made the project more managable and enjoyable. We worked well as a team, especially in building off each others' creativiely to create the world and game idea. We often communicated through short texts on what we were working on to avoid any merging errors which worked well. Talking over ideas and brainstorming together also helped us understand how we could best implement them, making the coding process later on easier.
 
  
 
  ## Refrences
-1. Used on lines 350-352 in Main: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  
+1. Used on lines 70-72: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  
+2. Used on lines 350-352 in Main: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  

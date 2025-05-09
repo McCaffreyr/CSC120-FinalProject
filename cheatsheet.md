@@ -106,4 +106,4 @@ If your game includes challenges that must be overcome to win, also list them be
 
 -To complete Phase One you must enter the library room one which is connected to hallway twelve
 -To complete Phase Two you must find all three key books: Dracula, Tangled, and History of Transylvania in the library and move to the library stairs from library room two
--To complete phase three and the game you must kill the science teacher.
+-To complete phase three and the game you must kill the science teacher (to do so, you must save the drained students).
