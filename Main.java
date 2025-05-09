@@ -164,7 +164,8 @@ public class Main {
 
         this.libraryRoomEight= new Location("Library Room Eight", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the classics section.", "Books, books, and more books. So many rooms in this library. Will you be able to find what you are looking for? This is the classics section.", true , nullKeyItems); 
         
-        this.cellarStairs= new Location("Cellar Stairs", "The end of the dark deep stairway. It feels damp and haunting. You can just barley make out CELLAR ROOM ONE from here.","The end of the dark deep stairway. It feels damp and haunting. You can just barely make out CELLAR ROOM ONE from here. There is a crumpled NOTE on the floor.", true, nullKeyItems ); 
+        //make sure to mention the students have label numbers 
+        this.cellarStairs= new Location("Cellar Stairs", "The end of the dark deep stairway. It feels damp and haunting. There is a crumpled note on the floor. In front of you is Cellar Room One.","The end of the dark deep stairway. It feels damp and haunting.", true, nullKeyItems ); 
         this.cellarRoomOne= new Location("Cellar Room One", "A dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
         this.cellarRoomTwo= new Location("Cellar Room Two", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
         this.cellarRoomThree= new Location("Cellar Room Three", "Another dimly lit, dark, room that smells awful with not much in it.", "A dimly lit, dark, room that smells awful.", false, nullKeyItems); 
@@ -949,7 +950,7 @@ public class Main {
         System.out.println("");
         System.out.println("Welcome to our game created by Maggie McCaffrey and Kylie Cave! TW: This game contains loud sudden noises, and mild depictions of violence. You start as a student in your home room classroom! Have fun! (Type \"help\" if you can't figure out what to do!)");
         System.out.println(" ");
-        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.(Helpful hint to leave you current classroom you will type move to HALLWAY THREE.)");
+        System.out.println("Phase one begins... explore your school...find objects...talk to students...but be careful, your school doesn't like students lingering outside of class.(Helpful hint to leave your current classroom you will type move to hallway three.)");
         System.out.println("");
         while(testingGame.phaseOneComplete==false){
             testingGame.runRoundOfPhaseOne(); 

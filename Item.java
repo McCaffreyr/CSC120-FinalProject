@@ -52,7 +52,7 @@ public class Item {
     }
 
     /**
-     * an mutator method for the location attribute of an item 
+     * a mutator method for the location attribute of an item 
      * @param l the location for the item to be at. 
      */
     public void setLocation(Location l){

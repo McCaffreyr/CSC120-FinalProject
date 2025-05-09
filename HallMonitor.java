@@ -38,7 +38,7 @@ public class HallMonitor extends Teacher{
      * This method finds an adjacent room of the current location of the hall monitor for the hall monitor to move to.
      * @return The String name of the location for the hall monitor to move to 
      */
-    public String nextMove( ){
+    public String nextMove(){
         if(isAlive){
             String options = this.map.getAll(this.currentLocation.name);
             String[] options2 = options.split(", ");
