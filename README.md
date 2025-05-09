@@ -38,6 +38,5 @@
 
  
 
- ## Refrences
-1. Used on lines 70-72: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  
-2. Used on lines 350-352 in Main: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  
+ ## Refrences 
+1. Used on lines 350-352 in Main: https://stackoverflow.com/questions/7347856/how-to-convert-a-string-into-an-arraylist  
